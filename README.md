@@ -5,17 +5,17 @@
 - 使用技術:
   - Vue 3
     - Vue CLI
-    - Vuex
-      - state
-        - 加入購物車 ( cart )
-        - 最受歡迎商品由點擊次數決定 ( clickedTimes)
-    - Vue Router
+    - Vuex with module setting
+    - VueRouter
   - HTML
-  - CSS (RWD)
+  - SCSS with RWD
   - JavaScript
+  - Firebase as backend
+  - Other Packages:
+    - Swiper.js 
   
 
-## **免責聲明:** 本專案為履歷作品，所有素材均已授權，如有疏漏發生盜用之情形，請盡速聯絡本人(dudulala73@gmail.com)，將立即撤銷素材之使用。
+## **免責聲明:** 本專案為履歷作品，無營利之用途，如有疏漏發生盜用之情形，請盡速聯絡本人(dudulala73@gmail.com)，將立即撤銷素材之使用。
 
 - ## **網站主要功能**
   - 商品面
