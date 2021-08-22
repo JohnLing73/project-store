@@ -1,0 +1,73 @@
+<template>
+  <button @click="showSpinner">showspinner</button>
+  <div class="arc-container" v-if="spinnerState">
+    <span>loading</span>
+    <div class="arc"></div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      spinnerState: false,
+    };
+  },
+  methods: {
+    showSpinner() {
+      this.spinnerState = true;
+      setTimeout(()=> {
+        this.spinnerState = false;
+      },2000);
+    },
+  },
+};
+</script>
+<style scoped>
+.arc {
+  border: 3px solid #71d0e7;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  animation: rotate 1.5s infinite linear;
+  display: inline-block;
+}
+
+.arc-container {
+  position: relative;
+  display: inline-block;
+}
+.arc-container > span {
+  position: absolute;
+  font-weight:bold;
+  font-size: 1.2rem;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinColor 1.5s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    border-color: #84e028;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinColor {
+  from, to {
+    color: #71d0e7;
+  }
+  50% {
+    color: #84e028;
+  }
+}
+</style>
