@@ -80,6 +80,8 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap'); */
 svg {
   overflow: inherit;
   color: #239cbb;
@@ -94,5 +96,7 @@ svg {
 .logoContainer > span {
   font-size: 3rem;
   line-height: 100%;
+  font-family: 'Lobster', cursive;
+  /* font-family: 'Courgette', cursive; */
 }
 </style>

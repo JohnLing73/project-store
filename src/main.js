@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import router from './router.js';
 import store from './store/index.js';
 import App from './App.vue'
 
@@ -15,5 +16,6 @@ app.component('the-logo', TheLogo);
 app.component('the-header', TheHeader);
 
 app.use(store);
+app.use(router);
 
 app.mount("#app");
