@@ -55,6 +55,7 @@
       </g>
     </svg>
     <span>Shop</span>
+    <router-link to="/home"></router-link>
   </div>
 </template>
 <script>
@@ -91,6 +92,7 @@ svg {
   display: inline-flex;
   align-items:center;
   height: 100%;
+  position:relative;
 }
 
 .logoContainer > span {
@@ -98,5 +100,12 @@ svg {
   line-height: 100%;
   font-family: 'Lobster', cursive;
   /* font-family: 'Courgette', cursive; */
+}
+a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
