@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is Not Found page.</h1>   
+    <h1>Oops! The page you are looking for is not exists. Maybe go back to the <router-link to="/home">HomePage</router-link>?</h1>   
   </div>
 </template>
 <script>
