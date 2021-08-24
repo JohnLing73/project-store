@@ -1,21 +1,21 @@
 <template>
   <header>
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
-    <input type="text" ref="searchBar" size="30" placeholder="Search..." />
+    <input type="text" ref="searchBar" size="30" placeholder="Search..." :value= "toggle" />
     <nav>
       <div>
-        <img v-if="storeTheme === 'dark'" :src="profileFigDark" alt="profile" />
-        <img v-else :src="profileFigLight" alt="profile" />
+        <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" />
+        <img v-else :src= "profileFigLight" alt="profile" />
       </div>
       <div>
-        <img v-if="storeTheme === 'dark'" :src="cartFigDark" alt="cart" />
-        <img v-else :src="cartFigLight" alt="cart" />
+        <img v-if= "storeTheme === 'dark'" :src= "cartFigDark" alt="cart" />
+        <img v-else :src= "cartFigLight" alt="cart" />
       </div>
-      <button @click="switchTheme">{{ storeTheme }}</button>
-      <div @click = 'switchTheme'>
+      <div @click = 'switchTheme' id="themeIcon">
         <svg
           id="darkMode"
-          :class= "icon"
+          ref= "darkMode"
+          class= "sun"
           width="27"
           height="27"
           viewBox="0 0 55 55"
@@ -24,7 +24,8 @@
         >
           <path
             ref= 'path'
-            :d= "moonPath"
+            class= "sun"
+            :d= "sunPath"
             fill="#FFD600"
           />
         </svg>
@@ -33,7 +34,7 @@
   </header>
 </template>
 <script>
-// import anime from "animejs/lib/anime.es.js";
+import anime from "animejs/lib/anime.es.js";
 export default {
   // mounted() {
   //   anime({
@@ -51,6 +52,7 @@ export default {
       sunPath:
         "M55 27.5C55 42.6878 42.6878 55 27.5 55C12.3122 55 0 42.6878 0 27.5C0 12.3122 12.3122 0 27.5 0C42.6878 0 55 12.3122 55 27.5Z",
       icon: 'moon',
+      toggle: false
     };
   },
   computed: {
@@ -80,6 +82,7 @@ export default {
   },
   watch: {
     storeTheme(newVal) {
+      // Changing the body and the header's color
       const body = document.querySelector("body");
       const header = document.querySelector("header");
       newVal === "light"
@@ -88,6 +91,30 @@ export default {
       newVal === "light"
         ? header.setAttribute("class", "dark-mode")
         : header.removeAttribute("class", "dark-mode");
+
+      // Changing the icon and adding some animation
+      const timeline = anime.timeline({
+        duration: 750,
+        easing: "easeOutExpo"
+      });
+      timeline.add({
+        targets: ".sun",
+        d: [
+          { value: this.toggle ? (this.sunPath) : (this.moonPath) }
+        ]
+      })
+      .add(
+        {
+          targets:"#darkMode",
+          rotate: 320
+        },
+        "-= 350"
+      );      
+      if(!this.toggle) {
+        this.toggle = true;
+      }else {
+        this.toggle = false;
+      }
     },
   },
 };
@@ -129,8 +156,5 @@ nav {
   }
 }
 
-svg {
-  transition: all 1.2s ease-in;
-}
 
 </style>
