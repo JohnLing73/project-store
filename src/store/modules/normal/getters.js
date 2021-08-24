@@ -5,10 +5,16 @@ export default {
     slideData(state) {
         return state.wrapData;
     },
-    profileFig(state) {
-        return state.profileIcon;
+    profileFigDark(state) {
+        return state.profileIconDark;
     },
-    cartFig(state) {
-        return state.cartIcon;
+    profileFigLight(state) {
+        return state.profileIconLight;
+    },
+    cartFigDark(state) {
+        return state.cartIconDark;
+    },
+    cartFigLight(state) {
+        return state.cartIconLight;
     }
 }

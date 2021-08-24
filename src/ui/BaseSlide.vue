@@ -47,7 +47,6 @@ export default {
     width: 100%;
   }
   .swiper-slide {
-    border: 1px solid blue;
     height: 400px;
       img {
        width: 100%;

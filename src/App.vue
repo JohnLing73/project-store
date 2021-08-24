@@ -64,9 +64,6 @@ header.dark-mode {
 .logo > span:nth-child(3) {
   transform: translate(-2px, 2px) rotate(240deg);
 }
-button {
-  margin: 2rem;
-}
 
 .spinning {
   animation: spinner 1s ease-in-out;

@@ -27,8 +27,10 @@ export default {
                   src: require("../../../assets/images/homepage/slideshow5.jpg"),
                 },
               ],
-            profileIcon: require("../../../assets/images/homepage/profile_plain.svg"),
-            cartIcon: require('../../../assets/images/homepage/cart_plain.svg')
+            profileIconDark: require("../../../assets/images/homepage/profile_plain.svg"),
+            profileIconLight: require("../../../assets/images/homepage/profile_white.svg"),
+            cartIconDark: require('../../../assets/images/homepage/cart_plain.svg'),
+            cartIconLight: require('../../../assets/images/homepage/cart_white.svg')
         }
     },
     getters,
