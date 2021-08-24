@@ -1,10 +1,14 @@
 <template>
   <the-header></the-header>
   <router-view></router-view>
-  
+  <the-footer></the-footer>
 </template>
 <script>
+import TheFooter from './ui/TheFooter.vue';
 export default {
+  components:{
+    'the-footer': TheFooter
+  },
   data() {
     return {
       spinning: false,

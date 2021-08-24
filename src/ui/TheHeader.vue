@@ -3,7 +3,8 @@
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
     <input type="text" ref="searchBar" size="30" placeholder="Search...">
     <nav>
-
+      <img :src = "profileFig" alt="">
+      <img :src= "cartFig" alt="">
       <button @click="switchTheme">{{ storeTheme }}</button>
     </nav>
   </header>
@@ -14,6 +15,12 @@ export default {
     storeTheme() {
       return this.$store.getters.theme;
     },
+    profileFig() {
+      return this.$store.getters.profileFig;
+    },
+    cartFig() {
+      return this.$store.getters.cartFig;
+    }
   },
   methods: {
     switchTheme() {
@@ -37,8 +44,6 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 header {
-  border: 1px solid transparent;
-  box-shadow: 0px 2px 5px #ccc;
   height: 90px;
   background-color: whitesmoke;
   padding: 0rem 1rem;
