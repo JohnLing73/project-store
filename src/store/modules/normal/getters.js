@@ -16,5 +16,9 @@ export default {
     },
     cartFigLight(state) {
         return state.cartIconLight;
-    }
+    },
+    cardLists(state) {
+        return state.cardData;
+    },
+    
 }

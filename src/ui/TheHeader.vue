@@ -1,20 +1,28 @@
 <template>
   <header>
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
-    <input type="text" ref="searchBar" size="30" placeholder="Search..." :value= "toggle" />
+    <input type="text" ref="searchBar" size="30" placeholder="Search..." />
     <nav>
-      <div>
+      <div class="icon-link" @click = "toggleList">
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" />
         <img v-else :src= "profileFigLight" alt="profile" />
+        <ul ref= "list">
+          <li>Your Account</li>
+          <li>Your Orders</li>
+          <li>Your Wishlist</li>
+          <li>
+            <base-button :link = "false">Sign Up</base-button>
+          </li>
+        </ul>
       </div>
-      <div>
+      <div class="icon-link">
         <img v-if= "storeTheme === 'dark'" :src= "cartFigDark" alt="cart" />
         <img v-else :src= "cartFigLight" alt="cart" />
+        <router-link to="/cart"></router-link>
       </div>
       <div @click = 'switchTheme' id="themeIcon">
         <svg
           id="darkMode"
-          ref= "darkMode"
           class= "sun"
           width="27"
           height="27"
@@ -36,15 +44,6 @@
 <script>
 import anime from "animejs/lib/anime.es.js";
 export default {
-  // mounted() {
-  //   anime({
-  //     targets: "div",
-  //     translateX: 250,
-  //     rotate: "1turn",
-  //     backgroundColor: "#FFF",
-  //     duration: 800,
-  //   });
-  // },
   data() {
     return {
       moonPath:
@@ -52,7 +51,8 @@ export default {
       sunPath:
         "M55 27.5C55 42.6878 42.6878 55 27.5 55C12.3122 55 0 42.6878 0 27.5C0 12.3122 12.3122 0 27.5 0C42.6878 0 55 12.3122 55 27.5Z",
       icon: 'moon',
-      toggle: false
+      toggle: false,
+      toggleListValue: false
     };
   },
   computed: {
@@ -78,21 +78,8 @@ export default {
   methods: {
     switchTheme() {
       this.$store.commit("switchTheme");
-    },
-  },
-  watch: {
-    storeTheme(newVal) {
-      // Changing the body and the header's color
-      const body = document.querySelector("body");
-      const header = document.querySelector("header");
-      newVal === "light"
-        ? body.setAttribute("class", "dark-mode")
-        : body.removeAttribute("class", "dark-mode");
-      newVal === "light"
-        ? header.setAttribute("class", "dark-mode")
-        : header.removeAttribute("class", "dark-mode");
 
-      // Changing the icon and adding some animation
+      // Changing the icon and adding animation
       const timeline = anime.timeline({
         duration: 750,
         easing: "easeOutExpo"
@@ -116,6 +103,38 @@ export default {
         this.toggle = false;
       }
     },
+    toggleList() {
+      const list = this.$refs.list.style;
+      if(!this.toggleListValue){
+        list.opacity = 1;
+        list.zIndex = 5;
+        list.transform = 'translate(-3rem,7px)';
+      }else {
+        list.opacity = 0;
+        list.zIndex = -5;
+        list.transform = 'translate(-3rem,-3rem)';
+      }
+      this.toggleListValue = !this.toggleListValue;
+    }
+  },
+  watch: {
+    storeTheme(newVal) {
+      // Changing the body and the header's color
+      const body = document.querySelector("body");
+      const header = document.querySelector("header");
+      const ul = document.querySelectorAll("ul");
+      const card = document.querySelectorAll('.card');
+      (newVal === "light") ? (body.setAttribute("class", "dark-mode")) : (body.removeAttribute("class", "dark-mode"));
+      (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
+      for(let i=0; i < ul.length; i++) {
+        (newVal === 'light') ? (ul[i].setAttribute('class', 'dark-mode')) : ( ul[i].removeAttribute('class', 'dark-mode'));
+      }
+      for(let i=0; i < card.length; i++) {
+        (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].classList.remove('class', 'dark-mode'));
+      }
+
+      
+    },
   },
 };
 </script>
@@ -128,6 +147,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.5s ease;
 }
 
 input {
@@ -156,5 +176,43 @@ nav {
   }
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  transition: all 0.3s linear;
+    &:hover {
+    background-color: aliceblue;
+  }
+}
 
+.icon-link {
+  position: relative;
+    > a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    ul {
+      position: absolute;
+      z-index: -1;
+      background-color: $white;
+      width: 10rem;
+      transform: translate(-3rem,-2rem);
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      transition: all 0.8s ease;
+      opacity: 0;
+      border:1px solid #ccc;
+      box-shadow: $box-shadow;
+        li {
+          padding: 0.7rem;
+          &:hover {
+            text-decoration: underline;
+            text-decoration-color: $purple;
+          }
+        }
+    }
+}
 </style>

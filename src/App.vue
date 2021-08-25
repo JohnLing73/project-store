@@ -12,20 +12,11 @@ export default {
   data() {
     return {
       spinning: false,
-      colorTheme: "dark",
     };
   },
   computed: {},
   methods: {
-    // beforeEnter(el) {
-    //   console.log(el);
-    //   el.style.transform = "translate(200px,200px)";
-    // },
-    // enter(el, done) {
-    //   console.log(el);
-    //   el.style.transform = "translate(200px,200px)";
-    //   done();
-    // },
+    
   },
   watch: {},
 };
@@ -41,33 +32,45 @@ body {
   background-color: $white;
   color: $black;
   font-family: "Play", sans-serif;
+  transition: all 0.5s ease;
+  // overflow: hidden;
 }
 .dark-mode {
   background-color: $black;
   color: $white;
 }
-header.dark-mode {
-  background-color: $header-footer-dark;
-  color: $white;
+header.dark-mode,
+ul.dark-mode {
+  background-color: $header-footer-dark !important;
+  color: $white !important;
+  li {
+    text-decoration-color: $blue !important;
+  }
 }
-.logo {
-  position: relative;
-  display: inline-block;
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
-.logo > span {
-  position: absolute;
-  font-size: 2rem;
-}
-.logo > span:nth-child(2) {
-  transform: translate(2px, 2px) rotate(120deg);
-}
-.logo > span:nth-child(3) {
-  transform: translate(-2px, 2px) rotate(240deg);
-}
+// .logo {
+//   position: relative;
+//   display: inline-block;
+// }
+// .logo > span {
+//   position: absolute;
+//   font-size: 2rem;
+// }
+// .logo > span:nth-child(2) {
+//   transform: translate(2px, 2px) rotate(120deg);
+// }
+// .logo > span:nth-child(3) {
+//   transform: translate(-2px, 2px) rotate(240deg);
+// }
 
-.spinning {
-  animation: spinner 1s ease-in-out;
-}
+// .spinning {
+//   animation: spinner 1s ease-in-out;
+// }
 
 .banner-container {
   width: 100%;
@@ -79,12 +82,12 @@ header.dark-mode {
   }
 }
 
-@keyframes spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(720deg);
-  }
-}
+// @keyframes spinner {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(720deg);
+//   }
+// }
 </style>

@@ -4,35 +4,26 @@
       <section id="wrapper" v-if="animate" @mousemove="triggerLeave">
         <div class="banner-container">
           <img src="../../assets/images/homepage/shoppingBanner.jpg" alt="" />
-          <transition name="wrappertext">
-            <h2 ref="wrappertext">I shop, therefore I am.</h2>
-          </transition>
+          <h2 ref="wrappertext">I shop, therefore I am.</h2>
         </div>
       </section>
     </transition>
     <base-slide :wrapper-data="wrapperData"></base-slide>
+    <section class="part">
+      <base-card v-for = "(cardList, index) in cardLists" :key= "index">
+        <h1>{{ cardList.title }}</h1>
+        <div class="promote-container">
+              <img v-for= "(eachFig, idx) in cardList.src" :key = "idx" :src= "eachFig" class= "promote-each-fig">
+              <span v-for= "(eachCategory, idx) in cardList.categories" :key= "idx" class= "promote-each-text">
+                <strong>{{ eachCategory }}</strong>
+              </span>
+        </div>
+      </base-card>
+    </section>
   </div>
 </template>
 <script>
-// import { onMounted, ref } from 'vue'
-// import gsap from 'gsap';
 export default {
-  // setup() {
-  //   const wrapperTxt = ref();
-  //   let animation = null;
-  //     onMounted(() => {
-  //       animation = gsap
-  //                   .timeline()
-  //                   .from(wrapperTxt.value, { y: -200, duration: 1})
-  //                   .to(wrapperTxt.value, { rotatino: 100, duration: 1});
-  //                   console.log(wrapperTxt);
-  //     });
-  //     const play = () => animation.play();
-  //     return {
-  //       play,
-  //       wrapperTxt,
-  //     }
-  // },
   data() {
     return {
       animate: false,
@@ -43,6 +34,9 @@ export default {
   computed: {
     wrapperData() {
       return this.$store.getters.slideData;
+    },
+    cardLists() {
+      return this.$store.getters.cardLists;
     },
   },
   mounted() {
@@ -93,11 +87,24 @@ section#wrapper {
       top: 0;
       opacity: 0.3;
     }
-    // &:first-child {
-    //   height: calc(100vh - 90px);
-    // }
   }
 }
+  .part {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    > h2 {
+      text-align: center;
+     } 
+  }
+  .promote-container {
+    border: 1px solid red;
+    width: 400px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+  }
 
 .wrapper-enter-from {
   opacity: 0;

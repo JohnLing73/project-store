@@ -5,6 +5,10 @@ export default {
     state() {
         return {
             colorTheme: 'dark',
+            profileIconDark: require("../../../assets/images/homepage/profile_plain.svg"),
+            profileIconLight: require("../../../assets/images/homepage/profile_white.svg"),
+            cartIconDark: require('../../../assets/images/homepage/cart_plain.svg'),
+            cartIconLight: require('../../../assets/images/homepage/cart_white.svg'),
             wrapData: [
                 {
                   id: "01",
@@ -27,10 +31,31 @@ export default {
                   src: require("../../../assets/images/homepage/slideshow5.jpg"),
                 },
               ],
-            profileIconDark: require("../../../assets/images/homepage/profile_plain.svg"),
-            profileIconLight: require("../../../assets/images/homepage/profile_white.svg"),
-            cartIconDark: require('../../../assets/images/homepage/cart_plain.svg'),
-            cartIconLight: require('../../../assets/images/homepage/cart_white.svg')
+            cardData: [
+              {
+                id: 1,
+                title: 'Styles for Man | Up to 70% off',
+                src: [
+                  require("../../../assets/images/homepage/manstyle1.jpg"),
+                  require("../../../assets/images/homepage/manstyle2.jpg"),
+                  require("../../../assets/images/homepage/manstyle3.jpg"),
+                  require("../../../assets/images/homepage/manstyle4.jpg")
+                ],
+                categories: ['Clothing', 'Footwear', 'Watches', 'Bags & Luggage']
+              },
+              {
+                id: 2,
+                title: 'Styles for Women | Up to 70% off',
+                src: [
+                  require("../../../assets/images/homepage/womanstyle1.jpg"),
+                  require("../../../assets/images/homepage/womanstyle2.jpg"),
+                  require("../../../assets/images/homepage/womanstyle3.jpg"),
+                  require("../../../assets/images/homepage/womanstyle4.jpg")
+                ],
+                categories: ['Clothing', 'Footwear & HandBags', 'Watchers', 'Fashion Jewellery']
+              }
+            ]
+            
         }
     },
     getters,
