@@ -1,6 +1,6 @@
 <template>
   <swiper
-    :slides-per-view = "1"
+    :slides-per-view = "5"
     :space-between = "0"
     navigation
     :pagination= "{ clickable: true }" 

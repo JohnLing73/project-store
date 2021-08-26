@@ -8,7 +8,7 @@
         </div>
       </section>
     </transition>
-    <base-slide :wrapper-data="wrapperData"></base-slide>
+    <base-slide :wrapper-data= "wrapperData"></base-slide>
     <main>
       <section class="part">
         <base-card v-for = "(cardList, index) in cardLists" :key= "index">

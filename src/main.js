@@ -11,6 +11,7 @@ import BaseSlide from './ui/BaseSlide.vue';
 import BaseButton from './ui/BaseButton.vue';
 import BaseCard from './ui/BaseCard.vue';
 import TheHeader from './ui/TheHeader.vue';
+import PromoteSlide from './ui/PromoteSlide.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -35,6 +36,7 @@ app.component('the-header', TheHeader);
 app.component('base-button', BaseButton);
 app.component('base-card', BaseCard);
 app.component('base-slide', BaseSlide);
+app.component('promote-slide', PromoteSlide);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);
