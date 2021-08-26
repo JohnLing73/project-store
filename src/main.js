@@ -11,7 +11,10 @@ import BaseSlide from './ui/BaseSlide.vue';
 import BaseButton from './ui/BaseButton.vue';
 import BaseCard from './ui/BaseCard.vue';
 import TheHeader from './ui/TheHeader.vue';
-import PromoteSlide from './ui/PromoteSlide.vue';
+import RecommendSlide from './pages/Home/RecommendSlide.vue';
+import BriefSign from './components/BriefSign.vue';
+import SignIcon from './ui/SignIcon.vue';
+import FingerIcon from './ui/FingerIcon.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -36,7 +39,10 @@ app.component('the-header', TheHeader);
 app.component('base-button', BaseButton);
 app.component('base-card', BaseCard);
 app.component('base-slide', BaseSlide);
-app.component('promote-slide', PromoteSlide);
+app.component('recommend-slide', RecommendSlide);
+app.component('brief-sign', BriefSign);
+app.component('sign-icon', SignIcon);
+app.component('finger-icon', FingerIcon);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);

@@ -132,10 +132,8 @@ export default {
       for(let i=0; i < card.length; i++) {
         (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].setAttribute('class', 'card'));
       }
-
-      
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

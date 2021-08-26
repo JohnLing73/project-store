@@ -1,18 +1,21 @@
 <template>
-  <swiper
-    :slides-per-view = "5"
-    :space-between = "0"
-    navigation
-    :pagination= "{ clickable: true }" 
-    :scrollbar = "{ draggable: true }"
-  >
-    <swiper-slide 
-      v-for = "wrapperEach in wrapperData" 
-      :key = "wrapperEach.id"
+<base-card>
+    <h2>Recommend For You! 4 Stars+ Products</h2>
+    <swiper
+      :slides-per-view = "5"
+      :space-between = "0"
+      navigation
+      :pagination= "{ clickable: true }" 
+      :scrollbar = "{ draggable: true }"
     >
-      <img :src= "wrapperEach.src">
-    </swiper-slide>
-  </swiper>
+      <swiper-slide 
+        v-for = "recommendList in recommendLists" 
+        :key = "recommendList.name"
+      >
+        <img :src= "recommendList.imgSrc">
+      </swiper-slide>
+    </swiper>
+</base-card>
 </template>
 <script>
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -30,7 +33,11 @@ export default {
     Swiper,
     SwiperSlide
   },
-  props:['wrapper-data'],
+  computed:{
+    recommendLists() {
+      return this.$store.getters.recommendLists;
+    }
+  },
   methdos:{
     onSwiper(swiper) {
       console.log(swiper);
@@ -41,14 +48,19 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .swiper-container {
     width: 100%;
   }
   .swiper-slide {
-    height: 400px;
+    height: 150px;
+    background-color: #fff;
       img {
-       width: 100%;
+        object-fit: contain;
+        height: 100%;
       }
+  }
+  h2 {
+    text-align: center;
   }
 </style>

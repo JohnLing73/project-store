@@ -121,9 +121,14 @@ export default {
                 description:"Online Support 24/7"
               }
             ],
-            flashData: [
+            recommendData: [
               {
                 name: 'Mi 11X 5G Cosmic Black 6GB RAM',
+                tags:[
+                  'phone',
+                  'mi',
+                  'electronics'
+                ],
                 price: 3000,
                 brand: 'Mi',
                 deadline: {
@@ -173,6 +178,11 @@ export default {
               },
               {
                 name: 'iQOO Z3 5G',
+                tags:[
+                  'vivo',
+                  'phone',
+                  'electronics'
+                ],
                 price: 2800,
                 brand: 'Vivo',
                 deadline: {
@@ -215,6 +225,11 @@ export default {
               },
               {
                 name: 'Sung-Sung bluetooth',
+                tags:[
+                  'earphone',
+                  'electronics',
+                  'sumsung'
+                ],
                 price: 4300,
                 brand: 'Samsung',
                 deadline: {
@@ -261,6 +276,12 @@ export default {
               },
               {
                 name: 'Air Pods ',
+                tags:[
+                  'air pods',
+                  'apple',
+                  'earphone',
+                  'electronics'
+                ],
                 price: 5900,
                 brand: 'Apple',
                 deadline: {
@@ -315,6 +336,10 @@ export default {
               },
               {
                 name: 'DiSano Extra Virgin Olive Oil',
+                tags:[
+                  'oil',
+                  'DiSano'
+                ],
                 price: 375,
                 brand: 'DiSano',
                 deadline: {
@@ -342,6 +367,10 @@ export default {
               },
               {
                 name: "Aspora Women's Embroidered Silk",
+                tags:[
+                  'cloth',
+                  'roboton'
+                ],
                 price: 299,
                 brand: 'Roboton',
                 deadline: {
@@ -391,6 +420,10 @@ export default {
               },
               {
                 name: "Reebok Men's Walking Shoe",
+                tags:[
+                  'reebok',
+                  'shoes'
+                ],
                 price: 2490,
                 brand: 'Reebok',
                 deadline: {
@@ -440,6 +473,11 @@ export default {
               },
               {
                 name: 'Mi 11X 5G Cosmic Black 6GB RAM',
+                tags:[
+                  'phone',
+                  'mi',
+                  'electronics'
+                ],
                 price: 3000,
                 brand: 'Mi',
                 deadline: {
@@ -489,6 +527,11 @@ export default {
               },
               {
                 name: 'iQOO Z3 5G',
+                tags:[
+                  'vivo',
+                  'phone',
+                  'electronics'
+                ],
                 price: 2800,
                 brand: 'Vivo',
                 deadline: {
@@ -531,6 +574,11 @@ export default {
               },
               {
                 name: 'Sung-Sung bluetooth',
+                tags:[
+                  'earphone',
+                  'electronics',
+                  'sumsung'
+                ],
                 price: 4300,
                 brand: 'Samsung',
                 deadline: {
@@ -577,6 +625,12 @@ export default {
               },
               {
                 name: 'Air Pods ',
+                tags:[
+                  'air pods',
+                  'apple',
+                  'earphone',
+                  'electronics'
+                ],
                 price: 5900,
                 brand: 'Apple',
                 deadline: {
@@ -631,6 +685,10 @@ export default {
               },
               {
                 name: 'DiSano Extra Virgin Olive Oil',
+                tags:[
+                  'oil',
+                  'DiSano'
+                ],
                 price: 375,
                 brand: 'DiSano',
                 deadline: {
@@ -658,6 +716,10 @@ export default {
               },
               {
                 name: "Aspora Women's Embroidered Silk",
+                tags:[
+                  'cloth',
+                  'roboton'
+                ],
                 price: 299,
                 brand: 'Roboton',
                 deadline: {
@@ -707,6 +769,10 @@ export default {
               },
               {
                 name: "Reebok Men's Walking Shoe",
+                tags:[
+                  'reebok',
+                  'shoes'
+                ],
                 price: 2490,
                 brand: 'Reebok',
                 deadline: {
@@ -756,6 +822,11 @@ export default {
               },
               {
                 name: 'Mi 11X 5G Cosmic Black 6GB RAM',
+                tags:[
+                  'phone',
+                  'mi',
+                  'electronics'
+                ],
                 price: 3000,
                 brand: 'Mi',
                 deadline: {
@@ -802,13 +873,8 @@ export default {
                     rating: 5
                   }
                 ]
-              },
-              
+              }
             ],
-            recommendData:[
-
-            ]
-            
         }
     },
     getters,

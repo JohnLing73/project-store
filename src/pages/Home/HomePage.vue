@@ -37,6 +37,19 @@
           </div>
         </base-card>
       </section>
+      <section>
+        <recommend-slide></recommend-slide>
+      </section>
+      <section>
+        <sign-icon
+          :color= "svgTheme"
+        >
+        </sign-icon>
+        <finger-icon
+          :color= "svgTheme"
+        >
+        </finger-icon>
+      </section>
     </main>
   </div>
 </template>
@@ -58,6 +71,9 @@ export default {
     },
     fontIconLists() {
       return this.$store.getters.fontIconLists;
+    },
+    svgTheme() {
+      return this.$store.getters.svgTheme;
     }
   },
   mounted() {

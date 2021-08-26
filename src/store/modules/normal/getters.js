@@ -22,6 +22,16 @@ export default {
     },
     fontIconLists(state) {
         return state.fontIconData;
+    },
+    recommendLists(state) {
+        return state.recommendData;
+    },
+    svgTheme(state) {
+        if(state.colorTheme === 'dark') {
+            return 'black'
+        }else {
+            return 'white'
+        }
     }
     
 }

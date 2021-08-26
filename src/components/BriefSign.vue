@@ -1,6 +1,7 @@
-<template lang="">
-  <footer>
-  </footer>
+<template>
+  <div>
+    
+  </div>
 </template>
 <script>
 export default {
@@ -8,8 +9,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  footer {
-    height: 450px;
-
-  }
+  
 </style>
