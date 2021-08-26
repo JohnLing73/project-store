@@ -22,9 +22,9 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang='scss' scoped>
 .arc {
-  border: 3px solid #71d0e7;
+  border: 3px solid $spinner-blue;
   border-radius: 50%;
   height: 100px;
   width: 100px;
@@ -53,7 +53,7 @@ export default {
     transform: rotate(0deg);
   }
   50% {
-    border-color: #84e028;
+    border-color: $spinner-green;
     border-top-color: transparent;
     border-left-color: transparent;
   }
@@ -64,10 +64,10 @@ export default {
 
 @keyframes spinColor {
   from, to {
-    color: #71d0e7;
+    color: $spinner-blue;
   }
   50% {
-    color: #84e028;
+    color: $spinner-green;
   }
 }
 </style>

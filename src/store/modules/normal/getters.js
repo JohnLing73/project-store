@@ -20,5 +20,8 @@ export default {
     cardLists(state) {
         return state.cardData;
     },
+    fontIconLists(state) {
+        return state.fontIconData;
+    }
     
 }

@@ -11,7 +11,7 @@
           <li>Your Orders</li>
           <li>Your Wishlist</li>
           <li>
-            <base-button :link = "false">Sign Up</base-button>
+            <base-button :link = "false">Sign Up / In</base-button>
           </li>
         </ul>
       </div>
@@ -130,7 +130,7 @@ export default {
         (newVal === 'light') ? (ul[i].setAttribute('class', 'dark-mode')) : ( ul[i].removeAttribute('class', 'dark-mode'));
       }
       for(let i=0; i < card.length; i++) {
-        (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].classList.remove('class', 'dark-mode'));
+        (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].setAttribute('class', 'card'));
       }
 
       

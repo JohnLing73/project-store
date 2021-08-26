@@ -12,15 +12,7 @@ export default {
     border-radius: 12px;
     box-shadow: $box-shadow;
     padding: 1rem;
-    margin: 2rem auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 500px;
-      h1 {
-        text-align: center;
-      }
+    margin: 2rem 0;
   }
   .card.dark-mode {
     box-shadow: 0px 2px 8px rgba(248, 241, 241, 0.66);

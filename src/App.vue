@@ -47,30 +47,17 @@ ul.dark-mode {
     text-decoration-color: $blue !important;
   }
 }
+
+main {
+  padding: 1rem 1.5rem;
+}
+
 ul,
 li {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-// .logo {
-//   position: relative;
-//   display: inline-block;
-// }
-// .logo > span {
-//   position: absolute;
-//   font-size: 2rem;
-// }
-// .logo > span:nth-child(2) {
-//   transform: translate(2px, 2px) rotate(120deg);
-// }
-// .logo > span:nth-child(3) {
-//   transform: translate(-2px, 2px) rotate(240deg);
-// }
-
-// .spinning {
-//   animation: spinner 1s ease-in-out;
-// }
 
 .banner-container {
   width: 100%;
@@ -82,12 +69,4 @@ li {
   }
 }
 
-// @keyframes spinner {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(720deg);
-//   }
-// }
 </style>

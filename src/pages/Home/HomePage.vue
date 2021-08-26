@@ -9,17 +9,35 @@
       </section>
     </transition>
     <base-slide :wrapper-data="wrapperData"></base-slide>
-    <section class="part">
-      <base-card v-for = "(cardList, index) in cardLists" :key= "index">
-        <h1>{{ cardList.title }}</h1>
-        <div class="promote-container">
-              <img v-for= "(eachFig, idx) in cardList.src" :key = "idx" :src= "eachFig" class= "promote-each-fig">
-              <span v-for= "(eachCategory, idx) in cardList.categories" :key= "idx" class= "promote-each-text">
-                <strong>{{ eachCategory }}</strong>
-              </span>
-        </div>
-      </base-card>
-    </section>
+    <main>
+      <section class="part">
+        <base-card v-for = "(cardList, index) in cardLists" :key= "index">
+          <h2>{{ cardList.title }}</h2>
+          <div class="promote-container">
+              <div v-for= "(eachFig, idx) in cardList.imgs" :key = "idx" >
+                <img :src= "eachFig.src" class= "promote-each-fig">
+                <span class= "promote-each-text">
+                  <strong>{{ eachFig.category }}</strong>
+                </span>
+              </div>
+          </div>
+        </base-card>
+      </section>
+      <section>
+        <base-card>
+          <div class="font-banner-container">
+              <font-awesome-banner 
+                v-for= "fontIcon in fontIconLists" 
+                :key= "fontIcon.title"
+                :props-icon = "fontIcon.icon"
+                :font-title = "fontIcon.title"
+                :font-description = "fontIcon.description"
+                >
+              </font-awesome-banner>
+          </div>
+        </base-card>
+      </section>
+    </main>
   </div>
 </template>
 <script>
@@ -38,6 +56,9 @@ export default {
     cardLists() {
       return this.$store.getters.cardLists;
     },
+    fontIconLists() {
+      return this.$store.getters.fontIconLists;
+    }
   },
   mounted() {
     this.animate = true;
@@ -91,19 +112,40 @@ section#wrapper {
 }
   .part {
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: row nowrap; 
       justify-content: space-between;
-      align-items: center;
-    > h2 {
+      align-items: stretch;
+        div {
+          flex-basis: 30%;
+        }
+        h2 {
+          text-align: center;
+        }
+      > h2 {
       text-align: center;
-     } 
+     }
   }
   .promote-container {
-    border: 1px solid red;
-    width: 400px;
+    width: 100%;
     display: flex;
-    flex-flow: wrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
+      > div {
+        flex-basis: 50%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+      }
+  }
+
+  .font-banner-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+      > div {
+        display: flex;
+        align-items: center;
+      }
   }
 
 .wrapper-enter-from {
