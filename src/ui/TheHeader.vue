@@ -123,11 +123,17 @@ export default {
       const body = document.querySelector("body");
       const header = document.querySelector("header");
       const ul = document.querySelectorAll("ul");
+      const a = document.querySelectorAll("a");
       const card = document.querySelectorAll('.card');
+      const footer = document.querySelector('footer');
       (newVal === "light") ? (body.setAttribute("class", "dark-mode")) : (body.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
+      (newVal === "light") ? (footer.setAttribute("class", "dark-mode")) :(footer.removeAttribute("class", "dark-mode"));
       for(let i=0; i < ul.length; i++) {
         (newVal === 'light') ? (ul[i].setAttribute('class', 'dark-mode')) : ( ul[i].removeAttribute('class', 'dark-mode'));
+      }
+      for(let i=0; i < a.length; i++) {
+        (newVal === 'light') ? (a[i].setAttribute('class', 'dark-mode')) : (a[i].removeAttribute('class', 'dark-mode'));
       }
       for(let i=0; i < card.length; i++) {
         (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].setAttribute('class', 'card'));
@@ -206,9 +212,11 @@ nav {
       box-shadow: $box-shadow;
         li {
           padding: 0.7rem;
+          transition: all 0.5s ease;
           &:hover {
             text-decoration: underline;
-            text-decoration-color: $purple;
+            color: $aqua;
+            text-decoration-color: $aqua;
           }
         }
     }

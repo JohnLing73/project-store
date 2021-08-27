@@ -39,12 +39,16 @@ body {
   background-color: $black;
   color: $white;
 }
+a.dark-mode {
+  background-color: transparent !important;
+}
 header.dark-mode,
-ul.dark-mode {
+ul.dark-mode,
+footer.dark-mode {
   background-color: $header-footer-dark !important;
   color: $white !important;
   li {
-    text-decoration-color: $blue !important;
+    text-decoration-color: $aqua !important;
   }
 }
 

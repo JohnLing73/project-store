@@ -15,6 +15,7 @@ import RecommendSlide from './pages/Home/RecommendSlide.vue';
 import BriefSign from './components/BriefSign.vue';
 import SignIcon from './ui/SignIcon.vue';
 import FingerIcon from './ui/FingerIcon.vue';
+import FontIcon from './ui/FontIcon.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -23,11 +24,12 @@ import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
 import '@/assets/scss/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTruck, faExchangeAlt, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { faCreditCard } from '@fortawesome/free-regular-svg-icons';
+import { faCreditCard, faCopyright } from '@fortawesome/free-regular-svg-icons';
+import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 //Using Other Packages
-library.add(faTruck, faExchangeAlt, faPaperPlane, faCreditCard);
+library.add(faTruck, faExchangeAlt, faPaperPlane, faCreditCard, faInstagram, faTwitter, faFacebook, faCopyright);
 
 
 const app  = createApp(App);
@@ -43,6 +45,7 @@ app.component('recommend-slide', RecommendSlide);
 app.component('brief-sign', BriefSign);
 app.component('sign-icon', SignIcon);
 app.component('finger-icon', FingerIcon);
+app.component('font-icon', FontIcon);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);

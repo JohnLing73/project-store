@@ -37,20 +37,31 @@
           </div>
         </base-card>
       </section>
-      <section>
+      <section id="recommend-slide">
         <recommend-slide></recommend-slide>
       </section>
-      <section>
-        <sign-icon
-          :color= "svgTheme"
-        >
-        </sign-icon>
+    </main>
+      <section id="sign-up-banner">
+        <div>
+            <sign-icon
+              :color= "svgTheme"
+            >
+            </sign-icon>
+            <div id="sign-up-slogan">
+              <h3>Sign Up For More Member's Advantage!</h3>
+              <ol>
+                <li>Get the coupon.</li>
+                <li>Build your own whishlists.</li>
+                <li>Check your orders.</li>
+              </ol>
+            </div>
+          <router-link to="sign"></router-link>
+        </div>
         <finger-icon
           :color= "svgTheme"
         >
         </finger-icon>
       </section>
-    </main>
   </div>
 </template>
 <script>
@@ -162,6 +173,32 @@ section#wrapper {
         display: flex;
         align-items: center;
       }
+  }
+  #sign-up-banner {
+    background-image: linear-gradient(120deg, #6bd692 0%, #8fd3f4 100%);
+    padding: 2rem;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+      > div {
+          svg {
+            float: left;
+            margin: 0 55px 0 33%;
+          }
+      }
+  }
+  ol {
+    padding: 0;
+    margin: 0;
+      li {
+        font-size: $h3;
+      }
+  }
+  #sign-up-slogan {
+    padding-left: 3rem;
+    > h3 {
+      margin: 0 auto 0.5rem;
+      font-size: $h2;
+    }
   }
 
 .wrapper-enter-from {

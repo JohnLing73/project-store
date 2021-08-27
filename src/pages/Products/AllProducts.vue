@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    All products
   </div>
 </template>
 <script>

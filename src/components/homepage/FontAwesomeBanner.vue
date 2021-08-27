@@ -14,12 +14,9 @@ export default {
   props:['font-title', 'font-description','props-icon']
 }
 </script>
-<style lang="scss" scopee>
+<style lang="scss" scoped>
    .banner-icon {
       float: left;
-       + div {
-         border-right: 1px solid #ccc;
-       }
     }
     h3,
     p {
