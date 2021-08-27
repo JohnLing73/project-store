@@ -1,5 +1,5 @@
 <template>
-  <button v-if= "!link">
+  <button v-if= "!link" :class= "mode">
     <slot></slot>
   </button>
   <router-link v-else :to= "route">
@@ -18,23 +18,18 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    mode: {
+      type: String,
+      required:false,
+      default:null
     }
   }
 }
 </script>
 <style lang="scss" scoped>
   button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    background-color: #3cb75c;
-    color: $white;
-    border: none;
-    outline: none;
-    font-family: "Play", sans-serif;
-      &:hover{
-        cursor: pointer;
-        }
+    @include button-style();
   }
   a {
     text-decoration: none;
@@ -43,5 +38,14 @@ export default {
         cursor: pointer;
         }
 
+  }
+  button.minor {
+    @include button-style;
+    background-color: $white;
+    color: $base-button-bck;
+    transition: all ease 0.5s;
+    &:hover {
+        background-color: $base-button-minor-bck;
+    }
   }
 </style>

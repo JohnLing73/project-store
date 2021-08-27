@@ -11,7 +11,7 @@
           <li>Your Orders</li>
           <li>Your Wishlist</li>
           <li>
-            <base-button :link = "false">Sign Up / In</base-button>
+            <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>
           </li>
         </ul>
       </div>
@@ -115,11 +115,14 @@ export default {
         list.transform = 'translate(-3rem,-3rem)';
       }
       this.toggleListValue = !this.toggleListValue;
+    },
+    signPage() {
+      this.$router.replace('/sign');
     }
   },
   watch: {
     storeTheme(newVal) {
-      // Changing the body and the header's color
+      // Changing the element's color
       const body = document.querySelector("body");
       const header = document.querySelector("header");
       const ul = document.querySelectorAll("ul");

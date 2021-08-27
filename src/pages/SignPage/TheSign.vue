@@ -10,7 +10,7 @@
         <input type="password">
       </div>
       <base-button :link= "false">Sign Up</base-button>
-      <base-button :link= "false">Switch to Sign In</base-button>
+      <base-button :link= "false" mode= "minor">Switch to Sign In</base-button>
     </form>
 </template>
 <style lang="scss" scoped>
