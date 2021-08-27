@@ -2,9 +2,9 @@
   <footer>
     <div>
       <h2>Pages</h2>
-      <router-link to="allproducts">All Products</router-link>
-      <router-link to= "member">Member Center</router-link>
-      <router-link to="about">About Page</router-link>
+      <router-link to="allproducts" :class= "{ darkMode: darkMode}">All Products</router-link>
+      <router-link to= "member" :class= "{ darkMode: darkMode}">Member Center</router-link>
+      <router-link to="about" :class= "{ darkMode: darkMode}">About Page</router-link>
     </div>
     <div>
       <h2>Follow Us</h2>
@@ -42,6 +42,15 @@ export default {
         },
         
       ]
+    }
+  },
+  computed: {
+    darkMode() {
+      if(this.$store.getters.theme === 'light') {
+        return true;
+      }else {
+        return false;
+      }
     }
   }
 } 

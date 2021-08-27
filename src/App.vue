@@ -39,12 +39,13 @@ body {
   background-color: $black;
   color: $white;
 }
-a.dark-mode {
+a.darkMode {
+  color: $white;
   background-color: transparent !important;
 }
 header.dark-mode,
 ul.dark-mode,
-form.dark-mode,
+form.darkMode,
 footer.dark-mode {
   background-color: $header-footer-dark !important;
   color: $white !important;

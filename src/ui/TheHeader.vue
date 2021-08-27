@@ -131,14 +131,16 @@ export default {
       (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (footer.setAttribute("class", "dark-mode")) :(footer.removeAttribute("class", "dark-mode"));
 
+      //Both of form and  a tag, their dark-mode class will be remove after clicked the router-link
+      // Add the darkMode class and bind them on the component which contain these two tags.
       for(let i=0; i < form.length; i++) {
-        (newVal === 'light') ? (form[i].setAttribute('class', 'dark-mode')) : ( form[i].removeAttribute('class', 'dark-mode'));
+        (newVal === 'light') ? (form[i].setAttribute('class', 'darkMode')) : ( form[i].removeAttribute('class', 'darkMode'));
       }
       for(let i=0; i < ul.length; i++) {
         (newVal === 'light') ? (ul[i].setAttribute('class', 'dark-mode')) : ( ul[i].removeAttribute('class', 'dark-mode'));
       }
       for(let i=0; i < a.length; i++) {
-        (newVal === 'light') ? (a[i].setAttribute('class', 'dark-mode')) : (a[i].removeAttribute('class', 'dark-mode'));
+        (newVal === 'light') ? (a[i].setAttribute('class', 'darkMode')) : (a[i].removeAttribute('class', 'darkMode'));
       }
       for(let i=0; i < card.length; i++) {
         (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].setAttribute('class', 'card'));

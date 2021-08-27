@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form :class= "{darkMode: darkMode}">
       <h2>Sign Up</h2>
       <div class="form-each">
         <label for="email">Email</label>
@@ -15,7 +15,7 @@
 </template>
 <style lang="scss" scoped>
   form {
-    padding: 1rem 1.5rem;
+    padding: 2rem 5rem;
     background-color: whitesmoke;
     border-radius: 1rem;
     box-shadow: $box-shadow;
@@ -55,6 +55,14 @@
 </style>
 <script>
 export default {
-  
+  computed: {
+    darkMode() {
+      if(this.$store.getters.theme === 'light') {
+        return true;
+      }else{
+        return false;
+      }
+    }
+  }
 }
 </script>
