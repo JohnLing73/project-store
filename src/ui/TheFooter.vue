@@ -51,7 +51,7 @@ export default {
     display: flex;
     background-color: whitesmoke;
     padding: $distance-window $distance-window 0rem;
-    // margin-top:$distance-block;
+    width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
     box-shadow: $box-shadow;

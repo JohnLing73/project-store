@@ -1,7 +1,7 @@
 <template>
   <header>
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
-    <input type="text" ref="searchBar" size="30" placeholder="Search..." />
+    <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
       <div class="icon-link" @click = "toggleList">
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" />
@@ -125,10 +125,15 @@ export default {
       const ul = document.querySelectorAll("ul");
       const a = document.querySelectorAll("a");
       const card = document.querySelectorAll('.card');
+      const form = document.querySelectorAll('form');
       const footer = document.querySelector('footer');
       (newVal === "light") ? (body.setAttribute("class", "dark-mode")) : (body.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (footer.setAttribute("class", "dark-mode")) :(footer.removeAttribute("class", "dark-mode"));
+
+      for(let i=0; i < form.length; i++) {
+        (newVal === 'light') ? (form[i].setAttribute('class', 'dark-mode')) : ( form[i].removeAttribute('class', 'dark-mode'));
+      }
       for(let i=0; i < ul.length; i++) {
         (newVal === 'light') ? (ul[i].setAttribute('class', 'dark-mode')) : ( ul[i].removeAttribute('class', 'dark-mode'));
       }
@@ -154,16 +159,9 @@ header {
   transition: all 0.5s ease;
 }
 
-input {
-  background: $white;
-  border-radius: 1rem;
-  border: 1px solid transparent;
-  font-size: 1rem;
-  padding: 0.5rem 2rem;
-  outline: none;
+input.search-input {
+  @include input-style;
   background-image: url("https://img.icons8.com/material-outlined/24/000000/search--v1.png");
-  background-repeat: no-repeat;
-  background-position: 13px;
 }
 
 nav {

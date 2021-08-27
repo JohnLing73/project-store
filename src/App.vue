@@ -44,6 +44,7 @@ a.dark-mode {
 }
 header.dark-mode,
 ul.dark-mode,
+form.dark-mode,
 footer.dark-mode {
   background-color: $header-footer-dark !important;
   color: $white !important;

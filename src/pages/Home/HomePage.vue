@@ -43,19 +43,23 @@
     </main>
       <section id="sign-up-banner">
         <div>
+          <div id="sign-icon-container">
             <sign-icon
               :color= "svgTheme"
             >
             </sign-icon>
+          </div>
             <div id="sign-up-slogan">
               <h3>Sign Up For More Member's Advantage!</h3>
               <ol>
                 <li>Get the coupon.</li>
                 <li>Build your own whishlists.</li>
                 <li>Check your orders.</li>
+                <li>
+                  <base-button :link = "false" @click= "toSignPage">Sign Up / In</base-button>
+                </li>
               </ol>
             </div>
-          <router-link to="sign"></router-link>
         </div>
         <finger-icon
           :color= "svgTheme"
@@ -95,6 +99,9 @@ export default {
     triggerLeave() {
       this.animate = false;
     },
+    toSignPage() {
+      this.$router.replace('sign');
+    }
   },
 };
 </script>
@@ -178,23 +185,27 @@ section#wrapper {
     background-image: linear-gradient(120deg, #6bd692 0%, #8fd3f4 100%);
     padding: 2rem;
     padding-top: 6rem;
-    padding-bottom: 3rem;
-      > div {
-          svg {
-            float: left;
-            margin: 0 55px 0 33%;
-          }
-      }
+    padding-bottom: 3rem;  
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  #sign-icon-container {
+    height: 200px;
+    float: left;
+    margin-right: 1.5rem;
   }
   ol {
     padding: 0;
     margin: 0;
       li {
         font-size: $h3;
+        margin-bottom: 0.8rem;
       }
   }
   #sign-up-slogan {
-    padding-left: 3rem;
+    margin-right: -5rem;
     > h3 {
       margin: 0 auto 0.5rem;
       font-size: $h2;

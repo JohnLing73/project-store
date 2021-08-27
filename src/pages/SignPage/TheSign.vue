@@ -1,13 +1,60 @@
 <template>
-  <div>
-    <h1>This is signin / signup page.</h1>   
-  </div>
+    <form>
+      <h2>Sign Up</h2>
+      <div class="form-each">
+        <label for="email">Email</label>
+        <input type="email">
+      </div>
+      <div class="form-each">
+        <label for="password">Password</label>
+        <input type="password">
+      </div>
+      <base-button :link= "false">Sign Up</base-button>
+      <base-button :link= "false">Switch to Sign In</base-button>
+    </form>
 </template>
+<style lang="scss" scoped>
+  form {
+    padding: 1rem 1.5rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    box-shadow: $box-shadow;
+    width: 45%;
+    min-width: 325px;
+    margin: 1rem auto;
+      h2 {
+        text-align: center;
+      }
+  }
+  .form-each {
+    // padding: 1rem 1.5rem;
+    margin: 1.5rem 1rem;
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 100%;
+      }
+  }
+  input {
+    &[type="email"] {
+      @include input-style;
+      background-image: url("../../assets/images/forall/email.svg");
+      background-size: 1.5rem;
+    } 
+    &[type="password"] {
+      @include input-style;
+      background-size: 1.5rem;
+      background-image: url('../../assets/images/forall/key.svg');
+    }
+  }
+  button {
+    margin: 1.5rem 2.5rem 1rem 1rem;
+  }
+</style>
 <script>
 export default {
   
 }
 </script>
-<style lang="scss">
-  
-</style>
