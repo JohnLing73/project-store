@@ -12,6 +12,11 @@
       <base-button :link= "false">Sign Up</base-button>
       <base-button :link= "false" mode= "minor">Switch to Sign In</base-button>
     </form>
+    <base-dialog
+      title= "test title"
+      content= "test paragraph"
+      :showdialog= "false"
+    ></base-dialog>
 </template>
 <style lang="scss" scoped>
   form {
@@ -55,6 +60,10 @@
 </style>
 <script>
 export default {
+  data() {
+    return {
+    }
+  },
   computed: {
     darkMode() {
       if(this.$store.getters.theme === 'light') {
@@ -62,7 +71,8 @@ export default {
       }else{
         return false;
       }
-    }
+    },
+    
   }
 }
 </script>

@@ -1,14 +1,13 @@
 <template>
   <div>
-    All products
+    This is Product Man pages
   </div>
-  <router-view></router-view>
 </template>
 <script>
 export default {
   
 }
 </script>
-<style lang="scss">
+<style lang= "scss">
   
 </style>

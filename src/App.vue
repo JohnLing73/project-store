@@ -1,5 +1,6 @@
 <template>
   <the-header></the-header>
+  <quick-link></quick-link>
   <router-view></router-view>
   <the-footer></the-footer>
 </template>
@@ -40,8 +41,11 @@ body {
   color: $white;
 }
 a.darkMode {
-  color: $white;
+  color: $white !important;
   background-color: transparent !important;
+    &:hover {
+      color: $aqua !important;
+    }
 }
 header.dark-mode,
 ul.dark-mode,

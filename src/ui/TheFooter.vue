@@ -4,7 +4,7 @@
       <h2>Pages</h2>
       <ul>
         <li>
-          <router-link to="allproducts" :class= "{ darkMode: darkMode }">All Products</router-link>
+          <router-link to="allProducts" :class= "{ darkMode: darkMode }">All Products</router-link>
         </li>
         <li>
           <router-link to="member" :class= "{ darkMode: darkMode }">Member Center</router-link>
@@ -107,6 +107,7 @@ footer {
   }
   h2 {
     font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
   p {
     font-size: 1.3rem;
@@ -128,6 +129,7 @@ li {
 
 li {
   padding-left: 4rem;
+  margin-bottom: 0.3rem;
 }
 
 </style>

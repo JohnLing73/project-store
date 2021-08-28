@@ -7,9 +7,15 @@
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" />
         <img v-else :src= "profileFigLight" alt="profile" />
         <ul ref= "list">
-          <li>Your Account</li>
-          <li>Your Orders</li>
-          <li>Your Wishlist</li>
+          <li>
+            <router-link to="#">Your Account</router-link> 
+          </li>
+          <li>
+            <router-link to="">Your Orders</router-link>
+          </li>
+          <li>
+            <router-link to="">Your Wishlist</router-link>
+          </li>
           <li>
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>
           </li>
@@ -216,11 +222,9 @@ nav {
         li {
           padding: 0.7rem;
           transition: all 0.5s ease;
-          &:hover {
-            text-decoration: underline;
-            color: $aqua;
-            text-decoration-color: $aqua;
-          }
+           > a {
+             @include list-link-color();
+           }
         }
     }
 }

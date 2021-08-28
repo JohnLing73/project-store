@@ -16,6 +16,8 @@ import BriefSign from './components/BriefSign.vue';
 import SignIcon from './ui/SignIcon.vue';
 import FingerIcon from './ui/FingerIcon.vue';
 import FontIcon from './ui/FontIcon.vue';
+import BaseDialog from './ui/BaseDialog.vue';
+import QuickLink from './ui/QuickLink.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -46,6 +48,8 @@ app.component('brief-sign', BriefSign);
 app.component('sign-icon', SignIcon);
 app.component('finger-icon', FingerIcon);
 app.component('font-icon', FontIcon);
+app.component('base-dialog', BaseDialog);
+app.component('quick-link', QuickLink);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);
