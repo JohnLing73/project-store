@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/Home/HomePage.vue";
 //Products and it children routes
-import AllProducts from "./pages/Products/AllProducts.vue";
 import ProductsMan from "./pages/Products/ProductsMan.vue";
 import ProductsWoman from "./pages/Products/ProductsWoman.vue";
 import ProductsOther from "./pages/Products/ProductsOther.vue";
@@ -18,7 +17,6 @@ const router = createRouter({
   routes: [
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
-    { path: "/allProducts", component: AllProducts },
     { path: "/manProducts", component: ProductsMan },
     { path: "/womanProducts", component: ProductsWoman },
     { path: "/otherProducts", component: ProductsOther },

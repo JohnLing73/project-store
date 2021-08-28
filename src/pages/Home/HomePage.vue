@@ -109,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 section#wrapper {
   display: flex;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 127px);
   justify-content: center;
   align-items: center;
   background: lightblue;

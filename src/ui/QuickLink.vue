@@ -10,7 +10,7 @@ export default {
   
 }
 </script>
-<style lang= "scss" scoped>
+<style lang="scss" scoped>
   div {
     background-color: #0f1111;
     display: flex;
@@ -21,7 +21,9 @@ export default {
     padding: 0.45rem 1rem;
     text-decoration: none;
     color: $white;
-    flex-basis: 15%;
+      &:hover {
+        color: $aqua;
+      }
   }
 
   

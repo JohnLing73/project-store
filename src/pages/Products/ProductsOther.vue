@@ -1,7 +1,7 @@
 <template>
-  <div>
-    This is Other Products pages
-  </div>
+  <products-demo>
+    <h1>Other Products</h1>
+  </products-demo>
 </template>
 <script>
 export default {

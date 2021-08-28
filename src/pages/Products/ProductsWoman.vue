@@ -1,7 +1,7 @@
 <template>
-  <div>
-    This is Woman pages
-  </div>
+  <products-demo>
+    <h1>Woman Products</h1>
+  </products-demo>
 </template>
 <script>
 export default {

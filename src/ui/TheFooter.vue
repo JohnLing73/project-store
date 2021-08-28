@@ -3,14 +3,13 @@
     <div>
       <h2>Pages</h2>
       <ul>
-        <li>
-          <router-link to="allProducts" :class= "{ darkMode: darkMode }">All Products</router-link>
-        </li>
-        <li>
-          <router-link to="member" :class= "{ darkMode: darkMode }">Member Center</router-link>
-        </li>
-        <li>
-          <router-link to="about" :class= "{ darkMode: darkMode }">About Page</router-link>
+        <li v-for="page in pages" :key="page.url">
+          <router-link
+            :to="page.url" 
+            :class= "{ darkMode: darkMode }"
+          >
+           {{ page.linkText }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -49,6 +48,24 @@ export default {
           size: "2x",
         },
       ],
+      pages: [
+        {
+          url:'manProducts',
+          linkText: 'Man Products'
+        },
+        {
+          url:'womanProducts',
+          linkText: 'Woman Products'
+        },
+        {
+          url:'otherProducts',
+          linkText: 'Other Products'
+        },
+        {
+          url:'about',
+          linkText: 'About Pages'
+        },
+      ]
     };
   },
   computed: {
