@@ -1,19 +1,16 @@
 <template>
-  <div class="products-view">
-    <products-side selected-page="otherPage"></products-side>
-    <products-main></products-main>
+  <div class="products-main">
+    <products-card></products-card>
   </div>
 </template>
 <script>
+import ProductsCard from './ProductsCard.vue'
 export default {
+  components: { ProductsCard },
   
 }
 </script>
-<style lang= "scss">
-    .products-view {
-      display: flex;
-      flex-flow: row nowrap;
-    }
+<style lang="scss">
   .products-main {
     flex-grow: 4;
     background-color: rgb(245, 158, 148);
@@ -21,5 +18,7 @@ export default {
       h1 {
         text-align: center;
       }
+    display: flex;
+    flex-flow: row wrap;
   }
 </style>
