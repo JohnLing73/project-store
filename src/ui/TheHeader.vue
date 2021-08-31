@@ -136,9 +136,15 @@ export default {
       const card = document.querySelectorAll('.card');
       const form = document.querySelectorAll('form');
       const footer = document.querySelector('footer');
+      const sideContainer = document.querySelector('.side-container');
+      const colorCircle = document.querySelectorAll('.color-circle');
+
+
       (newVal === "light") ? (body.setAttribute("class", "dark-mode")) : (body.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (footer.setAttribute("class", "dark-mode")) :(footer.removeAttribute("class", "dark-mode"));
+      (newVal === "light") ? (sideContainer.setAttribute("class", "side-container dark-mode")) :(sideContainer.setAttribute("class", "side-container"));
+      // (newVal === "light") ? (sideContainer.setAttribute("class", "side-container dark-mode")) :(sideContainer.removeAttribute("class", "dark-mode"));
 
       //Both of form and  a tag, their dark-mode class will be remove after clicked the router-link
       // Add the darkMode class and bind them on the component which contain these two tags.
@@ -153,6 +159,10 @@ export default {
       }
       for(let i=0; i < card.length; i++) {
         (newVal === 'light') ? (card[i].setAttribute('class', 'card dark-mode')) : (card[i].setAttribute('class', 'card'));
+      }
+
+      for(let i=0; i < colorCircle.length; i++) {
+        (newVal === 'light') ? (colorCircle[i].setAttribute('class', 'color-circle dark-mode')) : (colorCircle[i].setAttribute('class', 'color-circle'));
       }
     }
   }

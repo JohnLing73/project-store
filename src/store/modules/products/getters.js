@@ -14,4 +14,7 @@ export default {
   pricingFilterGetters(state) {
     return state.pricingFilter;
   },
+  productsManGetters(state) {
+    return state.productsMan;
+  }
 }

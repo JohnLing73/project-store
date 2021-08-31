@@ -1,36 +1,158 @@
 <template>
-  <div class="prod-card">
+  <div class="prod-card" v-for="prodEach in this.prodData" :key="prodEach.name">
+    <router-link to="/"></router-link>
     <div class="prod-img-container">
-      <img src="../../assets/images/Products/ProdCard/man-cloth1.jpg" alt="">
-      <span class="best-seller-label">Best seller</span>
+      <img :src="prodEach.imgSrc" alt="">
+      <span v-if="prodEach.bestSeller" class="best-seller-label">Best seller</span>
     </div>
+      <div class="prod-info">
+        <ul class="color-circle">
+          <li 
+            v-for="(color, idx) in colorChoice" 
+            :key="idx" 
+            :style="{backgroundColor: color}"
+          >
+          </li>
+        </ul>
+        <h4 class="prod-info-title">{{ prodEach.name }}</h4>
+        <p class="prod-info-brief">{{ prodEach.prodInfoBrief }}</p>
+        <div class="rating-overall">
+          <font-awesome-icon 
+            v-for="(item, idx) in this.feedbackDataComputed[idx]" 
+            :key="idx" 
+            :icon= "['fas','star']" 
+            size="1x" 
+            :style="{ color: '#ffa41c' }"></font-awesome-icon>
+        </div>
+        <span class="price">$ {{ prodEach.price }}</span>
+        <button style="zIndex:999" @click="show">show</button>
+      </div>
   </div>
 </template>
 <script>
 export default {
-  
+  props:['prod-data'],
+  data() {
+    return {
+      colorChoice:['black','white','blue','red','gray'],
+      feedbackData:[]
+    }
+  },
+  beforeMount() {
+    // 計算出每個商品的平均 rating
+    for(let i = 0 ; i < this.prodData.length; i++) {
+      let sum = 0;
+      for( let j in this.prodData[i].feedback) {
+        sum += this.prodData[i].feedback[j].rating;
+      }
+        var avg = (sum / this.prodData[i].feedback.length);
+        this.feedbackData.push(avg);
+    }
+  },
+  computed:{
+    feedbackDataComputed(){
+      return this.feedbackData;
+    }
+  },
+  methods: {
+    show() {
+      console.log(this.feedbackData);
+    }
+  }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .prod-card {
     flex-basis: 20%;
+    border: 3px solid gold;
+    margin: $distance-window;
+    width: 225px;
+    position: relative;
+      a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
   }
   .prod-img-container {
     position: relative;
-
+    width: 100%;
+    height: 280px;
+    background-color: white;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: 50% 0%;
+      }
       .best-seller-label{
         position: absolute;
         left: 0;
-        top: 20px;
+        top: 10px;
         color: $white;
-        background-color: rgba(165, 42, 42, 0.658);
+        width: 85px;
+        padding: 5px;
+        font-size: $h5;
+        background-color: $label-color;
         &::after {
           content:'';
-          border-top: 26px solid;
-          border-right: 10px solid transparent;
-          width: 26px;
-          height: 10px;
+          position: absolute;
+          top: 0px;
+          right: 0;
+          transform: translateX(96%);
+          border-top: 27px solid $label-color;
+          border-right: 12px solid transparent;
         }
       }
+  }
+
+  .prod-info {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+  }
+  
+  .color-circle {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      margin: 0.5rem 0;
+      li {
+        border: 1px solid white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+  }
+
+  .color-circle.dark-mode {
+    background-color: transparent !important;
+  }
+
+  .prod-rating-stars {
+    color: $spinner-blue;
+    border: 1px solid black;
+  }
+
+  .rating-overall {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  h4,
+  p,
+  .price {
+    text-align: center;
+    margin: 0.5rem 0;
+    margin-top: 0;
+  }
+  .price {
+    color: red;
   }
 </style>

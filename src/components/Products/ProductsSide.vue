@@ -1,5 +1,5 @@
 <template>
-  <div class="side-container">
+  <div :class="{ darkMode: this.$store.getters.theme === 'light'}" class="side-container">
     <form
       @submit.prevent="submitForm"
       :class="{ darkMode: this.$store.getters.theme === 'light' }"
@@ -147,10 +147,8 @@ export default {
 <style lang="scss" scoped>
 .side-container {
   flex-basis: 200px;
-  background-color: rgb(231, 228, 44);
   form {
-    padding-left: $distance-window;
-    padding-bottom: $distance-window;
+    padding: 0 $distance-window $distance-window $distance-window;
   }
   h4 {
     margin-bottom: 0.5rem;
@@ -160,6 +158,11 @@ export default {
     padding-top: 1.3rem;
   }
 }
+
+.side-container.darkMode {
+  background-color: $header-footer-dark !important;
+}
+
 .each-filter {
   width: 130px;
   position: relative;
