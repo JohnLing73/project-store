@@ -18,14 +18,14 @@
         <p class="prod-info-brief">{{ prodEach.prodInfoBrief }}</p>
         <div class="rating-overall">
           <font-awesome-icon 
-            v-for="(item, idx) in this.feedbackDataComputed[idx]" 
+            v-for="(item, idx) in prodEach.avgRating" 
             :key="idx" 
             :icon= "['fas','star']" 
             size="1x" 
-            :style="{ color: '#ffa41c' }"></font-awesome-icon>
+            :style="{ color: '#ffa41c' }">
+          </font-awesome-icon>
         </div>
         <span class="price">$ {{ prodEach.price }}</span>
-        <button style="zIndex:999" @click="show">show</button>
       </div>
   </div>
 </template>
@@ -39,25 +39,27 @@ export default {
     }
   },
   beforeMount() {
-    // 計算出每個商品的平均 rating
+    // 計算出每個商品的avg rating assign 給 feedbackData
     for(let i = 0 ; i < this.prodData.length; i++) {
       let sum = 0;
       for( let j in this.prodData[i].feedback) {
         sum += this.prodData[i].feedback[j].rating;
       }
-        var avg = (sum / this.prodData[i].feedback.length);
+        var avg = Math.floor((sum / this.prodData[i].feedback.length));
         this.feedbackData.push(avg);
+    }
+
+    //將 feeedbackData 裡的avg rating assign 給 propData
+    for(let i = 0; i < this.prodData.length; i++) {
+      this.prodData[i].avgRating = this.feedbackData[i]; 
     }
   },
   computed:{
-    feedbackDataComputed(){
+    feedbackDataComputed() {
       return this.feedbackData;
     }
   },
   methods: {
-    show() {
-      console.log(this.feedbackData);
-    }
   }
 }
 </script>
