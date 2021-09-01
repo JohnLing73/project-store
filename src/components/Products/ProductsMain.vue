@@ -17,7 +17,7 @@ export default {
 <style lang="scss">
   .products-main {
     flex-grow: 4;
-    background-color: #bbcbda;
+    background-color: $product-main-bg;
     padding:  $distance-window;
       h1 {
         text-align: center;

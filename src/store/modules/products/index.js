@@ -67,6 +67,7 @@ export default {
               },
             },
           ],
+          stock:326,
           views: 205,
           prodInfoBrief:"Men's Solid Regular Fit Polo",
           productInfo: [
@@ -87,7 +88,7 @@ export default {
             {
               memberId: "Joane",
               rating: 3,
-              comment: "My boyfreind doesn't like it"
+              comment: "My boyfreind doesn't like it! It makes him look like creepy."
             },
           ],
         },
@@ -125,6 +126,7 @@ export default {
               },
             },
           ],
+          stock: 503,
           views: 205,
           prodInfoBrief:"Men's Solid Regular Fit Polo",
           productInfo: [

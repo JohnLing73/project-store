@@ -5,6 +5,12 @@ import actions from './actions.js';
 export default {
     state() {
         return {
+            members:[
+                {
+                    memId:'',
+                    
+                }
+            ]
         }
     },
     getters,

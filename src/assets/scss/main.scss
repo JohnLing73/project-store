@@ -12,6 +12,9 @@ $base-button-minor-bck: #b6dff1;
 // Product 
 $label-color:rgb(253, 173, 2);
 $star-color:rgb(255, 164, 28);
+$product-main-bg: #bbcbda;
+$product-dark-mode: #5a6671;
+$price-red: red;
 
 $spinner-blue: #71d0e7;
 $spinner-green: #84e028;
@@ -33,9 +36,15 @@ $border-radius: 1rem;
 
 //Distance
 //Distance between the content and the side window
+
 $distance-window: 1.5rem;
 //Distance between each block
+
 $distance-block: 2rem;
+//Distance between text
+$distance-text: 0.5rem;
+$distance-list: 0.8rem;
+
 
 //Card's box-shadow
 $box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
@@ -94,4 +103,15 @@ $box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%) rotateZ(40deg);
+}
+
+@mixin flex-model($dir:row, $wrap:nowrap, $content:null, $align:null) {
+  display: flex;
+  flex-flow: $dir $wrap;
+  justify-content: $content;
+  align-items: $align;
+}
+
+@mixin size-width($width) {
+  width: $width;
 }

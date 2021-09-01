@@ -1,5 +1,5 @@
 <template>
-  <div class="prod-detail">
+  <div class="prod-detail" :class="{darkMode: this.$store.getters.themeMode}">
     <div class="prod-detail-main">
       <div class="img-container">
         <img :src="theProduct.color[0].imgs.bigImgSrc" alt="">
@@ -19,8 +19,8 @@
             {{ totalRating }} rating<span v-if= "totalRating >= 2">s</span>
           </span>
         </div>
-        <h3 class="price">599</h3>
-        <form class="select-style" @click.prevent="submitChoice">
+        <h3 class="price">$ {{ theProduct.price }}</h3>
+        <form class="select-style" :class="{darkMode: this.$store.getters.themeMode}" @click.prevent="submitChoice">
           <div class="select-size">
             <h4>Size:</h4>
             <select name="size" v-model="selectSize">
@@ -43,9 +43,24 @@
               </div>
             </div>
           </div>
+          <div class="select-quatity">
+            <h4>Quantity: </h4>
+            <input type="number">
+          </div>
+          <div class="cart-whishlist">
+        <base-card>
+          <h3>To buy, select the size and color</h3>
+          <base-button :link='false' mode='minor'>Add to Cart</base-button>
+          <base-button :link='false'>Buy Now</base-button>
+        </base-card>
+      </div>
         </form>
+          <div class="stock-left">
+            <h4>Stock: </h4>
+            <p>{{theProduct.stock}} <span>in stock!</span></p>
+          </div>
         <div class="prod-info-list">
-          <ul>
+          <ul :class="{darkMode: this.$store.getters.themeMode}">
             <li 
               v-for="(info, idx) in theProduct.productInfo"
               :key="idx"
@@ -55,10 +70,11 @@
           </ul>
         </div>
       </div>
-      <div class="cart-whishlist"></div>
+      
     </div>
+    <hr>
     <div class="prod-detail-feedback">
-      <h2>Reviews</h2>
+      <h3>Reviews</h3>
       <div 
         class="each-feedback" 
         v-for="(feedback,idx) in theProduct.feedback"
@@ -119,12 +135,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  .prod-detail {
+    background-color: $product-main-bg;
+  }
   .prod-detail-main {
     display: flex;
     flex-flow: row nowrap;
-    background-color: rgb(62, 172, 18);
-    color: whitesmoke;
     padding: $distance-window;
+    justify-content: space-evenly;
   }
 
   .color-choices-container {
@@ -144,7 +162,68 @@ export default {
       }
   }
 
+  .cart-whishlist {
+      h3 {
+        margin: 1rem 0;
+      }
+      .card{
+        @include flex-model($dir: column, $align: center);
+      }
+      button {
+        margin: $distance-text 0;
+        @include size-width(10rem);
+      }
+  }
+  
   li {
     list-style-type: disc;
+    margin: $distance-text  0rem;
+    margin-left: 1rem;
+    margin-top: $distance-list;
+  }
+
+  .price,
+  .stock-left > p {
+    color: $price-red;
+  }
+  h4,
+  h3, 
+  p {
+    margin: $distance-text  0rem;
+  }
+
+  .prod-detail-feedback {
+    width: 325px;
+    margin: 0 auto;
+    @include flex-model($dir: column, $align: flex-start);
+      h3 {
+        margin: 1rem 0;
+      }
+      div {
+        width: 100%;
+        margin: $distance-text  0rem;
+      }
+  }
+
+  .pic-and-name {
+    margin-bottom: $distance-text;
+      span {
+        padding-left: 0.8rem;
+      }
+  }
+
+  .each-rating {
+    margin-bottom: $distance-text;
+  }
+  ul.darkMode,
+  .prod-detail.darkMode,
+  .select-style.darkMode {
+    background-color: $product-dark-mode !important;
+  }
+
+  .select-quatity {
+    input {
+      width: 70px;
+    }
   }
 </style>
