@@ -23,7 +23,7 @@ const router = createRouter({
     { path: "/otherProducts", component: ProductsOther },
 
     // 待刪
-    { path: '/prodDetail', component: ProductDetail },
+    { path: '/productDetail', component: ProductDetail },
 
     { path: "/sign", component: TheSign },
     { path: "/member", component: MemberPage },

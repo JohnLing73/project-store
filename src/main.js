@@ -31,13 +31,13 @@ import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
 //Import Other Packages
 import '@/assets/scss/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTruck, faExchangeAlt, faPaperPlane, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faTruck, faExchangeAlt, faPaperPlane, faStar, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard, faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 //Using Other Packages
-library.add(faTruck, faExchangeAlt, faPaperPlane, faCreditCard, faInstagram, faTwitter, faFacebook, faCopyright, faStar);
+library.add(faTruck, faExchangeAlt, faPaperPlane, faCreditCard, faInstagram, faTwitter, faFacebook, faCopyright, faStar, faUserCircle);
 
 
 const app  = createApp(App);
