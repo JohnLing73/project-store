@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{darkMode: this.themeMode}">
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
     <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
@@ -49,6 +49,7 @@
 </template>
 <script>
 import anime from "animejs/lib/anime.es.js";
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -62,6 +63,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(['themeMode']),
     storeTheme() {
       return this.$store.getters.theme;
     },
@@ -130,21 +132,16 @@ export default {
     storeTheme(newVal) {
       // Changing the element's color
       const body = document.querySelector("body");
-      const header = document.querySelector("header");
       const ul = document.querySelectorAll("ul");
       const a = document.querySelectorAll("a");
       const card = document.querySelectorAll('.card');
       const form = document.querySelectorAll('form');
       const footer = document.querySelector('footer');
-      const sideContainer = document.querySelector('.side-container');
       const colorCircle = document.querySelectorAll('.color-circle');
 
 
       (newVal === "light") ? (body.setAttribute("class", "dark-mode")) : (body.removeAttribute("class", "dark-mode"));
-      (newVal === "light") ? (header.setAttribute("class", "dark-mode")) :(header.removeAttribute("class", "dark-mode"));
       (newVal === "light") ? (footer.setAttribute("class", "dark-mode")) :(footer.removeAttribute("class", "dark-mode"));
-      (newVal === "light") ? (sideContainer.setAttribute("class", "side-container dark-mode")) :(sideContainer.setAttribute("class", "side-container"));
-      // (newVal === "light") ? (sideContainer.setAttribute("class", "side-container dark-mode")) :(sideContainer.removeAttribute("class", "dark-mode"));
 
       //Both of form and  a tag, their dark-mode class will be remove after clicked the router-link
       // Add the darkMode class and bind them on the component which contain these two tags.

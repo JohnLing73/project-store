@@ -4,6 +4,7 @@ import HomePage from "./pages/Home/HomePage.vue";
 import ProductsMan from "./pages/Products/ProductsMan.vue";
 import ProductsWoman from "./pages/Products/ProductsWoman.vue";
 import ProductsOther from "./pages/Products/ProductsOther.vue";
+import ProductDetail from './components/Products/ProductDetail.vue';
 
 import TheSign from "./pages/SignPage/TheSign.vue";
 import MemberPage from "./pages/member/MemberPage.vue";
@@ -20,6 +21,10 @@ const router = createRouter({
     { path: "/manProducts", component: ProductsMan },
     { path: "/womanProducts", component: ProductsWoman },
     { path: "/otherProducts", component: ProductsOther },
+
+    // 待刪
+    { path: '/prodDetail', component: ProductDetail },
+
     { path: "/sign", component: TheSign },
     { path: "/member", component: MemberPage },
     { path: "/cart", component: TheCart },

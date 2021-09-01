@@ -2,6 +2,14 @@ export default {
     theme(state) {
         return state.colorTheme;
     },
+    //判定黑夜模式
+    themeMode(_state, getters) {
+        if(getters.theme === 'light') {
+            return true;
+        }else{
+            return false;
+        }
+    },
     slideData(state) {
         return state.wrapData;
     },

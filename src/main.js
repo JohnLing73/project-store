@@ -18,10 +18,12 @@ import FingerIcon from './ui/FingerIcon.vue';
 import FontIcon from './ui/FontIcon.vue';
 import BaseDialog from './ui/BaseDialog.vue';
 import QuickLink from './ui/QuickLink.vue';
+
 import ProductsDemo from './components/Products/ProductsDemo.vue';
 import ProductsSide from './components/Products/ProductsSide.vue';
 import ProductsMain from './components/Products/ProductsMain.vue';
 import ProductsCard from './components/Products/ProductsCard.vue';
+import ProductDetail from './components/Products/ProductDetail.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -54,10 +56,13 @@ app.component('finger-icon', FingerIcon);
 app.component('font-icon', FontIcon);
 app.component('base-dialog', BaseDialog);
 app.component('quick-link', QuickLink);
+
 app.component('products-demo', ProductsDemo);
 app.component('products-side', ProductsSide);
 app.component('products-main', ProductsMain);
 app.component('product-card', ProductsCard);
+app.component('product-detail', ProductDetail);
+
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);
 

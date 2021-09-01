@@ -77,6 +77,7 @@ export default {
         width: 100%;
         height: 100%;
         cursor: pointer;
+        z-index: index($list: $z-index, $value: a);
       }
   }
   .prod-img-container {
@@ -89,6 +90,7 @@ export default {
         height: 100%;
         object-fit: contain;
         object-position: 50% 0%;
+        z-index: index($list: $z-index, $value: img);
       }
       .best-seller-label{
         position: absolute;

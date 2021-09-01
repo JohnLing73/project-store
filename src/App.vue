@@ -47,7 +47,7 @@ a.darkMode {
       color: $aqua !important;
     }
 }
-header.dark-mode,
+header.darkMode,
 ul.dark-mode,
 form.darkMode,
 footer.dark-mode {
