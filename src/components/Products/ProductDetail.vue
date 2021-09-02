@@ -31,6 +31,7 @@
         <form
           class="select-style"
           :class="{ darkMode: this.$store.getters.themeMode }"
+          @submit.prevent
         >
           <div class="select-size">
             <h4>Size:</h4>
@@ -53,7 +54,19 @@
                 :key="color.colorName"
               >
                 <img :src="color.imgs.bigImgSrc" />
+                <label :for="color.colorName"></label>
               </div>
+            </div>
+            <div class="select-color-input">
+              <input 
+                v-for="color in theProduct.color" 
+                :key="color.name" 
+                type="radio" 
+                :value="color.colorName" 
+                name="color" 
+                :id="color.colorName"
+                v-model='selectColor'
+                >
             </div>
           </div>
           <div class="select-quatity">
@@ -62,8 +75,8 @@
           </div>
           <div class="cart-whishlist">
             <div class="submit-button">
-              <base-button :link="false">Buy Now</base-button>
-              <base-button :link="false" mode="minor">Add to Cart</base-button>
+              <base-button :link="false" @click="buy">Buy Now</base-button>
+              <base-button :link="false" mode="minor" @click="addCart">Add to Cart</base-button>
             </div>
           </div>
         </form>
@@ -118,15 +131,19 @@
 import { mapGetters } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
+      selectSize: this.$store.state.products.productsMan[0].size[0],
+      selectColor: this.$store.state.products.productsMan[0].color[0].colorName
+    };
   },
   computed: {
     ...mapGetters(["productsManGetters"]),
     theProduct() {
       return this.productsManGetters[0];
     },
-    selectSize() {
-      return this.theProduct.size[0];
+    selectedColor() {
+      return this.theProduct.color[0].colorName;
     },
     totalRating() {
       return this.theProduct.feedback.length;
@@ -134,6 +151,17 @@ export default {
   },
   methods: {
     submitChoice() {},
+    buy() {
+      console.log('buy');
+      console.log('Size');
+      console.log(this.selectSize);
+      console.log('Color');
+      console.log(this.selectColor);
+      console.log('Quantity');
+    },
+    addCart() {
+      console.log('addCart');
+    }
   },
 };
 </script>
@@ -160,6 +188,19 @@ export default {
   background-color: white;
   display: flex;
   justify-content: center;
+  position: relative;
+  label {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: index($list: z-index, $value: label);
+  }
+  img {
+    z-index: index($list: z-index, $value: img);
+  }
   > img {
     height: 75px;
   }
