@@ -7,7 +7,7 @@ export default {
         return {
             members:[
                 {
-                    memId:'',
+                    memberId:'',
                     
                 }
             ]
