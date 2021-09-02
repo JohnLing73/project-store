@@ -2,7 +2,7 @@
   <div class="prod-detail" :class="{ darkMode: this.$store.getters.themeMode }">
     <div class="prod-detail-main">
       <div class="img-container">
-        <img :src="theProduct.color[0].imgs.bigImgSrc" alt="" />
+        <img :src="showingImg" alt="" />
       </div>
       <div class="detail-info">
         <h4 class="brand">{{ theProduct.brand }}</h4>
@@ -50,28 +50,30 @@
             <div class="color-choices-container content">
               <div
                 class="color-choice-each"
-                v-for="color in theProduct.color"
+                v-for="(color,idx) in theProduct.color"
                 :key="color.colorName"
               >
                 <img :src="color.imgs.bigImgSrc" />
-                <label :for="color.colorName"></label>
-              </div>
-            </div>
-            <div class="select-color-input">
-              <input 
-                v-for="color in theProduct.color" 
-                :key="color.name" 
+                <input 
                 type="radio" 
                 :value="color.colorName" 
                 name="color" 
                 :id="color.colorName"
                 v-model='selectColor'
+                hidden
                 >
+                <label 
+                  :for="color.colorName" 
+                  :title="color.colorName"
+                  :class="{selectingColor: color.colorName === this.selectColor}"
+                  @click="changeBigImg(idx)"
+                  ></label>
+              </div>
             </div>
           </div>
           <div class="select-quatity">
             <h4>Quantity:</h4>
-            <input type="number" class="content" />
+            <input type="number" class="content" v-model="selectQuantity"/>
           </div>
           <div class="cart-whishlist">
             <div class="submit-button">
@@ -132,9 +134,11 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      showingImg: this.$store.state.products.productsMan[0].color[0].imgs.bigImgSrc,
       //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
       selectSize: this.$store.state.products.productsMan[0].size[0],
-      selectColor: this.$store.state.products.productsMan[0].color[0].colorName
+      selectColor: this.$store.state.products.productsMan[0].color[0].colorName,
+      selectQuantity: 1
     };
   },
   computed: {
@@ -142,6 +146,9 @@ export default {
     theProduct() {
       return this.productsManGetters[0];
     },
+    // showingImg() {
+    //   return this.theProduct.color[0].imgs.bigImgSrc;
+    // },
     selectedColor() {
       return this.theProduct.color[0].colorName;
     },
@@ -150,7 +157,6 @@ export default {
     },
   },
   methods: {
-    submitChoice() {},
     buy() {
       console.log('buy');
       console.log('Size');
@@ -158,9 +164,16 @@ export default {
       console.log('Color');
       console.log(this.selectColor);
       console.log('Quantity');
+      console.log(this.selectQuantity);
+      this.selectSize = this.$store.state.products.productsMan[0].size[0];
+      this.selectColor = this.$store.state.products.productsMan[0].color[0].colorName;
+      this.selectQuantity = 1;
     },
     addCart() {
       console.log('addCart');
+    },
+    changeBigImg(idx) {
+      this.showingImg = this.$store.state.products.productsMan[0].color[idx].imgs.bigImgSrc;
     }
   },
 };
@@ -174,6 +187,15 @@ export default {
   flex-flow: row nowrap;
   padding: $distance-window;
   justify-content: space-evenly;
+  > .img-container {
+      width: 230px;
+      height: 480px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }
 
 .color-choices-container {
@@ -279,5 +301,9 @@ ul.darkMode,
 
 .content {
   margin-left: 1rem;
+}
+
+.selectingColor {
+  border: 1px solid red;
 }
 </style>
