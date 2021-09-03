@@ -34,7 +34,7 @@ export default {
         {
           name: "Van Heusen",
           prodName: "Allen Solly Men's Polo",
-          tags: ["man-cloth", "Van Heusen", "T-shirt"],
+          tags: ["T-shirt","Man-Cloth", "Van Heusen" ],
           price: 599,
           brand: "Van Heusen",
           deadline: {

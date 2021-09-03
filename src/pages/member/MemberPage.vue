@@ -1,13 +1,14 @@
 <template>
-  <div class="member-page">
+  <div class="member-page" :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">
     <div class="member-info">
       <h2>Member Center</h2>
+      <p>Member Center >> {{ tab }} </p>
     </div>
     <div class="member-side-bar">
-      <button class="member-tab-btn" @click="switchTab('member-orders')">Member Orders</button>
-      <button class="member-tab-btn" @click="switchTab('member-cart')">Member Cart</button>
-      <button class="member-tab-btn" @click="switchTab('member-wishlists')">Member Wishlists</button>
-      <button class="member-tab-btn" @click="switchTab('member-profile')">Member Profile</button>
+      <button class="member-tab-btn" @click="switchTab('MemberProfile')">Member Profile</button>
+      <button class="member-tab-btn" @click="switchTab('MemberOrders')">Member Orders</button>
+      <button class="member-tab-btn" @click="switchTab('MemberCart')">Member Cart</button>
+      <button class="member-tab-btn" @click="switchTab('MemberWishlists')">Member Wishlists</button>
     </div>
     <div class="member-main-part">
       <keep-alive>
@@ -23,14 +24,14 @@ import MemberWishlists from '../../components/Member/MemberWishlists.vue';
 import MemberProfile from '../../components/Member/MemberProfile.vue';
 export default {
   components:{
-    'member-orders': MemberOrders,
-    'member-cart': MemberCart,
-    'member-wishlists': MemberWishlists,
-    'member-profile': MemberProfile
+    MemberOrders,
+    MemberCart,
+    MemberWishlists,
+    MemberProfile
   },
   data() {
     return {
-      tab: 'member-profile'
+      tab: 'MemberOrders'
     }
   },
   methods:{
@@ -40,16 +41,30 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .member-page {
     @include flex-model($wrap: wrap) ;
     padding: $distance-window ;
+    background-color: $product-main-bg;
+    width: 1200px;
+    margin: auto;
+  }
+
+  .member-page.darkMode {
+    background-color: $product-dark-mode !important;
+  }
+
+  .member-main-part {
+    width: calc(100% - 197px);
   }
 
   .member-info {
     flex-basis: 100%;
       h2 {
         text-align: center;
+      }
+      p {
+        padding-left: 170px;
       }
   }
 
@@ -58,9 +73,17 @@ export default {
   }
 
   .member-tab-btn {
-    padding: 1rem 0.8rem;
+    padding: 0.7rem 0.3rem;
     font-size: 1rem;
+    margin-bottom: 1rem;
     font-family: 'Play', sans-serif;
     background-color: $base-button-bck;
+    color: $white;
+    display: inline-block;
+    margin-right: $distance-window;
+  }
+   .card {
+    margin: 0 auto !important;
+    width: 700px;
   }
 </style>

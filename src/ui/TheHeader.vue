@@ -8,13 +8,13 @@
         <img v-else :src= "profileFigLight" alt="profile" />
         <ul ref= "list">
           <li>
-            <router-link to="#">Your Account</router-link> 
+            <router-link to="/member" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</router-link> 
           </li>
           <li>
-            <router-link to="">Your Orders</router-link>
+            <router-link to="" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</router-link>
           </li>
           <li>
-            <router-link to="">Your Wishlist</router-link>
+            <router-link to="" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Wishlist</router-link>
           </li>
           <li>
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>

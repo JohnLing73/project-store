@@ -16,17 +16,26 @@
             :style="{ color: '#ffa41c' }"
           >
           </font-awesome-icon>
-          <span class="raing-count">
+          <span class="rating-count">
             {{ totalRating }} rating<span v-if="totalRating >= 2">s</span>
           </span>
         </div>
-        <div class="stock-">
+        <div>
           <h4>Price:</h4>
           <h3 class="price content">$ {{ theProduct.price }}</h3>
         </div>
         <div class="stock-left ">
           <h4>Stock:</h4>
           <p class="content">{{ theProduct.stock }} <span>in stock!</span></p>
+        </div>
+        <div class="key-word">
+          <h4>Key Words:</h4>
+          <span class="key-word-tag content"
+            v-for="(tag, idx) in theProduct.tags"
+            :key="idx"
+            >
+            {{ tag }}
+            </span>
         </div>
         <form
           class="select-style"
@@ -305,5 +314,31 @@ ul.darkMode,
 
 .selectingColor {
   border: 1px solid red;
+}
+
+.rating-count {
+  padding-left: 1rem;
+}
+
+.key-word-tag {
+  background-color: rgb(248, 248, 113);
+  color: $black;
+  display: inline-block;
+  font-size: $h5;
+  padding: 0.1rem 0.5rem;
+  margin-right: 1rem;
+  position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 0%;
+      // width: 20px;
+      // height: 100%
+      border-right: 7px solid transparent;
+      border-top: 10.5px solid rgb(248, 248, 113);
+      border-left: 7px solid rgb(248, 248, 113);
+      border-bottom: 10px solid rgb(248, 248, 113);
+    }
 }
 </style>

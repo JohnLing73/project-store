@@ -10,7 +10,9 @@ const store = createStore({
         member: memberModule,
         products: productsMoudule
     },
-    
+    state:{
+        mainState:'mainState'
+    }
 
 })
 
