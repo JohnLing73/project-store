@@ -34,6 +34,29 @@ export default {
                             orderState: 'Order established!',//三種狀態'Shipping Status' 'Delivery'
                             shippingWay:'Home Delivery',//'In-Store-Pickup'
                             pay:'Credit Card',//'Cash'
+                        },
+                        {   //一筆訂單
+                            orderId: 'order1',
+                            orderItems:[
+                                {   // 該筆訂單中的一項商品
+                                    prodName:'Moblie Phone ASUS',
+                                    prodColor:'black',
+                                    prodSize: '128G',
+                                    productEachPrice: 250,
+                                    productQuantity:1,
+                                },
+                                {
+                                    prodName:'MI Watch 5',
+                                    prodColor:'pink',
+                                    prodSize: '1',
+                                    productEachPrice: 30,
+                                    productQuantity:2,  
+                                }
+                            ],
+                            orderDate:'2021-09-05',
+                            orderState: 'Order established!',//三種狀態'Shipping Status' 'Delivery'
+                            shippingWay:'Home Delivery',//'In-Store-Pickup'
+                            pay:'Credit Card',//'Cash'
                         }
                     ],
                     wishlists:[ //一份願望清單

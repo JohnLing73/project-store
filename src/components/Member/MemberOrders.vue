@@ -1,6 +1,9 @@
 <template>
-  <div class="each-table">
-    <table v-for="info in order" :key="info.orderId">
+  <div 
+    class="each-table"
+    v-for="(info, idx) in order" 
+    :key="info.orderId">
+    <table >
       <thead>
         <tr>
           <th>Shipping Way</th>
@@ -22,11 +25,33 @@
         </tr>
       </tbody>
     </table>
-    <base-button :link='false'>Check Detail</base-button>
+    <base-button 
+      :link='false'
+      @click="showStatus(idx)"
+      class="member-tab-btn"
+      >
+      Check Status
+    </base-button>
+    <div v-if=" this.toggleIndex === idx" class="status-para">
+      <p v-if="info.orderState === 'Order established!'">
+        {{info.orderState}}
+      </p>
+      <p v-else-if="info.orderState === 'Shipping status!'">
+        {{info.orderState}}
+      </p>
+      <p v-else-if="info.orderState === 'Already Delivery!'">
+        {{info.orderState}}
+      </p>
+    </div>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      toggleIndex: ''
+    }
+  },
   computed: {
     order() {
       return this.$store.state.member.theFinalMembers[0].orders;
@@ -47,10 +72,22 @@ export default {
       }
       return sum;
     },
+    orderState() {
+      return this.order[0].orderState;
+    }
   },
+  methods: {
+    showStatus(idx) {
+      if(this.toggleIndex === idx) {
+        this.toggleIndex = '';
+      }else{
+        this.toggleIndex = idx;
+      }
+    }
+  }
 };
 </script>
-<style lang="scss">
+<style lang="scss" >
 .each-table {
   width: 750px;
   margin: auto;
@@ -77,7 +114,15 @@ th {
   color: $white;
 }
 
-button {
+.member-tab-btn {
   margin: 1rem 0;
+  cursor: pointer;
+}
+
+.status-para {
+    > p {
+      background-color: $price-red;
+      color: $white;
+    }
 }
 </style>

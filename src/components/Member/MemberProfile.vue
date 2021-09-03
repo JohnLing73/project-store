@@ -1,5 +1,5 @@
 <template>
-<base-card>
+<base-card :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">
   <div class="mem-profile-page">
     <div class="user-brief-info">
       <div class="user-img-container">
@@ -8,10 +8,10 @@
       <span>{{ memberInfo[0].memId }}</span>
     </div>
       <div class="brief-info">
-        <span>Birth: {{ memberInfo[0].birth }}</span>
+        <span>Birth:</span> <span>{{ memberInfo[0].birth }}</span>
       </div>
       <div class="brief-info">
-        <span>Email: {{ memberInfo[0].email }}</span>
+        <span>Email: </span> <span>{{ memberInfo[0].email }}</span>
       </div>
       <div class="brief-info">
         <span>Location: {{ memberInfo[0].location }}</span>
@@ -65,4 +65,6 @@ export default {
   .brief-info {
     margin: 1rem;
   }
+
+  
 </style>
