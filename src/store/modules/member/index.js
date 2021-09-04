@@ -18,43 +18,47 @@ export default {
                                 {   // 該筆訂單中的一項商品
                                     prodName:'Moblie Phone ASUS',
                                     prodColor:'black',
+                                    prodImgUrl:'https://m.media-amazon.com/images/I/41nLUYqSvLL.jpg',
                                     prodSize: '128G',
-                                    productEachPrice: 250,
-                                    productQuantity:1,
+                                    prodEachPrice: 250,
+                                    prodQuantity: 1,
                                 },
                                 {
                                     prodName:'MI Watch 5',
                                     prodColor:'pink',
                                     prodSize: '1',
-                                    productEachPrice: 30,
-                                    productQuantity:2,  
+                                    prodImgUrl:'https://m.media-amazon.com/images/I/41nLUYqSvLL.jpg',
+                                    prodEachPrice: 30,
+                                    prodQuantity: 2,  
                                 }
                             ],
                             orderDate:'2021-09-05',
-                            orderState: 'Order established!',//三種狀態'Shipping Status' 'Delivery'
+                            orderState: 'Order established',//三種狀態'Shipping Status' 'Already delivery'
                             shippingWay:'Home Delivery',//'In-Store-Pickup'
                             pay:'Credit Card',//'Cash'
                         },
                         {   //一筆訂單
-                            orderId: 'order1',
+                            orderId: 'order2',
                             orderItems:[
                                 {   // 該筆訂單中的一項商品
                                     prodName:'Moblie Phone ASUS',
                                     prodColor:'black',
+                                    prodImgUrl:'https://m.media-amazon.com/images/I/41nLUYqSvLL.jpg',
                                     prodSize: '128G',
-                                    productEachPrice: 250,
-                                    productQuantity:1,
+                                    prodEachPrice: 250,
+                                    prodQuantity: 2,
                                 },
                                 {
                                     prodName:'MI Watch 5',
                                     prodColor:'pink',
+                                    prodImgUrl:'https://m.media-amazon.com/images/I/41nLUYqSvLL.jpg',
                                     prodSize: '1',
-                                    productEachPrice: 30,
-                                    productQuantity:2,  
+                                    prodEachPrice: 30,
+                                    prodQuantity: 5,  
                                 }
                             ],
                             orderDate:'2021-09-05',
-                            orderState: 'Order established!',//三種狀態'Shipping Status' 'Delivery'
+                            orderState: 'Shipping status',//三種狀態'Shipping Status' 'Delivery'
                             shippingWay:'Home Delivery',//'In-Store-Pickup'
                             pay:'Credit Card',//'Cash'
                         }
@@ -62,7 +66,7 @@ export default {
                     wishlists:[ //一份願望清單
                         {   //願望清單中的商品
                             wishProductName:'Bentley Continental GT',
-                            wishProductUrl:'',
+                            wishProductUrl:'https://m.media-amazon.com/images/I/914o5xV1+8L._SL1500_.jpg',
                             wishProductColor: 'skyblue',
                             wishProductPrice: 3500000,
                             wishProductThumbnail:'' //商品縮圖

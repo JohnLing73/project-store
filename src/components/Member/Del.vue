@@ -26,7 +26,11 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+// import CartWishlist from './CartWishlist.vue';
 export default {
+  // components:{
+    // CartWishlist
+  // },
   computed:{
     ...mapGetters(['members']),
     orders() {
