@@ -2,20 +2,20 @@
   <div class="container">
     <div 
       class="container-each"
-      v-for="(order,idx) in orders"
+      v-for="(item,idx) in cart"
       :key="idx"
       >
       <div class="img-container">
-        <img :src="order.orderItems[0].prodImgUrl" alt="">
+        <img :src="item.cartProductUrl" alt="">
       </div>
       <div class="info-one info">
-        <h3>{{ order.orderItems[0].prodName}}</h3>
-        <h4>color: {{ order.orderItems[0].prodColor}}</h4>
-        <h4>size: {{ order.orderItems[0].prodSize }}</h4>
+        <h3>{{ item.cartProductName}}</h3>
+        <h4>color: {{ item.cartProductColor}}</h4>
+        <h4>size: {{ item.cartProductSize }}</h4>
       </div>
       <div class="info-two info">
         <h4>Price</h4>
-        <h4>{{ order.orderItems[0].prodEachPrice * order.orderItems[0].prodQuantity }}</h4>
+        <h4>{{ item.cartProductPrice }}</h4>
       </div>
       <div class="info-last info">
         <span>Remove</span>
@@ -33,8 +33,9 @@ import { mapGetters } from 'vuex';
 export default {
   computed:{
     ...mapGetters(['members']),
-    orders() {
-      return this.members[0].orders;
+    cart() {
+      // 測試第一位user 的 cartlist
+      return this.members[0].cart;
     }
   },
   methods: {
@@ -54,6 +55,7 @@ export default {
     border: 1px solid $black;
     border-radius: 12px;
     overflow: hidden;
+    margin-bottom: 1rem;
   }
 
   .img-container {
@@ -64,6 +66,7 @@ export default {
       > img {
         object-position: 50% 50%;
         height:  100%;
+        width: 100%;
         object-fit: cover;
       }
   }

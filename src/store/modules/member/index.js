@@ -75,10 +75,19 @@ export default {
                     cart:[
                         {   //購物車中第一個商品內容
                             cartProductName: 'Audi Rs7 Sportback',
-                            cartProductUrl:'',
+                            cartProductUrl:'https://m.media-amazon.com/images/I/914o5xV1+8L._SL1500_.jpg',
+                            cartProductColor:'silver',
+                            cartProductPrice: 155000,
+                            cartProductSize:'4.0L',
+                            cartProductThumbnail:'https://i3.zi.org.tw/incar/2020/08/1596777995-c40ea4a2ce35e031938ea6903f69b326.jpg' //商品縮圖
+                        },
+                        {   //購物車中第二個商品內容
+                            cartProductName: 'Bentley Continental GT',
+                            cartProductUrl:'https://www.sanjinoir.com/wp-content/uploads/1-528.jpg',
                             cartProductColor:'silver',
                             cartProductPrice: 805000,
-                            cartProductThumbnail:'' //商品縮圖
+                            cartProductSize:'6.0L',
+                            cartProductThumbnail:'https://www.sanjinoir.com/wp-content/uploads/1-528.jpg' //商品縮圖
                         }
                     ]
                 },
