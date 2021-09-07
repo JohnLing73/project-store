@@ -25,15 +25,28 @@ const router = createRouter({
     // 待刪
     { path: '/productDetail', component: ProductDetail },
 
-    { path: "/sign", component: TheSign },
-    { path: "/member", component: MemberPage, name: 'member' },
+    { path: "/sign", component: TheSign, name:'sign' },
+    { path: "/member", component: MemberPage, name: 'member',meta: { needsAuth: true}},
     { path: "/cart", component: TheCart },
     { path: "/check", component: CheckOut },
     { path: "/about", component: AboutPage, name: 'about' },
     { path: "/:notFound(.*)", component: NotFound },
   ],
   linkExactActiveClass: 'exact-router-link',
-
+  scrollBehavior(_to, _from, savedPosition) {
+    if(savedPosition) {
+      return savedPosition;
+    }
+    return { left: 0, top: 0};
+  }
 });
 
+  // router.beforeEach(function(to, _from, next) {
+  //     if(to.meta.needsAuth){
+  //       alert('needs Auth');
+  //       next('sign');
+  //     }else{
+  //       next();
+  //     }
+  // });
 export default router;

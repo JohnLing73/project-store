@@ -1,16 +1,17 @@
 <template>
   <teleport to="body">
-    <div v-if= "showdialog" class="backdrop" @click = "closeDialog">
+    <div v-if= "showdialog" class="backdrop" @click = "closeDialog"></div>
+    <transition name="dialog">
       <dialog open v-if= "showdialog">
           <slot name= "header">
             <h2>{{ title }}</h2>
           </slot>
         <section>
           <p>{{ content }}</p>
-          <base-button :link= "false" @click= "closeDialog">Close</base-button>
+          <base-button :link= "false" @click= "closeDialog">Confirm</base-button>
         </section>
       </dialog>
-    </div>
+    </transition>
   </teleport>
 </template>
 <script>
@@ -30,9 +31,10 @@ export default {
     }},
     methods: {
       closeDialog() {
-        // this.$emit('close');
+        this.$emit('close');
       }
-    }
+    },
+  emits:['close'],
 };
 </script>
 <style lang="scss" scoped>
@@ -70,15 +72,36 @@ dialog {
   overflow: hidden;
   z-index: 10;
 }
-section {
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-    p {
-      font-size: $h3;
-    }
-    button {
-      align-self: flex-end;
-    }
+dialog {
+  section {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+      p {
+        font-size: $h3;
+      }
+      button {
+        align-self: flex-end;
+      }
+  }
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  transform: scale(0.7);
+  opacity: 0;
+}
+
+.dialog-enter-active {
+  transition: all 0.8s ease-out;
+}
+.dialog-leave-active {
+  transition: all 0.8s ease-out;
+}
+
+.dialog-enter-to,
+.dialog-leave-from {
+  transform: scale(1);
+  opacity: 1;
 }
 </style>

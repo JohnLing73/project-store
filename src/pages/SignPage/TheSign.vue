@@ -1,4 +1,11 @@
 <template>
+  <base-dialog
+    :showdialog="showDialog"
+    title="Warning!"
+    content="You haven't fill the form completely. You sure want to leave the page?"
+    @close="closeDialog"
+    >
+  </base-dialog>
   <form :class="{ darkMode: darkMode }" @click.prevent>
     <h2 v-if="signStatus==='signUp'">Sign Up</h2>
     <h2 v-else>Sign In</h2>
@@ -223,6 +230,7 @@ export default {
   data() {
     return {
       signStatus: 'signUp',
+      signSuccess: false,
 
       email: "",
       memberId: "",
@@ -236,6 +244,9 @@ export default {
       inputPasswordValid: "",
       inputBirthValid: "",
       inputLocationValid: "",
+
+      showDialog: false,
+      allowLeave: false
     };
   },
   computed: {
@@ -283,6 +294,7 @@ export default {
       this.password = '';
       this.birth = '';
       this.location = '';
+      this.signSuccess = true;
       this.$router.push('/member');
     },
     switchSignStatus() {
@@ -339,6 +351,19 @@ export default {
         this.allowSignUp = true;
       }
     },
+    closeDialog() {
+      this.showDialog = false;
+      this.allowLeave = true;
+    }
   },
+  beforeRouteLeave (_to, _from, next) {
+    if(this.signSuccess){ // sign up success
+      next();
+    }else if(!this.showDialog && this.allowLeave){ // close the warn dialog
+      next()
+    }else{
+      this.showDialog = true;
+    }
+  }
 };
 </script>
