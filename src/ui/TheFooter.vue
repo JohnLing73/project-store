@@ -31,6 +31,7 @@
   </footer>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -48,27 +49,11 @@ export default {
           size: "2x",
         },
       ],
-      pages: [
-        {
-          url:'manProducts',
-          linkText: 'Man Products'
-        },
-        {
-          url:'womanProducts',
-          linkText: 'Woman Products'
-        },
-        {
-          url:'otherProducts',
-          linkText: 'Other Products'
-        },
-        {
-          url:'about',
-          linkText: 'About Pages'
-        },
-      ]
+      
     };
   },
   computed: {
+    ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts', 'toAbout']),
     darkMode() {
       if (this.$store.getters.theme === "light") {
         return true;
@@ -76,6 +61,26 @@ export default {
         return false;
       }
     },
+    pages(){
+      return [
+        {
+          url:this.toManProducts,
+          linkText: 'Man Products'
+        },
+        {
+          url:this.toWomanProducts,
+          linkText: 'Woman Products'
+        },
+        {
+          url:this.toOtherProducts,
+          linkText: 'Other Products'
+        },
+        {
+          url:this.toAbout,
+          linkText: 'About Pages'
+        },
+      ]
+    }
   },
 };
 </script>

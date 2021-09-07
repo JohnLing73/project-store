@@ -8,7 +8,7 @@
         <img v-else :src= "profileFigLight" alt="profile" />
         <ul ref= "list">
           <li>
-            <router-link to="/member" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</router-link> 
+            <router-link :to="toMemberPage" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</router-link> 
           </li>
           <li>
             <router-link to="" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</router-link>
@@ -63,7 +63,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['themeMode']),
+    ...mapGetters(['themeMode', 'toMemberPage']),
     storeTheme() {
       return this.$store.getters.theme;
     },
@@ -177,6 +177,10 @@ header {
   transition: all 0.5s ease;
 }
 
+a {
+  transition: all 0.3s;
+}
+
 input.search-input {
   @include input-style;
   background-image: url("https://img.icons8.com/material-outlined/24/000000/search--v1.png");
@@ -235,4 +239,7 @@ nav {
         }
     }
 }
+  .exact-router-link {
+    color: $aqua !important;
+  }
 </style>

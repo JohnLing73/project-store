@@ -18,20 +18,22 @@ const router = createRouter({
   routes: [
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
-    { path: "/manProducts", component: ProductsMan },
-    { path: "/womanProducts", component: ProductsWoman },
-    { path: "/otherProducts", component: ProductsOther },
+    { path: "/manProducts", component: ProductsMan, name:'manProducts' },
+    { path: "/womanProducts", component: ProductsWoman, name:'womanProducts' },
+    { path: "/otherProducts", component: ProductsOther, name:'otherProducts' },
 
     // 待刪
     { path: '/productDetail', component: ProductDetail },
 
     { path: "/sign", component: TheSign },
-    { path: "/member", component: MemberPage },
+    { path: "/member", component: MemberPage, name: 'member' },
     { path: "/cart", component: TheCart },
     { path: "/check", component: CheckOut },
-    { path: "/about", component: AboutPage },
+    { path: "/about", component: AboutPage, name: 'about' },
     { path: "/:notFound(.*)", component: NotFound },
   ],
+  linkExactActiveClass: 'exact-router-link',
+
 });
 
 export default router;

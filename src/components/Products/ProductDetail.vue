@@ -88,6 +88,7 @@
             <div class="submit-button">
               <base-button :link="false" @click="buy">Buy Now</base-button>
               <base-button :link="false" mode="minor" @click="addCart">Add to Cart</base-button>
+              <base-button :link="false" mode="minor" @click="addWishlist">Add to Wishlist</base-button>
             </div>
           </div>
         </form>

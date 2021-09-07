@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      tab: "MemberOrders",
+      tab: "MemberProfile",
       tabs: ["MemberProfile", "MemberOrders", "MemberCart", "MemberWishlists"],
     };
   },

@@ -40,6 +40,22 @@ export default {
         }else {
             return 'white'
         }
+    },
+    //link area
+    toMemberPage() {
+        return { name: 'member' };
+    },
+    toManProducts() {
+        return { name: 'manProducts' };
+    },
+    toWomanProducts() {
+        return { name: 'womanProducts' };
+    },
+    toOtherProducts() {
+        return { name: 'otherProducts' };
+    },
+    toAbout() {
+        return { name: 'about' };
     }
     
 }

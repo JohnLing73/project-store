@@ -9,6 +9,7 @@ export default {
                 {   //第一位 User
                     memId: 'John Ling',
                     email: 'johnling@mail.com',
+                    password:'1234567',
                     birth: '1991-07-03',
                     location: 'Taiwan',
                     orders:[

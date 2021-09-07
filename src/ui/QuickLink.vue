@@ -1,13 +1,16 @@
 <template>
   <div>
-    <router-link to= "/manProducts" >Man Prodcuts</router-link>
-    <router-link to= "/womanProducts">Woman Prodcuts</router-link>
-    <router-link to= "/otherProducts">Other Prodcuts</router-link>
+    <router-link :to= "toManProducts" >Man Prodcuts</router-link>
+    <router-link :to= "toWomanProducts">Woman Prodcuts</router-link>
+    <router-link :to= "toOtherProducts">Other Prodcuts</router-link>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
-  
+  computed: {
+    ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts'])
+  }
 }
 </script>
 <style lang="scss" scoped>
