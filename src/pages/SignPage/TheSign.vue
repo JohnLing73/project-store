@@ -294,6 +294,7 @@ export default {
       this.password = '';
       this.birth = '';
       this.location = '';
+      //註冊完成後離開頁面不會出現跳窗並直接跳轉至 member
       this.signSuccess = true;
       this.$router.push('/member');
     },
