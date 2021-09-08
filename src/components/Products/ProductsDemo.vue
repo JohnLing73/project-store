@@ -1,12 +1,12 @@
 <template>
   <div class="products-view">
-    <products-side selected-page="manPage"></products-side>
+    <products-side :selected-page="page" :filter-category="filter"></products-side>
     <products-main></products-main>
   </div>
 </template>
 <script>
 export default {
-
+  props:['page', 'filter']
 }
 </script>
 <style lang="scss">

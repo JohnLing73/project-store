@@ -1,16 +1,23 @@
 <template>
   <div class="products-view">
-    <products-side selected-page="manPage"></products-side>
-    <products-main></products-main>
+    <products-demo :page="manPage" filter='man'></products-demo>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
       
     };
   },
+  computed:{
+    ...mapGetters(
+        {
+          manPage:'manPageGetters'
+        }
+    )
+  }
 };
 </script>
 <style lang="scss">

@@ -1,12 +1,16 @@
 <template>
   <div class="products-view">
-    <products-side selected-page="womanPage"></products-side>
-    <products-main></products-main>
+    <products-demo :page="womanPage" filter='woman'></products-demo>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  
+  computed: {
+    ...mapGetters({
+      womanPage: 'womanPageGetters'
+    })
+  }
 }
 </script>
 <style lang= "scss">

@@ -4,47 +4,19 @@
       @submit.prevent="submitForm"
       :class="{ darkMode: this.$store.getters.theme === 'light' }"
     >
-      <div v-if="selectedPage === 'manPage'" class="filter-group">
-        <h2>Man</h2>
+      <div class="filter-group">
+        <h2 v-if="filterCategory === 'man'">Man</h2>
+        <h2 v-else-if="filterCategory === 'woman'">Woman</h2>
+        <h2 v-else>Other</h2>
         <h4>Filter by category</h4>
-        <div v-for="(item, idx) in manPage" :key="idx" class="each-filter">
+        <div v-for="(item, idx) in selectedPage" :key="idx" class="each-filter">
           <label>
             {{ item.label }}
             <input
               type="radio"
-              name="manCategory"
+              name="category"
               :value="item.id"
-              v-model="manCategory"
-            />
-          </label>
-        </div>
-      </div>
-      <div v-else-if="selectedPage === 'womanPage'" class="filter-group">
-        <h2>Woman</h2>
-        <h4>Filter by category</h4>
-        <div v-for="(item, idx) in womanPage" :key="idx" class="each-filter">
-          <label>
-            {{ item.label }}
-            <input
-              type="radio"
-              name="womanCategory"
-              :value="item.id"
-              v-model="womanCategory"
-            />
-          </label>
-        </div>
-      </div>
-      <div v-else-if="selectedPage === 'otherPage'" class="filter-group">
-        <h2>Other</h2>
-        <h4>Filter by category</h4>
-        <div v-for="(item, idx) in otherPage" :key="idx" class="each-filter">
-          <label>
-            {{ item.label }}
-            <input
-              type="radio"
-              name="otherCategory"
-              :value="item.id"
-              v-model="otherCategory"
+              v-model="category"
             />
           </label>
         </div>
@@ -86,46 +58,29 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 export default {
-  props: ["selected-page"],
+  props: ["selected-page","filter-category"],
   emits:['user-filter'],
   data() {
     return {
-      manCategory: null,
-      womanCategory: null,
-      otherCategory: null,
+      category: null,
       filterColor:[],
       min: null,
       max: null,
       rating: null
     };
   },
-  computed: {
+  computed:{
     ...mapGetters({
-      manPage: "manPageGetters",
-      womanPage: "womanPageGetters",
-      otherPage: "otherPageGetters",
-      pricingFilter: "pricingFilterGetters",
-      ratingFilter: "ratingFilterGetters",
-    }),
-    // selectedPage() {
-    //   return this.$store.getters.pageSelecting;
-    // },
+      ratingFilter: 'ratingFilterGetters'
+    })
   },
   methods: {
     submitForm() {
-      if (this.manCategory) {
-        console.log("Man Radio category");
-        console.log(this.manCategory);
-      }
-      if (this.womanCategory) {
-        console.log("WomanRadio category");
-        console.log(this.womanCategory);
-      }
-      if (this.otherCategory) {
-        console.log("otherCategory");
-        console.log(this.otherCategory);
+      if (this.category) {
+        console.log("Category");
+        console.log(this.category);
       }
       if (this.filterColor) {
         console.log('filterColor');
