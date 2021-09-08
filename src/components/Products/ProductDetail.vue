@@ -1,10 +1,8 @@
 <template>
-  <div class="prod-detail" :class="{ darkMode: this.$store.getters.themeMode }">
+  <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
-        <transition name="prod-detail-img">
-          <img :src="showingImg" alt="" />
-        </transition>
+        <img ref='img' :src="showingImg" alt="" />
       </div>
       <div class="detail-info">
         <h4 class="brand">{{ theProduct.brand }}</h4>
@@ -167,6 +165,9 @@ export default {
     totalRating() {
       return this.theProduct.feedback.length;
     },
+    darkMode() {
+      return this.$store.getters.themeMode;
+    }
   },
   methods: {
     buy() {
@@ -177,6 +178,7 @@ export default {
       console.log(this.selectColor);
       console.log('Quantity');
       console.log(this.selectQuantity);
+      console.log('refs');
       this.selectSize = this.$store.state.products.productsMan[0].size[0];
       this.selectColor = this.$store.state.products.productsMan[0].color[0].colorName;
       this.selectQuantity = 1;
@@ -339,8 +341,6 @@ ul.darkMode,
       position: absolute;
       left: 100%;
       top: 0%;
-      // width: 20px;
-      // height: 100%
       border-right: 7px solid transparent;
       border-top: 10.5px solid rgb(248, 248, 113);
       border-left: 7px solid rgb(248, 248, 113);
@@ -348,20 +348,5 @@ ul.darkMode,
     }
 }
 
-.prod-detail-img-enter-from,
-.prod-detail-img-leave-to {
-  transform: scale(0.7);
-  opacity: 0.3;
-}
-.prod-detail-img-enter-active {
-  transition: all 0.5s ease;
-}
-.prod-detail-img-leave-active {
-  transition: all 0.5s ease;
-}
-.prod-detail-img-enter-to,
-.prod-detail-img-leave-from {
-  transform: scale(1);
-  opacity: 1;
-}
+
 </style>

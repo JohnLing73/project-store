@@ -16,5 +16,8 @@ export default {
   },
   productsManGetters(state) {
     return state.productsMan;
+  },
+  productsAll(state) {
+    return state.productsAll;
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div :class="{ darkMode: this.$store.getters.theme === 'light'}" class="side-container">
     <form
-      @submit.prevent="submitForm"
+      @submit.prevent
       :class="{ darkMode: this.$store.getters.theme === 'light' }"
     >
       <div class="filter-group">
@@ -53,7 +53,8 @@
           </label>
         </div>
       </div>
-      <base-button :link="false">FILTER</base-button>
+      <base-button :link="false" @click="submitForm">FILTER</base-button>
+      <base-button :link='false' @click="submctData">SubmitData</base-button>
     </form>
   </div>
 </template>
@@ -73,7 +74,8 @@ export default {
   },
   computed:{
     ...mapGetters({
-      ratingFilter: 'ratingFilterGetters'
+      ratingFilter: 'ratingFilterGetters',
+      prodAll: 'productsAll'
     })
   },
   methods: {
@@ -104,6 +106,9 @@ export default {
         rating: this.rating
       })
     },
+    submctData() {
+      console.log(this.prodAll);
+    }
   },
 };
 </script>
