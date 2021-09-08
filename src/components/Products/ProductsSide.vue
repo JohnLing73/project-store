@@ -89,6 +89,7 @@
 import { mapGetters } from "vuex";
 export default {
   props: ["selected-page"],
+  emits:['user-filter'],
   data() {
     return {
       manCategory: null,
@@ -140,6 +141,13 @@ export default {
         console.log('rating');
         console.log(this.rating);
       }
+      this.$emit('user-filter',{
+        page: this.selectedPage,
+        color: this.filterColor,
+        min: this.min,
+        max: this.max,
+        rating: this.rating
+      })
     },
   },
 };

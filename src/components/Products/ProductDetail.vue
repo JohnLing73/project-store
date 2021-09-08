@@ -2,7 +2,9 @@
   <div class="prod-detail" :class="{ darkMode: this.$store.getters.themeMode }">
     <div class="prod-detail-main">
       <div class="img-container">
-        <img :src="showingImg" alt="" />
+        <transition name="prod-detail-img">
+          <img :src="showingImg" alt="" />
+        </transition>
       </div>
       <div class="detail-info">
         <h4 class="brand">{{ theProduct.brand }}</h4>
@@ -184,6 +186,9 @@ export default {
     },
     changeBigImg(idx) {
       this.showingImg = this.$store.state.products.productsMan[0].color[idx].imgs.bigImgSrc;
+    },
+    addWishlist() {
+
     }
   },
 };
@@ -197,7 +202,7 @@ export default {
   flex-flow: row nowrap;
   padding: $distance-window;
   justify-content: space-evenly;
-  > .img-container {
+   .img-container {
       width: 230px;
       height: 480px;
     img {
@@ -341,5 +346,22 @@ ul.darkMode,
       border-left: 7px solid rgb(248, 248, 113);
       border-bottom: 10px solid rgb(248, 248, 113);
     }
+}
+
+.prod-detail-img-enter-from,
+.prod-detail-img-leave-to {
+  transform: scale(0.7);
+  opacity: 0.3;
+}
+.prod-detail-img-enter-active {
+  transition: all 0.5s ease;
+}
+.prod-detail-img-leave-active {
+  transition: all 0.5s ease;
+}
+.prod-detail-img-enter-to,
+.prod-detail-img-leave-from {
+  transform: scale(1);
+  opacity: 1;
 }
 </style>
