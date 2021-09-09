@@ -15,14 +15,11 @@ import ProductsCard from './ProductsCard.vue'
 export default {
   props:['content'],
   components: { ProductsCard },
-  mounted() {
-    console.log(this.content);
-  },
 }
 </script>
 <style lang="scss">
   .products-main {
-    flex-grow: 4;
+    width: calc(100vw - 200px);
     background-color: $product-main-bg;
     padding:  $distance-window;
       h1 {

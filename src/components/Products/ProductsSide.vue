@@ -54,7 +54,7 @@
         </div>
       </div>
       <base-button :link="false" @click="submitForm">FILTER</base-button>
-      <base-button :link='false' @click="submitData">SubmitData</base-button>
+      <!-- <base-button :link='false' @click="submitData">SubmitData</base-button> -->
     </form>
   </div>
 </template>
@@ -120,6 +120,23 @@ export default {
     },
     submitData() {
       console.log(this.prodAll);
+      fetch('https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json',{
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(this.prodAll)
+      })
+      .then( response => {
+        if(response.ok){
+          console.log('Success!');
+        }else {
+          throw new Error('Upload Error!');
+        }
+      })
+      .catch( error => {
+        console.log(error);
+      })
     }
   },
 };

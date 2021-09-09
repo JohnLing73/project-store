@@ -1,25 +1,12 @@
 <template>
-  <button @click="showSpinner">showspinner</button>
-  <div class="arc-container" v-if="spinnerState">
+  <div class="arc-container">
     <span>loading</span>
     <div class="arc"></div>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      spinnerState: false,
-    };
-  },
-  methods: {
-    showSpinner() {
-      this.spinnerState = true;
-      setTimeout(()=> {
-        this.spinnerState = false;
-      },2000);
-    },
-  },
+
 };
 </script>
 <style lang='scss' scoped>

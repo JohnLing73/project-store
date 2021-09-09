@@ -4,15 +4,8 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
 export default {
-  computed:{
-    ...mapGetters(
-        {
-          manPage:'manPageGetters',
-        }
-    )
-  }
+
 };
 </script>
 <style lang="scss">

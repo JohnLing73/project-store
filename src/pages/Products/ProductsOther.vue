@@ -1,16 +1,10 @@
 <template>
   <div class="products-view">
-    <products-demo :page="otherPage" filter="other"></products-demo>
+    <products-demo page="otherPage" filter="other"></products-demo>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
-  computed:{
-    ...mapGetters({
-      otherPage: 'otherPageGetters'
-    })
-  }
 }
 </script>
 <style lang= "scss">

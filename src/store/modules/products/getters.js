@@ -1,4 +1,7 @@
 export default {
+  prodIsLoading(state) {
+    return state.prodIsLoading;
+  },
   manPageGetters(state) {
     return state.manPage;
   },
