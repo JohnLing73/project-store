@@ -68,7 +68,7 @@ export default {
     flex-basis: 20%;
     border: 3px solid gold;
     margin: $distance-window;
-    width: 225px;
+    min-width: 250px;
     position: relative;
       a {
         position: absolute;
