@@ -1,20 +1,15 @@
 <template>
   <div class="products-view">
-    <products-demo :page="manPage" filter='man'></products-demo>
+    <products-demo page="man" filter='man'></products-demo>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  data() {
-    return {
-      
-    };
-  },
   computed:{
     ...mapGetters(
         {
-          manPage:'manPageGetters'
+          manPage:'manPageGetters',
         }
     )
   }

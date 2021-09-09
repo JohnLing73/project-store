@@ -1,37 +1,37 @@
 <template>
-  <div class="prod-card" v-for="prodEach in this.prodData" :key="prodEach.name">
+  <div class="prod-card" :key="eachData.name">
     <router-link to="/"></router-link>
     <div class="prod-img-container">
-      <img :src="prodEach.imgSrc" alt="">
-      <span v-if="prodEach.bestSeller" class="best-seller-label">Best seller</span>
+      <img :src="eachData.imgSrc" alt="">
+      <span v-if="eachData.bestSeller" class="best-seller-label">Best seller</span>
     </div>
       <div class="prod-info">
         <ul class="color-circle">
           <li 
-            v-for="(color, idx) in colorChoice" 
-            :key="idx" 
-            :style="{backgroundColor: color}"
+            v-for="color in eachData.color" 
+            :key="color.colorName" 
+            :style="{backgroundColor: color.colorName}"
           >
           </li>
         </ul>
-        <h4 class="prod-info-title">{{ prodEach.name }}</h4>
-        <p class="prod-info-brief">{{ prodEach.prodInfoBrief }}</p>
+        <h4 class="prod-info-title">{{ eachData.name }}</h4>
+        <p class="prod-info-brief">{{ eachData.prodInfoBrief }}</p>
         <div class="rating-overall">
           <font-awesome-icon 
-            v-for="(item, idx) in prodEach.avgRating" 
+            v-for="(item, idx) in eachData.avgRating" 
             :key="idx" 
             :icon= "['fas','star']" 
             size="1x" 
             :style="{ color: '#ffa41c' }">
           </font-awesome-icon>
         </div>
-        <span class="price">$ {{ prodEach.price }}</span>
+        <span class="price">$ {{ eachData.price }}</span>
       </div>
   </div>
 </template>
 <script>
 export default {
-  props:['prod-data'],
+  props:['prod-data', 'each-data'],
   data() {
     return {
       colorChoice:['black','white','blue','red','gray'],
@@ -89,7 +89,6 @@ export default {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        object-position: 50% 0%;
         z-index: index($list: $z-index, $value: img);
       }
       .best-seller-label{

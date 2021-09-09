@@ -1,16 +1,22 @@
 <template>
   <div class="products-main">
-    <products-card :prod-data="this.productsManGetters" v-for="(item, idx) in 20" :key="idx"></products-card>
+    <products-card 
+      :prod-data="content" 
+      v-for="item in content"
+      :each-data="item" 
+      :key="item.prodId"
+      >
+    </products-card>
   </div>
 </template>
 <script>
 import ProductsCard from './ProductsCard.vue'
-import { mapGetters } from 'vuex';
 
 export default {
+  props:['content'],
   components: { ProductsCard },
-  computed: {
-    ...mapGetters(['productsManGetters'])
+  mounted() {
+    console.log(this.content);
   },
 }
 </script>

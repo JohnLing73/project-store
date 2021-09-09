@@ -9,7 +9,7 @@
         <h2 v-else-if="filterCategory === 'woman'">Woman</h2>
         <h2 v-else>Other</h2>
         <h4>Filter by category</h4>
-        <div v-for="(item, idx) in selectedPage" :key="idx" class="each-filter">
+        <div v-for="(item, idx) in theChosenPage" :key="idx" class="each-filter">
           <label>
             {{ item.label }}
             <input
@@ -69,14 +69,26 @@ export default {
       filterColor:[],
       min: null,
       max: null,
-      rating: null
+      rating: null,
     };
   },
   computed:{
     ...mapGetters({
       ratingFilter: 'ratingFilterGetters',
-      prodAll: 'productsAll'
-    })
+      prodAll: 'productsAll',
+      manPage: 'manPageGetters',
+      womanPage: 'womanPageGetters',
+      otherPage: 'otherPageGetters',
+    }),
+    theChosenPage() {
+      if(this.filterCategory === 'man') {
+        return this.manPage;
+      }else if(this.filterCategory === 'woman') {
+        return this.womanPage;
+      }else {
+        return this.otherPage;
+      }
+    }
   },
   methods: {
     submitForm() {

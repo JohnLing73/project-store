@@ -12,7 +12,7 @@ export default {
       ],
       womanPage: [
         { id: "woman-clothes", label: "Clothes" },
-        { id: "woman-bags", label: "bags" },
+        { id: "woman-bags", label: "Bags" },
         { id: "woman-jewellery", label: "Jewellery" },
       ],
       otherPage: [
@@ -90,12 +90,12 @@ export default {
           tags: ["T-shirt","Man-Cloth", "BLIVE" ],
           price: 323,
           brand: "BLIVE",
-          bestSeller: true,
+          bestSeller: false,
           imgSrc: 'https://m.media-amazon.com/images/I/519PV7ZKtpL._UL1000_.jpg',
           size:['S','XL','2XL'],
           color: [
             {
-              colorName: 'navy-blue-white',
+              colorName: 'white',
               imgSrc:'https://m.media-amazon.com/images/I/519PV7ZKtpL._UL1000_.jpg',
             },
             
@@ -708,7 +708,7 @@ export default {
           tags: ["Watches","Man-Watches", "CASIO" ],
           price: 4950,
           brand: "CASIO",
-          bestSeller: true,
+          bestSeller: false,
           imgSrc: 'https://m.media-amazon.com/images/I/61IlwQIwyxL._UL1100_.jpg',
           size:['One Size'],
           color: [
@@ -1024,10 +1024,6 @@ export default {
             {
               colorName: 'black',
               imgSrc:'https://m.media-amazon.com/images/I/81Lld2znF0L._UL1500_.jpg',
-            },
-            {
-              colorName: "red",
-              imgSrc:'https://m.media-amazon.com/images/I/718-sz4S1bS._UL1500_.jpg',
             },
             {
               colorName: "green",
@@ -1628,6 +1624,507 @@ export default {
               memberId: "Dennis Bobby",
               rating: 5,
               comment: "I am a retired army. Nokia 3310 save my life in Aghanistan."
+            },
+          ],
+        },
+        {
+          prodId: 'oe01',
+          prodName: 'Mivi Collar Flash Bluetooth Earphones',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Earphone',
+          tags: ["Earphone","Other-Earphone", "Mivi" ],
+          price: 899,
+          brand: "Mivi",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/612c8S1SOZS._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'green',
+              imgSrc:'https://m.media-amazon.com/images/I/612c8S1SOZS._SL1500_.jpg',
+            },
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/61MDDy1LgkL._SL1500_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/61SgBBoEwRS._SL1500_.jpg',
+            },
+            {
+              colorName: 'white',
+              imgSrc:'https://m.media-amazon.com/images/I/61kpTD6IKfS._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/61sljPwNHYS._SL1500_.jpg',
+            },
+          ],
+          stock: 21574,
+          views: 6574,
+          prodInfoBrief: 'Mivi Collar Flash Bluetooth Earphones',
+          productInfo: [
+            'Fast charging10 mins charge = 10 hrs playtime.',
+            'Rich Sound. Powerful Bass: The Collar Flash wireless earphones has been custom tuned by our world-renowned engineers for amazing sound and a deep and powerful bass.',
+            '24hrs playtime: With these bluetooth earphones, binge watch your OTT shows, play your favorite songs and attend your zoom calls. ',
+            'The Mivi Collar Flash will keep running no matter what you need it for. It comes with a playtime of 24hrs at mid volume.',
+            'Crystal Clear Calling: Hear and be heard clearly with superior calling.',
+            'Made in India : From design to manufacturing, the Collar Flash wireless earphone is proudly made in India.',
+            'Sweat and dust proof: The earphones have an IPX 4 rating and is sweat and dust proof.',
+            'Ergonomic Fit: The Collar Flash neckband earphones are designed with comfort in mind. ',
+            'They come with 3 sets of earbuds so you can find the right fit, and are light weight.'
+          ],
+          feedback: [
+            {
+              memberId: "Nerdy Clarckson",
+              rating: 4,
+              comment: "I wear it all day. Doesn't have to charge. Good stamina of the battery."
+            },
+            {
+              memberId: "Lydia Fallen",
+              rating: 5,
+              comment: "I read the principles which is written by Ray Dalio."
+            },
+          ],
+        },
+        {
+          prodId: 'oe02',
+          prodName: 'Boult Audio ProBass Qcharge in-Ear Earphones',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Earphone',
+          tags: ["Earphone","Other-Earphone", "Boult Audio" ],
+          price: 1199,
+          brand: "Boult Audio",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/61fIARVYRFL._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'green',
+              imgSrc:'https://m.media-amazon.com/images/I/61zrVFRRqZL._SL1500_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/61fIARVYRFL._SL1500_.jpg',
+            },
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/61gfviUGbDL._SL1500_.jpg',
+            },
+          ],
+          stock: 11574,
+          views: 23574,
+          prodInfoBrief: 'Boult Audio ProBass Qcharge in-Ear Earphones',
+          productInfo: [
+            'Long Battery Life - Qcharge is a powerhouse,Offers playback time of up to 24 for every charge.',
+            'Off-Axis magnetic technology ',
+            'Noise Isolating Aerospace Grade AL Drivers.',
+            'Curve comes with Built-in micro-woofers that produce a deep bass, isolating noise in any environment.',
+            'Durable Flexi-band- The light yet sturdy, neck band can drape comfortably across the neck with supreme comfort and in-line controls.',
+            'Robust aerospace grade AL alloy encased over micro-woofers provide crisp deep bass for bass heads, crystal clear highs and stable midst.'
+          ],
+          feedback: [
+            {
+              memberId: "Shohei Ohtani",
+              rating: 5,
+              comment: "The most suitable earphone for high school student."
+            },
+            {
+              memberId: "Mike Trout",
+              rating: 3,
+              comment: "I want to return..."
+            },
+          ],
+        },
+        {
+          prodId: 'oe03',
+          prodName: 'Boat Bassheads 105 in-Ear Wired Headset',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Earphone',
+          tags: ["Earphone","Other-Earphone", "boAt" ],
+          price: 399,
+          brand: "boAt",
+          bestSeller: true,
+          imgSrc: 'https://m.media-amazon.com/images/I/416kaGOd97S._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'green',
+              imgSrc:'https://m.media-amazon.com/images/I/51fMTxsbz+S._SL1500_.jpg',
+            },
+            {
+              colorName: 'white',
+              imgSrc:'https://m.media-amazon.com/images/I/416kaGOd97S._SL1500_.jpg',
+            },
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/51PyI5qRSwS._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/51UjZhUT-AS._SL1500_.jpg',
+            },
+          ],
+          stock: 574,
+          views: 33574,
+          prodInfoBrief: 'Boat Bassheads 105 in-Ear Wired Headset',
+          productInfo: [
+            "BassHeads 105 delivers pure audio bliss via its 13mm ",
+            "Attend calls, activate voice assistant, access playback and seize complete control of the day’s flow courtesy ",
+            "Traverse your city with the perfect length cable made for you to stroll through with ease",
+            "It has a half in-ear design that adds to the ergonomic nature of this wired masterpiece"
+          ],
+          feedback: [
+            {
+              memberId: "Giancarlo Stanton",
+              rating: 3,
+              comment: "I have lots of fan and I am a big fan too."
+            },
+            {
+              memberId: "Joey Gallo",
+              rating: 3,
+              comment: "After I shave my beard even my wife doesn't recognize me."
+            },
+          ],
+        },
+        {
+          prodId: 'oe04',
+          prodName: 'boAt Bassheads 242 in Ear Wired Earphones with Mic(Active Black)',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Earphone',
+          tags: ["Earphone","Other-Earphone", "boAt" ],
+          price: 499,
+          brand: "boAt",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/61sILScAOQL._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'green',
+              imgSrc:'https://m.media-amazon.com/images/I/61sILScAOQL._SL1500_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/61eTnFwlbOL._SL1500_.jpg',
+            },
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/61+tzvHZi+L._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/61EoTBg1+SL._SL1500_.jpg',
+            },
+          ],
+          stock: 2574,
+          views: 21574,
+          prodInfoBrief: 'boAt Bassheads 242 in Ear Wired Earphones with Mic(Active Black)',
+          productInfo: [
+            "Fly into your workouts with precise tones that inspire and energize your system with its HD sound, all the time.",
+            "Find a balanced audio sound set pumped through 10 mm dynamic drivers that can get real loud! Propped up by a banging bass, push your flow to higher limits",
+            "Get the sound in and sweat out with IPX 4 Water and Sweat Resistance here to elevate your game as crush those repetitions or a rigorous run",
+            "Coolly crafted midway down the cable to endorse practicality mixed with an aesthetic design that allows for communication and music playlist control",
+            "Move with unrestrained dynamic freedom via shape adaptive secure fit ear hooks made for you to lose yourself in your workouts and your music",
+            "Fashionable with a loose freestyle, yet made to sustain through twisting, contorting and tangling so that you can carry your style and music with you everywhere",
+            "Bassheads 242 are compatible with almost every device that carries a 3.5mm slot",
+            "1 year warranty from the date of purchase"
+          ],
+          feedback: [
+            {
+              memberId: "Vladimar Gurreor Jr.",
+              rating: 4,
+              comment: "I believe my father and I'll hit the most home run submition than any other parents in league."
+            },
+            {
+              memberId: "Darvish Yu",
+              rating: 3,
+              comment: "This is the Super Siayan beyond Super Sianyan.Arr... Kakarote"
+            },
+          ],
+        },
+        {
+          prodId: 'oe05',
+          prodName: 'PTron Bassbuds Jade Gaming True Wireless Headphone',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Earphone',
+          tags: ["Earphone","Other-Earphone", "PTron" ],
+          price: 1499,
+          brand: "PTron",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/51tBu12hIFL._SL1100_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'green',
+              imgSrc:'https://m.media-amazon.com/images/I/51tBu12hIFL._SL1100_.jpg',
+            },
+          ],
+          stock: 9784,
+          views: 98174,
+          prodInfoBrief: 'pTron Bassbuds Jade Gaming True Wireless Headphone',
+          productInfo: [
+            "Gaming Wireless Headphones with Ultra-Low Latency.",
+            "Tap 4 Times on Either Earbud for Gaming or Music Mode; BT5.0 with 10 meters Wireless Connectivity.",
+            "1-Step Pairing; Quick Connect; Dual HD Mic for Clear Calls; Wide Compatibility with BT Smart Devices.",
+            "IPX4 Water/Sweatproof; Instant Access to Device's Voice Assistant; 40mAh Battery in Each Bud; Just 1.5Hrs Charge",
+            "Compact 300mAh Charging Case with Glaring LED Lights; Type-C Charging; ",
+            "Just 1.5Hrs Charge Time; 120Hrs Standby Time; Mini Charging Cable Included; ",
+            "Extra Silicone Eartips to Fit Different Ear Sizes",
+            "1-year manufacturer warranty from the date of purchase."
+          ],
+          feedback: [
+            {
+              memberId: "Albert Pujols",
+              rating: 4,
+              comment: "Stay tuned. I gonna break the 700 homerun this year."
+            },
+            {
+              memberId: "Max Scherzer",
+              rating: 3,
+              comment: "Don't check my caps or fingers. I don't rely on that kind of stuff."
+            },
+          ],
+        },
+        {
+          prodId: 'oo01',
+          prodName: 'Luxomish Featherweight Polarized Aviator Sunglasses',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Others',
+          tags: ["Sunglasses","Other-Others", "Luxomish" ],
+          price: 749,
+          brand: "Luxomish",
+          bestSeller: true,
+          imgSrc: 'https://m.media-amazon.com/images/I/41ZY9-xHCOL._UL1101_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/41ZY9-xHCOL._UL1101_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/4167X5jBWQL._UL1101_.jpg',
+            },
+            {
+              colorName: 'white',
+              imgSrc:'https://m.media-amazon.com/images/I/41zazM1ADnL._UL1101_.jpg',
+            },
+          ],
+          stock: 0,
+          views: 7174,
+          prodInfoBrief: 'Luxomish Featherweight Polarized Aviator Sunglasses',
+          productInfo: [
+            "Product Dimensions ‏ : ‎ 14.1 x 5.1 x 5.3 cm; 30 Grams",
+            "Date First Available ‏ : ‎ 19 August 2021",
+            "Manufacturer ‏ : ‎ Luxomish",
+            "Item part number ‏ : ‎ Featherweight",
+            "Country of Origin ‏ : ‎ India",
+            "Department ‏ : ‎ Unisex Adult",
+            "Item Weight ‏ : ‎ 30 ",
+            "Item Dimensions LxWxH ‏ : ‎ 14.1 x 5.1 x 5.3 Centimeters"
+          ],
+          feedback: [
+            {
+              memberId: "Mookie Betts",
+              rating: 4,
+              comment: "Wearing this I can easily catch the ball in outfield. You should try one."
+            },
+            {
+              memberId: "Miguel Cabrera",
+              rating: 5,
+              comment: "Wearing this I hit the No.500."
+            },
+          ],
+        },
+        {
+          prodId: 'oo02',
+          prodName: 'ASUS Chromebook C223NA-DH02',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Others',
+          tags: ["Laptop","Other-Others", "ASUS" ],
+          price: 27181,
+          brand: "ASUS",
+          bestSeller: true,
+          imgSrc: 'https://m.media-amazon.com/images/I/91IYW5dBwPL._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'gray',
+              imgSrc:'https://m.media-amazon.com/images/I/91IYW5dBwPL._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/81Yv8JCqabL._SL1500_.jpg',
+            }
+          ],
+          stock: 4538,
+          views: 78174,
+          prodInfoBrief: 'ASUS Chromebook C223NA-DH02',
+          productInfo: [
+            "Ready for productivity and performance while being on the go, with speedy performance, robust security.",
+            "Lightweight 2.2 pound body and with thin and premium metallic finish for a sleek appearance",
+            "11.6 inch HD 1366x768 Anti-Glare Display",
+            "Powered by the Intel Celeron N3350 Processor (2M Cache, up to 2.4GHz) for fast and snappy performance",
+            "4 GB DDR3 RAM; 32GB eMMC hard drive; No CD or DVD drive"
+          ],
+          feedback: [
+            {
+              memberId: "Tiger Wang",
+              rating: 4,
+              comment: "I love Acer before but I like Asus more."
+            },
+            {
+              memberId: "Yu Chang",
+              rating: 5,
+              comment: "I always use this laptop watching  opponents' film."
+            },
+          ],
+        },
+        {
+          prodId: 'oo03',
+          prodName: 'LG 235 L 4 Star Inverter Direct Cool Single Door Refrigerator ',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Others',
+          tags: ["Refrigerator","Other-Others", "LG" ],
+          price: 21499,
+          brand: "LG",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/71g6DgrFQJL._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/61g+IHQnGML._SL1500_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/71BnEVlpL5L._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/71g6DgrFQJL._SL1500_.jpg',
+            },
+            {
+              colorName: 'gray',
+              imgSrc:'https://m.media-amazon.com/images/I/61GcYwUUm1L._SL1500_.jpg',
+            }
+          ],
+          stock: 2318,
+          views: 25174,
+          prodInfoBrief: 'LG 235 L 4 Star Inverter Direct Cool Single Door Refrigerator ',
+          productInfo: [
+            "Important note : This product is 5-star rated as per 2019 BEE rating and 4-star rated as per 2020 BEE rating",
+            "Direct-cool refrigerator; 235 litres",
+            "Energy Rating: 4 Star",
+            "Warranty: 1 year on product, 10 years on compressor",
+            "Smart inverter compressor",
+            "The revolutionary smart connect technology in LG direct cool refrigerator helps you connect your refrigerator to home inverter",
+            "Moist ‘n’ Fresh is an innovative lattice-patterned box cover which maintains the moisture at the optimal level"
+          ],
+          feedback: [
+            {
+              memberId: "David Ortiz",
+              rating: 4,
+              comment: "That day my refrigerator broke down so that's why I hit the phone. This refrig won't broke."
+            },
+            {
+              memberId: "Manny Rameiraz",
+              rating: 5,
+              comment: "It has a huge space so that I can store many food in it."
+            },
+          ],
+        },
+        {
+          prodId: 'oo04',
+          prodName: 'Vega - OR-D/V-K_M Off Road D/V Helmet',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Others',
+          tags: ["Helmet","Other-Others", "Vega" ],
+          price: 1608,
+          brand: "Vega",
+          bestSeller: true,
+          imgSrc: 'https://m.media-amazon.com/images/I/51eq06+CAOS._SL1500_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'black',
+              imgSrc:'https://m.media-amazon.com/images/I/61C6phVgReS._SL1500_.jpg',
+            },
+            {
+              colorName: 'blue',
+              imgSrc:'https://m.media-amazon.com/images/I/61eco95eUTS._SL1500_.jpg',
+            },
+            {
+              colorName: 'white',
+              imgSrc:'https://m.media-amazon.com/images/I/51eq06+CAOS._SL1500_.jpg',
+            },
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/61D40PyJAgS._SL1500_.jpg',
+            },
+          ],
+          stock: 5687,
+          views: 79845,
+          prodInfoBrief: 'Vega - OR-D/V-K_M Off Road D/V Helmet',
+          productInfo: [
+            "ISI Certified with high impact ABS material shell, Aerodynamic Design",
+            "Size: Small (56 cm), Medium(57 cm), Large(58 cm), Extra Large(60 cm)",
+            "Metallic Quick release silent buckle"
+          ],
+          feedback: [
+            {
+              memberId: "Jason Giambi",
+              rating: 1,
+              comment: "I am not Luke Voit."
+            },
+            {
+              memberId: "Luke Voit",
+              rating: 5,
+              comment: "Come on senpei~"
+            },
+          ],
+        },
+        {
+          prodId: 'oo05',
+          prodName: 'JBL GO Portable Wireless Bluetooth Speaker with Mic ',
+          prodCategory: 'Other',
+          prodCategoryMinor: 'Other-Others',
+          tags: ["Speaker","Other-Others", "JBL" ],
+          price: 1519,
+          brand: "JBL",
+          bestSeller: false,
+          imgSrc: 'https://m.media-amazon.com/images/I/816S-DoYilL._SL1469_.jpg',
+          size:["One Size"],
+          color: [
+            {
+              colorName: 'red',
+              imgSrc:'https://m.media-amazon.com/images/I/81PrhcVt5mL._SL1500_.jpg',
+            },
+            {
+              colorName: 'gray',
+              imgSrc:'https://m.media-amazon.com/images/I/816S-DoYilL._SL1469_.jpg',
+            },
+          ],
+          stock: 54187,
+          views: 9785,
+          prodInfoBrief: 'JBL GO Portable Wireless Bluetooth Speaker with Mic ',
+          productInfo: [
+            "This Certified Refurbished product is tested and certified to work and look like new with minimal or no signs of wear",
+            "Great sound and small form factor",
+            "Wireless Bluetooth Streaming",
+            "Rechargeable Battery - Up to five hour playtime",
+            "Built-in Speakerphone"
+          ],
+          feedback: [
+            {
+              memberId: "Rajon Rondo",
+              rating: 1,
+              comment: "You call me Chris Paul again.I beat as hard as I can."
+            },
+            {
+              memberId: "Larry Bird",
+              rating: 5,
+              comment: "Are you all ready  prepare to get the second title?"
             },
           ],
         },
