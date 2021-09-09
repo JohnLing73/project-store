@@ -54,7 +54,7 @@
         </div>
       </div>
       <base-button :link="false" @click="submitForm">FILTER</base-button>
-      <base-button :link='false' @click="submctData">SubmitData</base-button>
+      <base-button :link='false' @click="submitData">SubmitData</base-button>
     </form>
   </div>
 </template>
@@ -118,7 +118,7 @@ export default {
         rating: this.rating
       })
     },
-    submctData() {
+    submitData() {
       console.log(this.prodAll);
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="products-main">
+  <div class="products-main" :class="{darkMode: this.$store.getters.themeMode}">
     <products-card 
       :prod-data="content" 
       v-for="item in content"
@@ -30,5 +30,8 @@ export default {
       }
     display: flex;
     flex-flow: row wrap;
+  }
+  .products-main.darkMode {
+    background-color: $product-dark-mode !important;
   }
 </style>
