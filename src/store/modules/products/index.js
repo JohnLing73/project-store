@@ -31,7 +31,7 @@ export default {
         { id: "under-one-thousand", label: "$1000-" },
         { id: "over-one-thousand", label: "$1000+" },
       ],
-      productsAll:[
+      productsAll:[// 傳到 firebase 的資料
         {
           prodId: 'mc01',
           prodName: "Allen Solly Men's Polo",
@@ -2130,6 +2130,8 @@ export default {
           ],
         },
       ],
+      productsDownMan:[],
+      
     };
   },
   getters,

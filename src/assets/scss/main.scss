@@ -9,6 +9,9 @@ $blue: #f0f8ff;
 $base-button-bck: #3cb75c;
 $base-button-minor-bck: #b6dff1;
 
+//Color label
+$color-labels: black,white,blue,red,gray,yellow,green;
+
 // Product 
 $label-color:rgb(253, 173, 2);
 $star-color:rgb(255, 164, 28);
@@ -85,7 +88,7 @@ $box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
     }
 }
 
-@mixin filter-color($bgColor) {
+@mixin filter-color($bgColor:black) {
   display: inline-block;
   width: 20px;
   height: 20px;

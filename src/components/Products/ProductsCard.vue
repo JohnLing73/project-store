@@ -158,4 +158,8 @@ export default {
   .price {
     color: red;
   }
+
+  .prod-info-brief {
+    padding: 0 0.5rem;
+  }
 </style>

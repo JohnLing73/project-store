@@ -23,7 +23,7 @@
       </div>
       <div class="filter-group">
         <h4>Filter by color</h4>
-          <input type="checkbox" id="color-black" value="black" hidden v-model="filterColor"/>
+          <!-- <input type="checkbox" id="color-black" value="black" hidden v-model="filterColor"/>
           <label class="label-color" for="color-black"></label>
           <input type="checkbox" id="color-white" value="white" hidden v-model="filterColor"/>
           <label class="label-color" for="color-white"></label>
@@ -32,7 +32,11 @@
           <input type="checkbox" id="color-red" value="red" hidden v-model="filterColor"/>
           <label class="label-color" for="color-red"></label>
           <input type="checkbox" id="color-gray" value="gray" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-gray"></label>
+          <label class="label-color" for="color-gray"></label> -->
+          <div v-for="color in colorChoose" :key="color.id" class="color-group-each">
+            <input type="checkbox" :id="color.id" :value="color.value" hidden v-model="filterColor">
+            <label class="label-color" :for="color.id" :style="{backgroundColor:color.value}"></label>
+          </div>
       </div>
       <div class="filter-group">
         <h4>Filter by price</h4>
@@ -70,6 +74,16 @@ export default {
       min: null,
       max: null,
       rating: null,
+
+      colorChoose:[
+        { id:"color-black", value: "black"},
+        { id:"color-white", value: "white"},
+        { id:"color-blue", value: "blue"},
+        { id:"color-red", value: "red"},
+        { id:"color-gray", value:"gray"},
+        { id:"color-yellow", value: "yellow"},
+        { id:"color-green", value:"green"},
+      ]
     };
   },
   computed:{
@@ -88,7 +102,10 @@ export default {
       }else {
         return this.otherPage;
       }
-    }
+    },
+    // labelStyle() {
+    //   return {backgroundColor: }
+    // }
   },
   methods: {
     submitForm() {
@@ -142,6 +159,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.color-group-each {
+  display: inline-block;
+  margin-right: 0.3rem;
+  > label {
+    @include filter-color();
+  }
+}
+
 .side-container {
   flex-basis: 200px;
   form {
@@ -195,40 +220,18 @@ button {
   margin-top: 1rem;
 }
 
-.label-color {
-  @include filter-color(black);
-}
 
-.label-color  { 
-  &:nth-child(5) {
-   @include filter-color(white);
-  }
-}
-
-.label-color  { 
-  &:nth-child(7) {
-   @include filter-color(blue);
-  }
-}
-
-.label-color  { 
-  &:nth-child(9) {
-   @include filter-color(red);
-  }
-}
-.label-color  { 
-  &:nth-child(11) {
-   @include filter-color(gray);
-  }
-}
-
-#color-black {
-  &:checked + .label-color {
-    &::after {
-      @include filter-clicked();
+@each $color in $color-labels {
+  #color-#{$color} {
+    &:checked + .label-color {
+      &::after {
+        @include filter-clicked();
+      }
     }
   }
 }
+
+
 #color-white {
   &:checked + .label-color {
     &::after {
@@ -236,25 +239,5 @@ button {
     }
   }
 }
-#color-blue {
-  &:checked + .label-color {
-    &::after {
-      @include filter-clicked();
-    }
-  }
-}
-#color-red {
-  &:checked + .label-color {
-    &::after {
-      @include filter-clicked();
-    }
-  }
-}
-#color-gray {
-  &:checked + .label-color {
-    &::after {
-      @include filter-clicked();
-    }
-  }
-}
+
 </style>
