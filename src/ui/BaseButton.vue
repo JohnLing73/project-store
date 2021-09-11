@@ -48,4 +48,10 @@ export default {
         background-color: $base-button-minor-bck;
     }
   }
+
+  button {
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 </style>

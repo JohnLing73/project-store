@@ -1,6 +1,6 @@
 <template>
   <div class="products-view">
-    <products-demo page="man" filter='man'></products-demo>
+    <products-demo page="Man" filter='man'></products-demo>
   </div>
 </template>
 <script>

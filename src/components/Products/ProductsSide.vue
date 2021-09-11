@@ -23,19 +23,13 @@
       </div>
       <div class="filter-group">
         <h4>Filter by color</h4>
-          <!-- <input type="checkbox" id="color-black" value="black" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-black"></label>
-          <input type="checkbox" id="color-white" value="white" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-white"></label>
-          <input type="checkbox" id="color-blue" value="blue" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-blue"></label>
-          <input type="checkbox" id="color-red" value="red" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-red"></label>
-          <input type="checkbox" id="color-gray" value="gray" hidden v-model="filterColor"/>
-          <label class="label-color" for="color-gray"></label> -->
           <div v-for="color in colorChoose" :key="color.id" class="color-group-each">
             <input type="checkbox" :id="color.id" :value="color.value" hidden v-model="filterColor">
-            <label class="label-color" :for="color.id" :style="{backgroundColor:color.value}"></label>
+            <label 
+              class="label-color" 
+              :for="color.id" 
+              :style="{backgroundColor:color.value}"
+              ></label>
           </div>
       </div>
       <div class="filter-group">
@@ -71,8 +65,8 @@ export default {
     return {
       category: null,
       filterColor:[],
-      min: null,
-      max: null,
+      min: 0,
+      max: 0,
       rating: null,
 
       colorChoose:[
@@ -109,31 +103,15 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.category) {
-        console.log("Category");
-        console.log(this.category);
-      }
-      if (this.filterColor) {
-        console.log('filterColor');
-        console.log(this.filterColor);
-      }
-      if (this.min && this.max) {
-        console.log('min');
-        console.log(this.min);
-        console.log('max');
-        console.log(this.max);
-      }
-      if (this.rating) {
-        console.log('rating');
-        console.log(this.rating);
-      }
       this.$emit('user-filter',{
-        page: this.selectedPage,
+        prodCategory: this.selectedPage,
+        prodCategoryMinor: this.category,
         color: this.filterColor,
-        min: this.min,
-        max: this.max,
-        rating: this.rating
+        // min: this.min,
+        // max: this.max,
+        // rating: this.rating
       })
+      window.scrollTo(0,0);
     },
     submitData() {
       console.log(this.prodAll);
@@ -223,6 +201,9 @@ button {
 
 @each $color in $color-labels {
   #color-#{$color} {
+    + .label-color {
+      box-shadow: 2px 2px 3px #ccc;
+    }
     &:checked + .label-color {
       &::after {
         @include filter-clicked();

@@ -7,19 +7,19 @@ export default {
     return {
       prodIsLoading: false,
       manPage: [
-        { id: "man-clothes", label: "Clothes" },
-        { id: "man-shoes", label: "Shoes" },
-        { id: "man-watches", label: "Watches" },
+        { id: "Man-Clothes", label: "Clothes" },
+        { id: "Man-Shoes", label: "Shoes" },
+        { id: "Man-Watches", label: "Watches" },
       ],
       womanPage: [
-        { id: "woman-clothes", label: "Clothes" },
-        { id: "woman-bags", label: "Bags" },
-        { id: "woman-jewellery", label: "Jewellery" },
+        { id: "Woman-Clothes", label: "Clothes" },
+        { id: "Woman-Bags", label: "Bags" },
+        { id: "Woman-Jewellery", label: "Jewellery" },
       ],
       otherPage: [
-        { id: "other-mobile", label: "Mobile" },
-        { id: "other-earphone", label: "Earphone" },
-        { id: "other-others", label: "Others" },
+        { id: "Other-Mobilephone", label: "Mobile" },
+        { id: "Other-Earphone", label: "Earphone" },
+        { id: "Other-Others", label: "Others" },
       ],
       ratingFilter: [
         { id: "three-star", label: "3" },
@@ -2130,8 +2130,10 @@ export default {
           ],
         },
       ],
+      productsDownAll:[],
       productsDownMan:[],
-      
+      productsDownWoman:[],
+      productsDownOther:[],
     };
   },
   getters,
