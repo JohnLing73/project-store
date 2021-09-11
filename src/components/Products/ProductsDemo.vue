@@ -11,7 +11,6 @@
 </template>
 <script>
 import { mapGetters } from "vuex"; // 資料在local端時測試用
-import axios from "axios";
 export default {
   props: ["page", "filter"],
   data() {
@@ -26,11 +25,11 @@ export default {
   computed: {
     ...mapGetters({
       isLoading: "prodIsLoading",
-      //   products: 'productsAll' // 資料在local端時測試用
+      products: 'productsDownAll' // 資料在local端時測試用
     }),
-    products() {
-      return this.productsList;
-    },
+    // products() {
+    //   return this.productsList;
+    // },
     productsPage() {
       if(Object.keys(this.filterCondition).length > 0){
         return this.filterResult;
@@ -79,24 +78,8 @@ export default {
     this.$store.commit("prodLoading", true); //test
     this.filterResult = {};
     this.filterCondition = {};
-    axios
-      .get(
-        "https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json"
-      )
-      .then((response) => {
-        const download = [];
-        for (const fireId in response.data) {
-          download.push({
-            data: response.data[fireId],
-          });
-          this.productsList = download[0].data;
-          this.$store.state.productsDownAll = download[0].data;
-        }
-        this.$store.commit("prodLoading", false);  //test
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+    // fetch data from FireBase
+    this.$store.dispatch('productDownload');
   },
 };
 </script>

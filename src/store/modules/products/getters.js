@@ -22,5 +22,8 @@ export default {
   },
   productsAll(state) {
     return state.productsAll;
+  },
+  productsDownAll(state) {
+    return state.productsDownAll;
   }
 }
