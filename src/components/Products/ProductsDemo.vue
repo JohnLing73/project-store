@@ -71,6 +71,12 @@ export default {
            }
          }) 
         }
+        if(this.filterCondition.min) {
+          this.filterResult = this.filterResult.filter( products => products.price >= this.filterCondition.min);
+        }
+        if(this.filterCondition.max) {
+          this.filterResult = this.filterResult.filter( products => products.price <= this.filterCondition.max);
+        }
       console.log(this.filterResult);
       }
     }

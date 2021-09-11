@@ -107,8 +107,8 @@ export default {
         prodCategory: this.selectedPage,
         prodCategoryMinor: this.category,
         color: this.filterColor,
-        // min: this.min,
-        // max: this.max,
+        min: this.min,
+        max: this.max,
         // rating: this.rating
       })
       window.scrollTo(0,0);

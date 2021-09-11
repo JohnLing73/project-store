@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to= "toManProducts" >Man Prodcuts</router-link>
+    <router-link :to= "{ name: 'manProducts'}" >Man Prodcuts</router-link>
     <router-link :to= "toWomanProducts">Woman Prodcuts</router-link>
     <router-link :to= "toOtherProducts">Other Prodcuts</router-link>
   </div>
