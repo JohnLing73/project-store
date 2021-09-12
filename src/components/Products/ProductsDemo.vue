@@ -20,22 +20,24 @@ export default {
 
       filterCondition: {},
 
-      filterResult: {}
+      filterResult: {},
     };
   },
   computed: {
     ...mapGetters({
       isLoading: "prodIsLoading",
-      //   products: 'productsDownAll' // 資料在local端時測試用
+      // products: 'productsDownAll' // 資料在local端時測試用
     }),
     products() {
       return this.productsList;
     },
     productsPage() {
-      if(Object.keys(this.filterCondition).length > 0){
+      if (Object.keys(this.filterCondition).length > 0) {
         return this.filterResult;
-        }else{
-        return this.products.filter( (product) => product.prodCategory === this.page);
+      } else {
+        return this.products.filter(
+          (product) => product.prodCategory === this.page
+        );
       }
     },
   },
@@ -48,40 +50,48 @@ export default {
     },
     updateFilter() {
       this.filterResult = this.products;
-      if(this.filterCondition){
-      //  一般化寫法，但資料格式關係只適用於分類(eg:)男裝,男鞋等等minorCategory
-      // for (let eachKey in this.filterCondition) {
-      //   this.filterResult = this.products.filter( prod =>  prod[eachKey] === this.filterCondition[eachKey]);
-      // }
-        if(this.filterCondition.prodCategory) {
-          this.filterResult = this.filterResult.filter( products => products.prodCategory === this.filterCondition.prodCategory);
+      if (this.filterCondition) {
+        //  一般化寫法，但資料格式關係只適用於分類(eg:)男裝,男鞋等等minorCategory
+        // for (let eachKey in this.filterCondition) {
+        //   this.filterResult = this.products.filter( prod =>  prod[eachKey] === this.filterCondition[eachKey]);
+        // }
+        if (this.filterCondition.prodCategory) {
+          this.filterResult = this.filterResult.filter(
+            (products) =>
+              products.prodCategory === this.filterCondition.prodCategory
+          );
         }
-        if(this.filterCondition.prodCategoryMinor) {
-          this.filterResult = this.filterResult.filter( products => products.prodCategoryMinor === this.filterCondition.prodCategoryMinor);
+        if (this.filterCondition.prodCategoryMinor) {
+          this.filterResult = this.filterResult.filter(
+            (products) =>
+              products.prodCategoryMinor ===
+              this.filterCondition.prodCategoryMinor
+          );
         }
-        //1. 把每個 product 與 filterResult 中的 顏色只要有一個相符的都顯示
-        //1.1 把每個 product的color 先抓出來放到一個array裡當成等等要用的idx 
-        //
-        if(this.filterCondition.color.length > 0) {
-         this.filterResult = this.filterResult.filter( products => {
-           for(let colors in this.filterCondition.color) {
-             for(let eachColor in products.color) {
-               return products.color[eachColor].colorName.includes(this.filterCondition.color[colors]);
-             }
-           }
-         }) 
+        if (this.filterCondition.color.length > 0) {
+          this.filterResult = this.filterResult.filter(
+            products => {
+              for(let i = 0; i < this.filterCondition.color.length; i++) {
+                return products.colorCollection.includes(this.filterCondition.color[i]);
+              }
+            }
+          )
         }
-        if(this.filterCondition.min) {
-          this.filterResult = this.filterResult.filter( products => products.price >= this.filterCondition.min);
+        if (this.filterCondition.min) {
+          this.filterResult = this.filterResult.filter(
+            (products) => products.price >= this.filterCondition.min
+          );
         }
-        if(this.filterCondition.max) {
-          this.filterResult = this.filterResult.filter( products => products.price <= this.filterCondition.max);
+        if (this.filterCondition.max) {
+          this.filterResult = this.filterResult.filter(
+            (products) => products.price <= this.filterCondition.max
+          );
         }
-      console.log(this.filterResult);
+        console.log(this.filterResult);
       }
-    }
+    },
   },
-  mounted() {
+  beforeMount() {
     this.$store.commit("prodLoading", true); //test
     this.filterResult = {};
     this.filterCondition = {};
@@ -96,14 +106,33 @@ export default {
             data: response.data[fireId],
           });
           this.productsList = download[0].data;
-          this.$store.state.productsDownAll = download[0].data;
+          this.$store.state.productsDownAll = download[0].data; // test
         }
-        this.$store.commit("prodLoading", false);  //test
+        this.$store.commit("prodLoading", false); //test
+      })
+      .then(() => {
+        // 新增屬性: 每個prod有什麼color的array
+        // 1.先把每個產品color 抓出
+        let eachColorCollection = [];
+        for (let eachProd in this.productsList) {
+          var tmpArr = [];
+          for (let eachColor in this.productsList[eachProd].color) {
+            tmpArr.push(this.productsList[eachProd].color[eachColor].colorName);
+          }
+          eachColorCollection.push(tmpArr);
+        }
+        // 2.每個產品新增一個新屬性colorCollection依序push回給原本的產品
+        for (let eachProd in this.productsList) {
+          this.productsList[eachProd].colorCollection =
+            eachColorCollection[eachProd];
+        }
+        console.log("productsList", this.productsList);
       })
       .catch((error) => {
         console.log("error", error);
       });
   },
+  mounted() {},
 };
 </script>
 <style lang="scss">
