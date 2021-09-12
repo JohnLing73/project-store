@@ -103,14 +103,21 @@ export default {
   },
   methods: {
     submitForm() {
+      
       this.$emit('user-filter',{
         prodCategory: this.selectedPage,
         prodCategoryMinor: this.category,
         color: this.filterColor,
         min: this.min,
         max: this.max,
-        // rating: this.rating
+        avgRating: this.rating
       })
+      // Reset Conditions
+      this.category = null;
+      this.filterColor =[];
+      this.min = 0;
+      this.max = 0;
+      this.rating = null;
       window.scrollTo(0,0);
     },
     submitData() {

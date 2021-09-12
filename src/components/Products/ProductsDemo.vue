@@ -57,13 +57,13 @@ export default {
         // }
         if (this.filterCondition.prodCategory) {
           this.filterResult = this.filterResult.filter(
-            (products) =>
+            products =>
               products.prodCategory === this.filterCondition.prodCategory
           );
         }
         if (this.filterCondition.prodCategoryMinor) {
           this.filterResult = this.filterResult.filter(
-            (products) =>
+            products =>
               products.prodCategoryMinor ===
               this.filterCondition.prodCategoryMinor
           );
@@ -79,13 +79,18 @@ export default {
         }
         if (this.filterCondition.min) {
           this.filterResult = this.filterResult.filter(
-            (products) => products.price >= this.filterCondition.min
+            products => products.price >= this.filterCondition.min
           );
         }
         if (this.filterCondition.max) {
           this.filterResult = this.filterResult.filter(
-            (products) => products.price <= this.filterCondition.max
+            products => products.price <= this.filterCondition.max
           );
+        }
+        if(this.filterCondition.avgRating) {
+          this.filterResult = this.filterResult.filter(
+            products => products.avgRating >= this.filterCondition.avgRating
+          )
         }
         console.log(this.filterResult);
       }
@@ -123,8 +128,7 @@ export default {
         }
         // 2.每個產品新增一個新屬性colorCollection依序push回給原本的產品
         for (let eachProd in this.productsList) {
-          this.productsList[eachProd].colorCollection =
-            eachColorCollection[eachProd];
+          this.productsList[eachProd].colorCollection = eachColorCollection[eachProd];
         }
         console.log("productsList", this.productsList);
       })
@@ -132,7 +136,6 @@ export default {
         console.log("error", error);
       });
   },
-  mounted() {},
 };
 </script>
 <style lang="scss">
