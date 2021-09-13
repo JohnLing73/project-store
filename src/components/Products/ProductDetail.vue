@@ -154,7 +154,7 @@ export default {
   computed: {
     ...mapGetters(["productsManGetters"]),
     theProduct() {
-      return this.productsManGetters[0];
+      return this.productsDownAll[0];
     },
     // showingImg() {
     //   return this.theProduct.color[0].imgs.bigImgSrc;

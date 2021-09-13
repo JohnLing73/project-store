@@ -95,12 +95,8 @@ export default {
         console.log(this.filterResult);
       }
     },
-  },
-  beforeMount() {
-    this.$store.commit("prodLoading", true); //test
-    this.filterResult = {};
-    this.filterCondition = {};
-    axios
+    fetchData() {
+      axios
       .get(
         "https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json"
       )
@@ -135,6 +131,13 @@ export default {
       .catch((error) => {
         console.log("error", error);
       });
+    }
+  },
+  beforeMount() {
+    this.$store.commit("prodLoading", true); //test
+    this.filterResult = {};
+    this.filterCondition = {};
+    this.fetchData();
   },
 };
 </script>

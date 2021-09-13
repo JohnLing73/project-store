@@ -103,7 +103,14 @@ export default {
   },
   methods: {
     submitForm() {
-      
+      //把filterCondition存起來等等會傳到route，若是用v-model的話會因為需要刪掉而遺失filterCondition
+      const page = this.selectedPage.toLowerCase() + 'Products';
+      const category = this.category;
+      const filterColor = this.filterColor;
+      const min = this.min;
+      const max = this.max;
+      const rating = this.rating;
+
       this.$emit('user-filter',{
         prodCategory: this.selectedPage,
         prodCategoryMinor: this.category,
@@ -118,6 +125,21 @@ export default {
       this.min = 0;
       this.max = 0;
       this.rating = null;
+      
+      // this.$router.push('/' + page + '/' + category + filterColor + min + max + rating);
+      this.$router.push({
+        name: 'manprods', 
+        params: {manprods:'filter'},
+        query:{ 
+          main: page,
+          minor: category,
+          color: filterColor,
+          min: min,
+          max: max,
+          avgRating: rating
+          }
+      })
+
       window.scrollTo(0,0);
     },
     submitData() {
