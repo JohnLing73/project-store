@@ -1,4 +1,5 @@
 <template>
+  <p> route : {{ this.$route.query }}</p>
   <div class="products-view">
     <products-side
       :selected-page="page"
@@ -40,6 +41,7 @@ export default {
         );
       }
     },
+    
   },
   methods: {
     updateData(payload) {

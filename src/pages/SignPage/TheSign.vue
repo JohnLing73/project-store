@@ -361,7 +361,7 @@ export default {
     if(this.signSuccess){ // sign up success
       next();
     }else if(!this.showDialog && this.allowLeave){ // close the warn dialog
-      next()
+      next();
     }else{
       this.showDialog = true;
     }

@@ -131,8 +131,8 @@ export default {
         name: 'manprods', 
         params: {manprods:'filter'},
         query:{ 
-          main: page,
-          minor: category,
+          prodCategory: page,
+          prodCategoryMinor: category,
           color: filterColor,
           min: min,
           max: max,
