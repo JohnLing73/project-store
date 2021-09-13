@@ -15,11 +15,6 @@ export default {
       spinning: false,
     };
   },
-  computed: {},
-  methods: {
-    
-  },
-  watch: {},
 };
 </script>
 <style lang="scss">
