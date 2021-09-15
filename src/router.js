@@ -5,6 +5,7 @@ import ProductsMan from "./pages/Products/ProductsMan.vue";
 import ProductsWoman from "./pages/Products/ProductsWoman.vue";
 import ProductsOther from "./pages/Products/ProductsOther.vue";
 import ProductDetail from './components/Products/ProductDetail.vue';
+import ProductsDemo from './pages/Products/ProductsDemo.vue';
 
 import TheSign from "./pages/SignPage/TheSign.vue";
 import MemberPage from "./pages/member/MemberPage.vue";
@@ -18,6 +19,7 @@ const router = createRouter({
   routes: [
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
+    { path: '/products/:mainPage', component: ProductsDemo, props:true },
     { path: "/manProducts", component: ProductsMan, name:'manProducts' },
     { path: '/manProducts/:manprods', component: ProductsMan, props: true , name: 'manprods'},
     { path: "/womanProducts", component: ProductsWoman, name:'womanProducts' },

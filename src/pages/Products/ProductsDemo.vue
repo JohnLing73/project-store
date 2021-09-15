@@ -1,24 +1,20 @@
 <template>
-<p>{{ renewFilter }}</p>
   <div class="products-view">
-    <!-- <products-side
-      :selected-page="page"
-      :filter-category="filter"
-    >
-    </products-side>
-    <products-main :content="productsPage"></products-main> -->
+    <!-- <p>renewFilter: {{ renewFilter }}</p> -->
     <products-side
       :side-info="mainPage"
+      @user-filter="updateFilter"
     >
     </products-side>
-    <products-main></products-main>
+    <products-main
+      :content="productsPage"
+    ></products-main>
   </div>
 </template>
 <script>
 import { mapGetters } from "vuex"; // 資料在local端時測試用
 import axios from "axios";
 export default {
-  // props: ["page", "filter", 'renewFilter'],
   props:['mainPage'],
   data() {
     return {
@@ -26,7 +22,7 @@ export default {
 
       filterCondition: {},
 
-      filterResult: {},
+      filterResult: [],
     };
   },
   computed: {
@@ -37,54 +33,56 @@ export default {
       return this.filterResult;
     },
     productsPage() {
-      if (Object.keys(this.renewFilter).length > 0) {
+      // if (Object.keys(this.renewFilter).length > 0) {
+        // return this.filterResult;
+      // } else {
         return this.filterResult;
-      } else {
-        return this.productsList.filter(product => product.prodCategory === this.page);
-      }
+      // }
     },
+    renewFilter() {
+      return this.$route.query;
+    }
   },
   watch:{
-    async renewFilter(newFilter) {
-      console.log('renewFilter new: ', newFilter);
-      await this.fetchData();
+    productsList(newList) { // productsList 會先被careated但不會更新，所以改成watch
+      this.productsList = newList;
+      this.filterResult = this.productsList.filter(products => products.prodCategory === this.mainPage);
       this.updateFilter();
     },
+    async $route() {
+      await this.fetchData();
+      this.updateFilter();
+    }
   },
   methods: {
     updateData() {
       this.filterCondition = this.renewFilter;
-      console.log("filterCondition", this.filterCondition);
     },
     updateFilter() {
-      this.filterResult = this.productsList.filter(products => products.prodCategory === this.page);
-      if (this.renewFilter.prodCategoryMinor) {
+      // this.productsList = this.productsList;
+      if (this.$route.query.prodCategoryMinor) {
         this.filterResult = this.filterResult.filter( 
-          products => products.prodCategoryMinor === this.renewFilter.prodCategoryMinor
+          products => products.prodCategoryMinor === this.$route.query.prodCategoryMinor
         );
       }
-      if (this.renewFilter && this.renewFilter.color.length > 0) {
-        this.filterResult = this.filterResult.filter(
-          products => {
-            for(const value of this.renewFilter.color) {
-              return products.colorCollection.includes(value);
-            }
-          }
-        )
+      if (this.$route.query.color) {
+        this.filterResult = this.filterResult.filter( 
+          products => this.$route.query.color.includes(products)
+          );
       }
-      if (this.renewFilter.min) {
+      if (this.$route.query.min) {
         this.filterResult = this.filterResult.filter(
-          products => products.price >= this.renewFilter.min
+          products => products.price >= this.$route.query.min
         );
       }
-      if (this.renewFilter.max) {
+      if (this.$route.query.max) {
         this.filterResult = this.filterResult.filter(
-          products => products.price <= this.renewFilter.max
+          products => products.price <= this.$route.query.max
         );
       }
-      if(this.renewFilter.avgRating) {
+      if(this.$route.query.avgRating) {
         this.filterResult = this.filterResult.filter(
-          products => products.avgRating >= this.renewFilter.avgRating
+          products => products.avgRating >= this.$route.query.avgRating
         )
       }
     },
@@ -120,11 +118,14 @@ export default {
         .catch((error) => {
           console.log("error", error);
         });
+    },
+    showUpload() {
+      console.log(this.$route.query);
     }
   },
-  beforeMount() {
+  created() {
     this.$store.commit("prodLoading", true); //test
-    this.filterResult = {};
+    this.filterResult = [];
     this.filterCondition = {};
     this.fetchData();
   },

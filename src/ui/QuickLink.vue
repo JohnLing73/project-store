@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link :to= "{ name: 'manProducts'}" >Man Prodcuts</router-link>
-    <router-link :to= "toWomanProducts">Woman Prodcuts</router-link>
-    <router-link :to= "toOtherProducts">Other Prodcuts</router-link>
+    <router-link to="/products/Man" >Man Prodcuts</router-link>
+    <router-link to="/products/Woman">Woman Prodcuts</router-link>
+    <router-link to= "/products/Other">Other Prodcuts</router-link>
   </div>
 </template>
 <script>

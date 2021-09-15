@@ -5,8 +5,8 @@
       :class="{ darkMode: this.$store.getters.theme === 'light' }"
     >
       <div class="filter-group">
-        <h2 v-if="filterCategory === 'man'">Man</h2>
-        <h2 v-else-if="filterCategory === 'woman'">Woman</h2>
+        <h2 v-if="sideInfo === 'Man'">Man</h2>
+        <h2 v-else-if="sideInfo === 'Woman'">Woman</h2>
         <h2 v-else>Other</h2>
         <h4>Filter by category</h4>
         <div v-for="(item, idx) in theChosenPage" :key="idx" class="each-filter">
@@ -59,14 +59,15 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  props: ["selected-page","filter-category"],
+  // props: ["selected-page","filter-category"],
+  props:['side-info'],
   emits:['user-filter'],
   data() {
     return {
       category: null,
       filterColor:[],
-      min: 0,
-      max: 0,
+      min: null,
+      max: null,
       rating: null,
 
       colorChoose:[
@@ -89,9 +90,9 @@ export default {
       otherPage: 'otherPageGetters',
     }),
     theChosenPage() {
-      if(this.filterCategory === 'man') {
+      if(this.sideInfo === 'Man') {
         return this.manPage;
-      }else if(this.filterCategory === 'woman') {
+      }else if(this.sideInfo === 'Woman') {
         return this.womanPage;
       }else {
         return this.otherPage;
@@ -104,32 +105,28 @@ export default {
   methods: {
     submitForm() {
       //把filterCondition存起來等等會傳到route，若是用v-model的話會因為需要刪掉而遺失filterCondition
-      const page = this.selectedPage.toLowerCase() + 'Products';
+      const page = this.selectedPage;
       const category = this.category;
       const filterColor = this.filterColor;
       const min = this.min;
       const max = this.max;
       const rating = this.rating;
 
-      this.$emit('user-filter',{
-        prodCategory: this.selectedPage,
-        prodCategoryMinor: this.category,
-        color: this.filterColor,
-        min: this.min,
-        max: this.max,
-        avgRating: this.rating
-      })
-      // Reset Conditions
-      this.category = null;
-      this.filterColor =[];
-      this.min = 0;
-      this.max = 0;
-      this.rating = null;
-      
+      // this.$emit('user-filter',{
+      //   prodCategory: this.selectedPage,
+      //   prodCategoryMinor: this.category,
+      //   color: this.filterColor,
+      //   min: this.min,
+      //   max: this.max,
+      //   avgRating: this.rating
+      // })
+
+      this.$emit('user-filter');
+
       // this.$router.push('/' + page + '/' + category + filterColor + min + max + rating);
       this.$router.push({
-        name: 'manprods', 
-        params: {manprods:'filter'},
+        // name: 'manprods', 
+        params: {mainPage: this.$route.params.mainPage},
         query:{ 
           prodCategory: page,
           prodCategoryMinor: category,
@@ -139,6 +136,14 @@ export default {
           avgRating: rating
           }
       })
+
+      // Reset Conditions
+      this.category = null;
+      this.filterColor =[];
+      this.min = null;
+      this.max = null;
+      this.rating = null;
+      
 
       window.scrollTo(0,0);
     },

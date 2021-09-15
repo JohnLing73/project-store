@@ -25,5 +25,6 @@ export default {
   },
   productsDownAll(state) {
     return state.productsDownAll;
-  }
+  },
+
 }
