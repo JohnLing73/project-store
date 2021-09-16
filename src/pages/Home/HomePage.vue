@@ -15,6 +15,7 @@
           <h2>{{ cardList.title }}</h2>
           <div class="promote-container">
               <div v-for= "(eachFig, idx) in cardList.imgs" :key = "idx" >
+                <router-link :to="eachFig.prodRoute"></router-link>
                 <img :src= "eachFig.src" class= "promote-each-fig">
                 <span class= "promote-each-text">
                   <strong>{{ eachFig.category }}</strong>
@@ -165,10 +166,21 @@ section#wrapper {
     flex-flow: row wrap;
     justify-content: space-evenly;
       > div {
+        position: relative;
         flex-basis: 50%;
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
+          > a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+              &:hover {
+                cursor: pointer;
+              }
+          }
       }
   }
 

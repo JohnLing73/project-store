@@ -39,18 +39,22 @@ export default {
                   {
                     category: 'Clothing',
                     src:require("../../../assets/images/homepage/manstyle1.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
                   },
                   {
                     category: 'Footwear',
                     src:require("../../../assets/images/homepage/manstyle2.jpg"),
-                  },
-                  {
-                    category: 'Watches',
-                    src:require("../../../assets/images/homepage/manstyle3.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Shoes&min&max&avgRating'
                   },
                   {
                     category: 'Bags & Luggage',
+                    src:require("../../../assets/images/homepage/manstyle3.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
+                  },
+                  {
+                    category: 'Watches',
                     src:require("../../../assets/images/homepage/manstyle4.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Watches&min&max&avgRating'
                   }
                 ]
               },
@@ -61,18 +65,22 @@ export default {
                   {
                     category: 'Clothing',
                     src: require("../../../assets/images/homepage/womanstyle1.jpg"),
+                    prodRoute:'/products/Woman?prodCategoryMinor=Woman-Clothes&min&max&avgRating'
                   },
                   {
                     category: 'Footwear & HandBags',
                     src: require("../../../assets/images/homepage/womanstyle2.jpg"),
+                    prodRoute:'/products/Woman?prodCategoryMinor=Woman-Bags&min&max&avgRating'
                   },
                   {
                     category: 'Watchers',
                     src: require("../../../assets/images/homepage/womanstyle3.jpg"),
+                    prodRoute:'/products/Woman?prodCategoryMinor=Woman-Clothes&min&max&avgRating'
                   },
                   {
                     category: 'Fashion Jewellery',
                     src: require("../../../assets/images/homepage/womanstyle4.jpg"),
+                    prodRoute:'/products/Woman?prodCategoryMinor=Woman-Jewellery&min&max&avgRating'
                   }
                 ]
               },
@@ -83,18 +91,22 @@ export default {
                   {
                     category: 'Cleaning',
                     src: require("../../../assets/images/homepage/automotive1.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
                   },
                   {
                     category: 'Tire care',
                     src: require("../../../assets/images/homepage/automotive2.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
                   },
                   {
                     category: 'Helmets',
                     src: require("../../../assets/images/homepage/automotive3.jpg"),
+                    prodRoute:'/products/Other?prodCategoryMinor=Other-Others&min&max&avgRating'
                   },
                   {
                     category: 'Vacuum cleaner',
                     src: require("../../../assets/images/homepage/automotive4.jpg"),
+                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
                   }
                 ]
               },
