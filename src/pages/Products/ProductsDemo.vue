@@ -2,7 +2,7 @@
   <div class="products-view">
     <products-side
       :side-info="mainPage"
-      @user-filter="updateFilter"
+      @user-filter="showUpload"
     >
     </products-side>
     <products-main
@@ -28,15 +28,8 @@ export default {
     ...mapGetters({
       isLoading: "prodIsLoading",
     }),
-    testFilterResult() {
-      return this.filterResult;
-    },
     productsPage() {
-      // if (Object.keys(this.renewFilter).length > 0) {
-        // return this.filterResult;
-      // } else {
         return this.filterResult;
-      // }
     },
     renewFilter() {
       return this.$route.query;
@@ -44,9 +37,8 @@ export default {
   },
   watch:{
     async $route(newRoute) {
-      await this.fetchData();
-      console.log(this.filterResult);
-      this.updateFilter(newRoute);
+      await this.fetchData(newRoute);
+      // this.updateFilter(newRoute);
     }
   },
   methods: {
@@ -54,17 +46,25 @@ export default {
       this.filterCondition = this.renewFilter;
     },
     updateFilter(newRoute) {
-      console.log(this.filterResult);
-      if(newRoute) {
+      if(Object.keys(newRoute.query).length > 0) {
         if (newRoute.query.prodCategoryMinor) {
           this.filterResult = this.filterResult.filter( 
             products => products.prodCategoryMinor === newRoute.query.prodCategoryMinor
           );
         }
-        if (newRoute.query.color) {
-          this.filterResult = this.filterResult.filter( 
-            products => newRoute.query.color.includes(products)
+        if(newRoute.query.color) { //若沒有該變數，下方直接取得該變數的屬性(長度)會報錯
+          if (newRoute.query.color.length > 0) {
+            console.log('this.$route.query.color', newRoute.query.color);
+            console.log(this.filterResult);
+            this.filterResult = this.filterResult.filter( 
+              products => {
+                for(const key in newRoute.query.color) {
+                  return products.colorCollection.includes(newRoute.query.color[key]);
+                }
+              }
             );
+            console.log(this.filterResult);
+          }
         }
         if (newRoute.query.min) {
           this.filterResult = this.filterResult.filter(
@@ -83,50 +83,42 @@ export default {
         }
       }
     },
-    async fetchData() {
-      axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json")
-        .then((response) => {
-          const download = [];
-          for (const fireId in response.data) {
-            download.push({
-              data: response.data[fireId],
-            });
-            this.productsList = download[0].data;
-            this.$store.state.productsDownAll = download[0].data; // test
-          }
-          this.$store.commit("prodLoading", false); //test
-        })
-        .then(() => {
-          // 新增屬性: 每個prod有什麼color的array
-          // 1.先把每個產品color 抓出
-          let eachColorCollection = [];
-          for (let eachProd in this.productsList) {
-            var tmpArr = [];
-            for (let eachColor in this.productsList[eachProd].color) {
-              tmpArr.push(this.productsList[eachProd].color[eachColor].colorName);
-            }
-            eachColorCollection.push(tmpArr);
-          }
-          // 2.每個產品新增一個新屬性colorCollection依序push回給原本的產品
-          for (let eachProd in this.productsList) {
-            this.productsList[eachProd].colorCollection = eachColorCollection[eachProd];
-          }
-          this.filterResult = this.productsList.filter(products => products.prodCategory === this.mainPage);
-        })
-        .catch((error) => {
-          console.log("error", error);
+    async fetchData(checkRoute) {
+      const response = await axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json");
+      const download = [];
+      for (const fireId in response.data) {
+        download.push({
+          data: response.data[fireId],
         });
+        this.productsList = download[0].data;
+        this.$store.state.productsDownAll = download[0].data; // test
+      }
+      this.$store.commit("prodLoading", false); //test
+      // 新增屬性: 每個prod有什麼color的array
+      // 1.先把每個產品color 抓出
+      let eachColorCollection = [];
+      for (let eachProd in this.productsList) {
+        var tmpArr = [];
+        for (let eachColor in this.productsList[eachProd].color) {
+          tmpArr.push(this.productsList[eachProd].color[eachColor].colorName);
+        }
+        eachColorCollection.push(tmpArr);
+      }
+      // 2.每個產品新增一個新屬性colorCollection依序push回給原本的產品
+      for (let eachProd in this.productsList) {
+        this.productsList[eachProd].colorCollection = eachColorCollection[eachProd];
+      }
+      this.filterResult = this.productsList.filter(products => products.prodCategory === this.mainPage);
+      this.updateFilter(checkRoute);
     },
     showUpload() {
-      console.log(this.$route.query);
+      // console.log(this.$route);
     }
   },
-  created() {
+  async created() {
     this.$store.commit("prodLoading", true); //test
-    this.filterResult = [];
-    this.filterCondition = {};
-    this.fetchData();
-    this.updateFilter(this.$route);
+    await this.fetchData(this.$route);
+    // this.updateFilter();
   },
 };
 </script>
