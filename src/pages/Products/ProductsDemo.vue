@@ -36,9 +36,8 @@ export default {
     }
   },
   watch:{
-    async $route(newRoute) {
-      await this.fetchData(newRoute);
-      // this.updateFilter(newRoute);
+    $route(newRoute) {
+      this.fetchData(newRoute);
     }
   },
   methods: {
@@ -58,6 +57,7 @@ export default {
             console.log(this.filterResult);
             this.filterResult = this.filterResult.filter( 
               products => {
+                //迴圈在filter無法使用?
                 for(const key in newRoute.query.color) {
                   return products.colorCollection.includes(newRoute.query.color[key]);
                 }
@@ -115,10 +115,9 @@ export default {
       // console.log(this.$route);
     }
   },
-  async created() {
+  created() {
     this.$store.commit("prodLoading", true); //test
-    await this.fetchData(this.$route);
-    // this.updateFilter();
+    this.fetchData(this.$route);
   },
 };
 </script>

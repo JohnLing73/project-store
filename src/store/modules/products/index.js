@@ -82,6 +82,7 @@ export default {
               comment: "Nice shirt."
             }
           ],
+          tegs:['cloth', 'fashion']
         },
         {
           prodId: 'mc02',

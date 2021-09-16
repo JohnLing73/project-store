@@ -62,7 +62,7 @@
                 v-for="(color,idx) in theProduct.color"
                 :key="color.colorName"
               >
-                <img :src="color.imgs.bigImgSrc" />
+                <img :src="color.imgSrc" />
                 <input 
                 type="radio" 
                 :value="color.colorName" 
@@ -144,18 +144,19 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      showingImg: this.$store.state.products.productsMan[0].color[0].imgs.bigImgSrc,
+      showingImg: this.$store.state.productsAll[0].imgSrc,
       //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
       selectSize: this.$store.state.products.productsMan[0].size[0],
       selectColor: this.$store.state.products.productsMan[0].color[0].colorName,
-      selectQuantity: 1
+      selectQuantity: 1,
+      theProduct: this.$store.state.productsAll[0]
     };
   },
   computed: {
     ...mapGetters(["productsManGetters"]),
-    theProduct() {
-      return this.productsDownAll[0];
-    },
+    // theProduct() {
+    //   return this.$store.getters.productsDownAll[0];
+    // },
     // showingImg() {
     //   return this.theProduct.color[0].imgs.bigImgSrc;
     // },
@@ -163,7 +164,8 @@ export default {
       return this.theProduct.color[0].colorName;
     },
     totalRating() {
-      return this.theProduct.feedback.length;
+      // return this.theProduct.feedback.length;
+      return this.$store.state.productsAll[0].feedback.length;
     },
     darkMode() {
       return this.$store.getters.themeMode;
@@ -191,7 +193,7 @@ export default {
     },
     addWishlist() {
 
-    }
+    },
   },
 };
 </script>
