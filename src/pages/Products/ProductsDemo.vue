@@ -1,6 +1,5 @@
 <template>
   <div class="products-view">
-    <!-- <p>renewFilter: {{ renewFilter }}</p> -->
     <products-side
       :side-info="mainPage"
       @user-filter="updateFilter"
@@ -44,46 +43,44 @@ export default {
     }
   },
   watch:{
-    productsList(newList) { // productsList 會先被careated但不會更新，所以改成watch
-      this.productsList = newList;
-      this.filterResult = this.productsList.filter(products => products.prodCategory === this.mainPage);
-      this.updateFilter();
-    },
-    async $route() {
+    async $route(newRoute) {
       await this.fetchData();
-      this.updateFilter();
+      console.log(this.filterResult);
+      this.updateFilter(newRoute);
     }
   },
   methods: {
     updateData() {
       this.filterCondition = this.renewFilter;
     },
-    updateFilter() {
-      // this.productsList = this.productsList;
-      if (this.$route.query.prodCategoryMinor) {
-        this.filterResult = this.filterResult.filter( 
-          products => products.prodCategoryMinor === this.$route.query.prodCategoryMinor
-        );
-      }
-      if (this.$route.query.color) {
-        this.filterResult = this.filterResult.filter( 
-          products => this.$route.query.color.includes(products)
+    updateFilter(newRoute) {
+      console.log(this.filterResult);
+      if(newRoute) {
+        if (newRoute.query.prodCategoryMinor) {
+          this.filterResult = this.filterResult.filter( 
+            products => products.prodCategoryMinor === newRoute.query.prodCategoryMinor
           );
-      }
-      if (this.$route.query.min) {
-        this.filterResult = this.filterResult.filter(
-          products => products.price >= this.$route.query.min
-        );
-      }
-      if (this.$route.query.max) {
-        this.filterResult = this.filterResult.filter(
-          products => products.price <= this.$route.query.max
-        );
-      }
-      if(this.$route.query.avgRating) {
-        this.filterResult = this.filterResult.filter(
-          products => products.avgRating >= this.$route.query.avgRating
-        )
+        }
+        if (newRoute.query.color) {
+          this.filterResult = this.filterResult.filter( 
+            products => newRoute.query.color.includes(products)
+            );
+        }
+        if (newRoute.query.min) {
+          this.filterResult = this.filterResult.filter(
+            products => products.price >= newRoute.query.min
+          );
+        }
+        if (newRoute.query.max) {
+          this.filterResult = this.filterResult.filter(
+            products => products.price <= newRoute.query.max
+          );
+        }
+        if(newRoute.query.avgRating) {
+          this.filterResult = this.filterResult.filter(
+            products => products.avgRating >= newRoute.query.avgRating
+          )
+        }
       }
     },
     async fetchData() {
@@ -114,6 +111,7 @@ export default {
           for (let eachProd in this.productsList) {
             this.productsList[eachProd].colorCollection = eachColorCollection[eachProd];
           }
+          this.filterResult = this.productsList.filter(products => products.prodCategory === this.mainPage);
         })
         .catch((error) => {
           console.log("error", error);
@@ -128,6 +126,7 @@ export default {
     this.filterResult = [];
     this.filterCondition = {};
     this.fetchData();
+    this.updateFilter(this.$route);
   },
 };
 </script>
