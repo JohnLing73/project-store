@@ -28,6 +28,8 @@ export default {
   },
   filterResult(state) {
     return state.filterResult;
+  },
+  specificProduct(state) {
+    return state.specificProduct[0];
   }
-
 }

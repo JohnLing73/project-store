@@ -1,6 +1,6 @@
 <template>
   <div class="prod-card" :key="eachData.name">
-    <router-link to="/"></router-link>
+    <router-link :to="{name: 'productDetail', params:{ prodId: eachData.prodId } }"></router-link>
     <div class="prod-img-container">
       <img :src="eachData.imgSrc" alt="">
       <span v-if="eachData.bestSeller" class="best-seller-label">Best seller</span>

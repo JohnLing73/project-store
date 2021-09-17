@@ -1,12 +1,13 @@
 <template>
+this is for test del
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
-        <img ref='img' :src="showingImg" alt="" />
+        <img ref='img' :src="specificProduct.color[0].imgSrc" alt="" />
       </div>
       <div class="detail-info">
-        <h4 class="brand">{{ theProduct.brand }}</h4>
-        <p class="prod-name">{{ theProduct.prodName }}</p>
+        <h4 class="brand">{{ specificProduct.brand }}</h4>
+        <p class="prod-name">{{ specificProduct.prodName }}</p>
         <div class="prod-rating">
           <font-awesome-icon
             v-for="(item, idx) in 5"
@@ -22,16 +23,16 @@
         </div>
         <div>
           <h4>Price:</h4>
-          <h3 class="price content">$ {{ theProduct.price }}</h3>
+          <h3 class="price content">$ {{ specificProduct.price }}</h3>
         </div>
         <div class="stock-left ">
           <h4>Stock:</h4>
-          <p class="content">{{ theProduct.stock }} <span>in stock!</span></p>
+          <p class="content">{{ specificProduct.stock }} <span>in stock!</span></p>
         </div>
         <div class="key-word">
           <h4>Key Words:</h4>
           <span class="key-word-tag content"
-            v-for="(tag, idx) in theProduct.tags"
+            v-for="(tag, idx) in specificProduct.tags"
             :key="idx"
             >
             {{ tag }}
@@ -46,7 +47,7 @@
             <h4>Size:</h4>
             <select name="size" v-model="selectSize" class="content">
               <option
-                v-for="(prod, idx) in theProduct.size"
+                v-for="(prod, idx) in specificProduct.size"
                 :key="idx"
                 :value="prod"
               >
@@ -59,7 +60,7 @@
             <div class="color-choices-container content">
               <div
                 class="color-choice-each"
-                v-for="(color,idx) in theProduct.color"
+                v-for="(color,idx) in specificProduct.color"
                 :key="color.colorName"
               >
                 <img :src="color.imgSrc" />
@@ -95,7 +96,7 @@
 
         <div class="prod-info-list">
           <ul :class="{ darkMode: this.$store.getters.themeMode }">
-            <li v-for="(info, idx) in theProduct.productInfo" :key="idx">
+            <li v-for="(info, idx) in specificProduct.productInfo" :key="idx">
               {{ info }}
             </li>
           </ul>
@@ -107,7 +108,7 @@
       <h3>Reviews</h3>
       <div
         class="each-feedback"
-        v-for="(feedback, idx) in theProduct.feedback"
+        v-for="(feedback, idx) in specificProduct.feedback"
         :key="idx"
       >
         <div class="each-feedback-account">
@@ -142,30 +143,32 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  props:['prodId'],
   data() {
     return {
-      showingImg: this.$store.state.productsAll[0].imgSrc,
+      showingImg: this.$store.state.products.specificProduct.imgSrc,
       //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
-      selectSize: this.$store.state.products.productsMan[0].size[0],
-      selectColor: this.$store.state.products.productsMan[0].color[0].colorName,
+      selectSize: this.$store.state.products.specificProduct.size[0],
+      selectColor: this.$store.state.products.specificProduct.color[0].colorName,
       selectQuantity: 1,
-      theProduct: this.$store.state.productsAll[0]
+      theProduct: this.$store.state.products.specificProduct,
+      specificProduct: this.$store.state.products.specificProduct
     };
   },
   computed: {
-    ...mapGetters(["productsManGetters"]),
+    ...mapGetters(["productsManGetters", 'specificProduct']),
     // theProduct() {
-    //   return this.$store.getters.productsDownAll[0];
+    //   return this.$store.getters.specificProduct;
     // },
     // showingImg() {
     //   return this.theProduct.color[0].imgs.bigImgSrc;
     // },
     selectedColor() {
-      return this.theProduct.color[0].colorName;
+      return this.$store.state.products.specificProduct.color[0].colorName;
     },
     totalRating() {
       // return this.theProduct.feedback.length;
-      return this.$store.state.productsAll[0].feedback.length;
+      return this.$store.state.products.specificProduct.feedback.length;
     },
     darkMode() {
       return this.$store.getters.themeMode;
@@ -181,19 +184,27 @@ export default {
       console.log('Quantity');
       console.log(this.selectQuantity);
       console.log('refs');
-      this.selectSize = this.$store.state.products.productsMan[0].size[0];
-      this.selectColor = this.$store.state.products.productsMan[0].color[0].colorName;
+      this.selectSize = this.$store.state.products.specificProduct.size[0];
+      this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
       this.selectQuantity = 1;
     },
     addCart() {
       console.log('addCart');
     },
     changeBigImg(idx) {
-      this.showingImg = this.$store.state.products.productsMan[0].color[idx].imgs.bigImgSrc;
+      this.showingImg = this.$store.state.products.specificProduct.color[idx].imgSrc;
     },
     addWishlist() {
 
     },
+  },
+  watch:{
+    $route(newRoute) {
+      this.$store.dispatch('fetchData', newRoute);
+    }
+  },
+  created() {
+    this.$store.dispatch('fetchData',this.$route);
   },
 };
 </script>

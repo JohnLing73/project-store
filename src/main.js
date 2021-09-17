@@ -22,7 +22,6 @@ import QuickLink from './ui/QuickLink.vue';
 import ProductsSide from './components/Products/ProductsSide.vue';
 import ProductsMain from './components/Products/ProductsMain.vue';
 import ProductsCard from './components/Products/ProductsCard.vue';
-import ProductDetail from './components/Products/ProductDetail.vue';
 
 //Import Minor Component
 import FontAwesomeBanner from './components/homepage/FontAwesomeBanner.vue';
@@ -59,7 +58,6 @@ app.component('quick-link', QuickLink);
 app.component('products-side', ProductsSide);
 app.component('products-main', ProductsMain);
 app.component('product-card', ProductsCard);
-app.component('product-detail', ProductDetail);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);

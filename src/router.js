@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/Home/HomePage.vue";
 //Products and it children routes
-import ProductDetail from './components/Products/ProductDetail.vue';
+import ProductDetail from './pages/Products/ProductDetail.vue';
 import ProductsDemo from './pages/Products/ProductsDemo.vue';
 
 import TheSign from "./pages/SignPage/TheSign.vue";
@@ -17,9 +17,7 @@ const router = createRouter({
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
     { path: '/products/:mainPage', component: ProductsDemo, props:true, name:'mainProduct' },
-
-    // 待刪
-    { path: '/productDetail', component: ProductDetail },
+    { path: '/productDetail/:prodId', component: ProductDetail, name: 'productDetail', props:true },
 
     { path: "/sign", component: TheSign, name:'sign' },
     { path: "/member", component: MemberPage, name: 'member',meta: { needsAuth: true}},

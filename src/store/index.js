@@ -11,7 +11,7 @@ const store = createStore({
         products: productsMoudule
     },
     state:{
-        mainState:'mainState'
+        mainState:'mainState',
     }
 
 })
