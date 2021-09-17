@@ -47,9 +47,9 @@ export default {
                     prodRoute:'/products/Man?prodCategoryMinor=Man-Shoes&min&max&avgRating'
                   },
                   {
-                    category: 'Bags & Luggage',
-                    src:require("../../../assets/images/homepage/manstyle3.jpg"),
-                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
+                    category: 'Man For All',
+                    src:require("../../../assets/images/homepage/for-man.jpg"),
+                    prodRoute:{ name: 'mainProduct', params: { mainPage: 'Man'}}
                   },
                   {
                     category: 'Watches',
@@ -73,9 +73,9 @@ export default {
                     prodRoute:'/products/Woman?prodCategoryMinor=Woman-Bags&min&max&avgRating'
                   },
                   {
-                    category: 'Watchers',
-                    src: require("../../../assets/images/homepage/womanstyle3.jpg"),
-                    prodRoute:'/products/Woman?prodCategoryMinor=Woman-Clothes&min&max&avgRating'
+                    category: 'Woman For All',
+                    src: require("../../../assets/images/homepage/for-woman.jpg"),
+                    prodRoute: { name: 'mainProduct', params: { mainPage: 'Woman' } }
                   },
                   {
                     category: 'Fashion Jewellery',
@@ -89,24 +89,24 @@ export default {
                 title: 'Automotive stuff | Up to 60% off',
                 imgs: [
                   {
-                    category: 'Cleaning',
-                    src: require("../../../assets/images/homepage/automotive1.jpg"),
-                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
+                    category: 'Mobile',
+                    src: require("../../../assets/images/homepage/other-mobile.jpg"),
+                    prodRoute:'/products/Other?prodCategoryMinor=Other-Mobilephone&min&max&avgRating'
                   },
                   {
-                    category: 'Tire care',
-                    src: require("../../../assets/images/homepage/automotive2.jpg"),
-                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
+                    category: 'Earphone',
+                    src: require("../../../assets/images/homepage/other-earphone.jpg"),
+                    prodRoute:'/products/Other?prodCategoryMinor=Other-Earphone&min&max&avgRating'
                   },
                   {
-                    category: 'Helmets',
+                    category: 'Other For All',
+                    src: require("../../../assets/images/homepage/other-for-all.jpg"),
+                    prodRoute: { name: 'mainProduct', params: { mainPage: 'Other'} }
+                  },
+                  {
+                    category: 'Others',
                     src: require("../../../assets/images/homepage/automotive3.jpg"),
                     prodRoute:'/products/Other?prodCategoryMinor=Other-Others&min&max&avgRating'
-                  },
-                  {
-                    category: 'Vacuum cleaner',
-                    src: require("../../../assets/images/homepage/automotive4.jpg"),
-                    prodRoute:'/products/Man?prodCategoryMinor=Man-Clothes&min&max&avgRating'
                   }
                 ]
               },

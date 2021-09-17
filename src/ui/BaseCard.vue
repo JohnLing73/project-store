@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     padding: 1rem;
     margin: 2rem 0;
   }
-  .card.dark-mode {
-    box-shadow: 0px 2px 8px rgba(248, 241, 241, 0.66);
+  .card.darkMode {
+    box-shadow: 0px 2px 8px #9a9a9aa1 !important;
   }
 </style>

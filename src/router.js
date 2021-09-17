@@ -19,7 +19,7 @@ const router = createRouter({
   routes: [
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
-    { path: '/products/:mainPage', component: ProductsDemo, props:true },
+    { path: '/products/:mainPage', component: ProductsDemo, props:true, name:'mainProduct' },
     { path: "/manProducts", component: ProductsMan, name:'manProducts' },
     { path: '/manProducts/:manprods', component: ProductsMan, props: true , name: 'manprods'},
     { path: "/womanProducts", component: ProductsWoman, name:'womanProducts' },
