@@ -41,8 +41,8 @@ export default {
       }
     }
   },
-  productsDownAll(state, payload) {
-    state.productsDownAll = payload;
+  filterResult(state, payload) {
+    state.filterResult = payload;
   },
   specificProduct(state, payload) {
     state.specificProduct = payload;

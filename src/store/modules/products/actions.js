@@ -4,35 +4,39 @@ export default {
   async fetchData(context,checkRoute) {
     axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json")
         .then( response => {
-          const download = [];
+          let download = [];
           for (const fireId in response.data) {
             download.push({
               data: response.data[fireId],
             });
-            context.state.productsDownAll = download[0].data; // test
+            download = download[0].data; // test
           }
           context.commit("prodLoading", false); //test
           // 新增屬性: 每個prod有什麼color的array
           // 1.先把每個產品color 抓出
           let eachColorCollection = [];
-          for (let eachProd in context.state.productsDownAll) {
+          for (let eachProd in download) {
             var tmpArr = [];
-            for (let eachColor in context.state.productsDownAll[eachProd].color) {
-              tmpArr.push(context.state.productsDownAll[eachProd].color[eachColor].colorName);
+            for (let eachColor in download[eachProd].color) {
+              tmpArr.push(download[eachProd].color[eachColor].colorName);
             }
             eachColorCollection.push(tmpArr);
           }
           // 2.每個產品新增一個新屬性colorCollection依序push回給原本的產品
-          for (let eachProd in context.state.productsDownAll) {
-            context.state.productsDownAll[eachProd].colorCollection = eachColorCollection[eachProd];
+          for (let eachProd in download) {
+            download[eachProd].colorCollection = eachColorCollection[eachProd];
           }
           if(checkRoute.params.mainPage) {
-            context.state.filterResult = context.state.productsDownAll.filter(products => products.prodCategory === checkRoute.params.mainPage);
+            let filterArray = [];
+            filterArray = download.filter(products => products.prodCategory === checkRoute.params.mainPage);
+            context.commit('filterResult', filterArray)
             context.commit('updateFilter', checkRoute );
             return;
           }
           if(checkRoute.params.prodId) {
-            context.state.specificProduct = context.state.productsDownAll.filter(products => products.prodId === checkRoute.params.prodId);
+            let specificArray = [];
+            specificArray = download.filter(products => products.prodId === checkRoute.params.prodId);
+            context.commit('specificProduct', specificArray);
           }
         })
         .catch(error => {
