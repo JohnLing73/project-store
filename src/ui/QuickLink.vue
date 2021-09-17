@@ -6,11 +6,11 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 export default {
-  computed: {
-    ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts'])
-  }
+  // computed: {
+  //   ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts'])
+  // }
 }
 </script>
 <style lang="scss" scoped>

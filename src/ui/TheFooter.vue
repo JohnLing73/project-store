@@ -53,7 +53,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts', 'toAbout']),
+    // ...mapGetters(['toManProducts', 'toWomanProducts', 'toOtherProducts', 'toAbout']),
+    ...mapGetters(['toAbout']),
     darkMode() {
       if (this.$store.getters.theme === "light") {
         return true;
@@ -64,15 +65,15 @@ export default {
     pages(){
       return [
         {
-          url:this.toManProducts,
+          url: { name: 'mainProduct', params: { mainPage: 'Man'} },
           linkText: 'Man Products'
         },
         {
-          url:this.toWomanProducts,
+          url: { name: 'mainProduct', params: { mainPage: 'Woman' } },
           linkText: 'Woman Products'
         },
         {
-          url:this.toOtherProducts,
+          url: { name: 'mainProduct', params: { mainPage: 'Other'} },
           linkText: 'Other Products'
         },
         {

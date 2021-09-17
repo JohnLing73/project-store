@@ -19,7 +19,6 @@ import FontIcon from './ui/FontIcon.vue';
 import BaseDialog from './ui/BaseDialog.vue';
 import QuickLink from './ui/QuickLink.vue';
 
-import ProductsDemo from './components/Products/ProductsDemo.vue';
 import ProductsSide from './components/Products/ProductsSide.vue';
 import ProductsMain from './components/Products/ProductsMain.vue';
 import ProductsCard from './components/Products/ProductsCard.vue';
@@ -57,7 +56,6 @@ app.component('font-icon', FontIcon);
 app.component('base-dialog', BaseDialog);
 app.component('quick-link', QuickLink);
 
-app.component('products-demo', ProductsDemo);
 app.component('products-side', ProductsSide);
 app.component('products-main', ProductsMain);
 app.component('product-card', ProductsCard);

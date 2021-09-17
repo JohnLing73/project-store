@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/Home/HomePage.vue";
 //Products and it children routes
-import ProductsMan from "./pages/Products/ProductsMan.vue";
-import ProductsWoman from "./pages/Products/ProductsWoman.vue";
-import ProductsOther from "./pages/Products/ProductsOther.vue";
 import ProductDetail from './components/Products/ProductDetail.vue';
 import ProductsDemo from './pages/Products/ProductsDemo.vue';
 
@@ -20,10 +17,6 @@ const router = createRouter({
     { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
     { path: '/products/:mainPage', component: ProductsDemo, props:true, name:'mainProduct' },
-    { path: "/manProducts", component: ProductsMan, name:'manProducts' },
-    { path: '/manProducts/:manprods', component: ProductsMan, props: true , name: 'manprods'},
-    { path: "/womanProducts", component: ProductsWoman, name:'womanProducts' },
-    { path: "/otherProducts", component: ProductsOther, name:'otherProducts' },
 
     // 待刪
     { path: '/productDetail', component: ProductDetail },
