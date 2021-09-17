@@ -2,7 +2,6 @@ import axios from 'axios';
 export default {
   // 抓products/:mainPage + 抓product/:prodId
   async fetchData(context,checkRoute) {
-    context.rootState
     axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json")
         .then( response => {
           const download = [];
