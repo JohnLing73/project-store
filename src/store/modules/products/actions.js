@@ -35,6 +35,9 @@ export default {
             context.state.specificProduct = context.state.productsDownAll.filter(products => products.prodId === checkRoute.params.prodId);
           }
         })
+        .catch(error => {
+          console.error('error', error.message);
+        })
   },
   // async fetchSpecificProduct(context) {
   //   const response = await axios.get('https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json');

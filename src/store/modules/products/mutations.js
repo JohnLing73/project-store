@@ -40,5 +40,11 @@ export default {
         )
       }
     }
+  },
+  productsDownAll(state, payload) {
+    state.productsDownAll = payload;
+  },
+  specificProduct(state, payload) {
+    state.specificProduct = payload;
   }
 }

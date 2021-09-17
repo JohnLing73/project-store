@@ -149,7 +149,7 @@ export default {
       // //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
       // selectSize: this.$store.state.products.specificProduct.size[0],
       // selectColor: this.$store.state.products.specificProduct.color[0].colorName,
-      // selectQuantity: 1,
+      selectQuantity: 1,
       // theProduct: this.$store.state.products.specificProduct,
       // specificProduct: this.$store.state.products.specificProduct
       test:[]
@@ -203,8 +203,9 @@ export default {
       this.$store.dispatch('fetchData', newRoute);
     }
   },
-  created() {
-    this.$store.dispatch('fetchData',this.$route);
+  async created() {
+    await this.$store.dispatch('fetchData',this.$route);
+    console.log('yo', this.$store.getters.specificProduct);
   },
 };
 </script>
@@ -218,14 +219,19 @@ export default {
   padding: $distance-window;
   justify-content: space-evenly;
    .img-container {
-      width: 300px;
-      height: 480px;
+      background-color: white;
+      width: 280px;
+      height: 340px;
     img {
       height: 100%;
       width: 100%;
       object-fit: scale-down;
     }
   }
+}
+
+.detail-info {
+  width: 500px;
 }
 
 .color-choices-container {
