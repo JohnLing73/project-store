@@ -26,5 +26,8 @@ export default {
   productsDownAll(state) {
     return state.productsDownAll;
   },
+  filterResult(state) {
+    return state.filterResult;
+  }
 
 }

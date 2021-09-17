@@ -2131,7 +2131,10 @@ export default {
           ],
         },
       ],
-      productsDownAll:[],
+      productsDownAll:[], // 接firebase下載的資料
+      filterResult:[], // firebase 下載後經處理的資料
+      mainPage:'', // productsDemo 的props(判斷頁面)
+
       productsDownMan:[],
       productsDownWoman:[],
       productsDownOther:[],
