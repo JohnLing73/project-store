@@ -30,6 +30,6 @@ export default {
     return state.filterResult;
   },
   specificProduct(state) {
-    return state.specificProduct[0];
+    return state.specificProduct;
   }
 }

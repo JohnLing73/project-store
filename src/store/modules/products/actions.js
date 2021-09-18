@@ -2,7 +2,7 @@ import axios from 'axios';
 export default {
   // 抓products/:mainPage + 抓product/:prodId
   async fetchData(context,checkRoute) {
-    axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json")
+    await axios.get("https://resume-store-fd4de-default-rtdb.firebaseio.com/products.json")
         .then( response => {
           let download = [];
           for (const fireId in response.data) {
@@ -35,7 +35,7 @@ export default {
           if(checkRoute.params.prodId) {
             let specificArray = [];
             specificArray = download.filter(products => products.prodId === checkRoute.params.prodId);
-            context.commit('specificProduct', specificArray);
+            context.commit('specificProduct', specificArray[0]);
           }
         })
         .catch(error => {

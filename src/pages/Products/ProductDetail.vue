@@ -55,7 +55,7 @@
             </select>
           </div>
           <div class="select-color">
-            <h4>Color:</h4>
+            <h4>Color: <span>{{ selectColor }}</span></h4>
             <div class="color-choices-container content">
               <div
                 class="color-choice-each"
@@ -147,8 +147,9 @@ export default {
     return {
       // showingImg: this.$store.state.products.specificProduct.imgSrc,
       // //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
-      // selectSize: this.$store.state.products.specificProduct.size[0],
+      selectSize: '',
       // selectColor: this.$store.state.products.specificProduct.color[0].colorName,
+      selectColor: '',
       selectQuantity: 1,
       // theProduct: this.$store.state.products.specificProduct,
       // specificProduct: this.$store.state.products.specificProduct
@@ -163,9 +164,9 @@ export default {
     // showingImg() {
     //   return this.theProduct.color[0].imgs.bigImgSrc;
     // },
-    selectedColor() {
-      return this.$store.state.products.specificProduct.color[0].colorName;
-    },
+    // selectColor() {
+    //   return this.$store.state.products.specificProduct.color[0].colorName;
+    // },
     totalRating() {
       // return this.theProduct.feedback.length;
       return this.specificProduct.feedback.length;
@@ -192,21 +193,23 @@ export default {
       console.log('addCart');
     },
     changeBigImg(idx) {
-      this.showingImg = this.$store.state.products.specificProduct.color[idx].imgSrc;
+      this.$refs.img.src = this.$store.state.products.specificProduct.color[idx].imgSrc;
     },
     addWishlist() {
 
     },
   },
-  watch:{
-    $route(newRoute) {
-      this.$store.dispatch('fetchData', newRoute);
-    }
-  },
   async created() {
     await this.$store.dispatch('fetchData',this.$route);
-    console.log('yo', this.$store.getters.specificProduct);
-  },
+    this.selectSize = this.$store.state.products.specificProduct.size[0];
+    this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
+  }
+  // watch:{//該頁面變動只能透過 url 變動，所以只需要 created()，故不須偵聽route改變
+  //   async $route(newRoute) {
+  //     await this.$store.dispatch('fetchData', newRoute);
+  //     console.log('watch FetchData', this.$store.state.products.specificProduct);
+  //   }
+  // }
 };
 </script>
 <style lang="scss" scoped>
@@ -369,5 +372,13 @@ ul.darkMode,
     }
 }
 
+.select-color {
+  h4 {
+    > span {
+      text-transform: capitalize;
+      font-size: inherit;
+    }
+  }
+}
 
 </style>
