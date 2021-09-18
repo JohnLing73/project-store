@@ -63,7 +63,7 @@
       class="form-each"
       :class="{ invalidStyle: inputBirthValid === 'Invalid' }"
     >
-      <label for="birth">Birth</label>
+      <label for="birth">Birth (YYYY/MM/DD)</label>
       <span v-if="inputBirthValid === 'Invalid'" class="invalid-warning">
         (Please Input Valid Birth!)
       </span>
@@ -96,7 +96,7 @@
       </p>
     </div>
     <base-button v-if="signStatus==='signUp'" :link="false" @click="signUp">Sign Up</base-button>
-    <base-button v-else :likn='false' @click="signIn">Sign In</base-button>
+    <base-button v-else :link='false' @click="signIn">Sign In</base-button>
     <base-button :link="false" mode="minor" @click="switchSignStatus"
       >{{ switchText }}</base-button
     >
@@ -273,30 +273,38 @@ export default {
         console.log('return without upload');
         return;
       }
-      fetch(
-        "https://resume-store-fd4de-default-rtdb.firebaseio.com/user.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            memId: this.memberId,
-            email: this.email,
-            password: this.password,
-            birth: this.birth,
-            location: this.location,
-          }),
-        }
-      );
+      // fetch(
+      //   "https://resume-store-fd4de-default-rtdb.firebaseio.com/user.json",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       memId: this.memberId,
+      //       email: this.email,
+      //       password: this.password,
+      //       birth: this.birth,
+      //       location: this.location,
+      //     }),
+      //   }
+      // );
+      this.$store.dispatch('signup',{
+        email: this.email,
+        password: this.password,
+        memberId: this.memberId,
+        birth: this.birth,
+        location: this.location
+      })
+
       this.memberId = '';
       this.email = '';
       this.password = '';
       this.birth = '';
       this.location = '';
       //註冊完成後離開頁面不會出現跳窗並直接跳轉至 member
-      this.signSuccess = true;
-      this.$router.push('/member');
+      // this.signSuccess = true;
+      // this.$router.push('/member');
     },
     switchSignStatus() {
       if(this.signStatus === 'signUp'){
@@ -319,7 +327,7 @@ export default {
         this.inputMailInvalid = "Valid";
         this.allowSignUp = true;
       }
-      if (this.memberId === "") {
+      if (this.memberId === "" ) {
         this.inputMemberIdValid = "Invalid";
         this.allowSignUp = false;
         return;

@@ -2,7 +2,7 @@
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
-        <img ref='img' :src="specificProduct.color[0].imgSrc" alt="" />
+        <img ref='img' :src="imgSrc" alt="" />
       </div>
       <div class="detail-info">
         <h4 class="brand">{{ specificProduct.brand }}</h4>
@@ -145,32 +145,17 @@ export default {
   props:['prodId'],
   data() {
     return {
-      // showingImg: this.$store.state.products.specificProduct.imgSrc,
-      // //!用mapState會抓到最後 index.js裡的 state 若用module 記得要寫成 this.$store.state.mouduleName
+      imgSrc: '',
+      totalRating: 0,
+      // data for v-model
       selectSize: '',
-      // selectColor: this.$store.state.products.specificProduct.color[0].colorName,
       selectColor: '',
       selectQuantity: 1,
-      // theProduct: this.$store.state.products.specificProduct,
-      // specificProduct: this.$store.state.products.specificProduct
-      test:[]
+      
     };
   },
   computed: {
     ...mapGetters(["productsManGetters", 'specificProduct']),
-    // theProduct() {
-    //   return this.$store.getters.specificProduct;
-    // },
-    // showingImg() {
-    //   return this.theProduct.color[0].imgs.bigImgSrc;
-    // },
-    // selectColor() {
-    //   return this.$store.state.products.specificProduct.color[0].colorName;
-    // },
-    totalRating() {
-      // return this.theProduct.feedback.length;
-      return this.specificProduct.feedback.length;
-    },
     darkMode() {
       return this.$store.getters.themeMode;
     }
@@ -184,7 +169,6 @@ export default {
       console.log(this.selectColor);
       console.log('Quantity');
       console.log(this.selectQuantity);
-      console.log('refs');
       this.selectSize = this.$store.state.products.specificProduct.size[0];
       this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
       this.selectQuantity = 1;
@@ -201,6 +185,9 @@ export default {
   },
   async created() {
     await this.$store.dispatch('fetchData',this.$route);
+    this.imgSrc = this.$store.state.products.specificProduct.color[0].imgSrc;
+    this.totalRating = this.$store.state.products.specificProduct.feedback.length;
+    // Initialized v-model
     this.selectSize = this.$store.state.products.specificProduct.size[0];
     this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
   }
