@@ -29,9 +29,8 @@ export default {
           if(checkRoute.params.mainPage) {
             let filterArray = [];
             filterArray = download.filter(products => products.prodCategory === checkRoute.params.mainPage);
-            context.commit('filterResult', filterArray)
+            context.commit('filterResult', filterArray);
             context.commit('updateFilter', checkRoute );
-            return;
           }
           if(checkRoute.params.prodId) {
             let specificArray = [];
