@@ -3,18 +3,18 @@
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
     <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
-      <div class="icon-link" @click = "toggleList">
-        <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" />
-        <img v-else :src= "profileFigLight" alt="profile" />
-        <ul ref= "list">
+      <div class="icon-link" @click="toggleList">
+        <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" id="toggleIcon"/>
+        <img v-else :src= "profileFigLight" alt="profile" id="toggleIcon"/>
+        <ul ref= "list" id="accountToggleList">
           <li>
-            <router-link :to="toMemberPage" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</router-link> 
+            <a @click.prevent="goTo('/member')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
           </li>
           <li>
-            <router-link to="" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</router-link>
+            <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
           </li>
           <li>
-            <router-link to="" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Wishlist</router-link>
+            <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Wishlist</a>
           </li>
           <li>
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>
@@ -111,21 +111,17 @@ export default {
         this.toggle = false;
       }
     },
-    toggleList() {
-      const list = this.$refs.list.style;
-      if(!this.toggleListValue){
-        list.opacity = 1;
-        list.zIndex = 5;
-        list.transform = 'translate(-3rem,7px)';
-      }else {
-        list.opacity = 0;
-        list.zIndex = -5;
-        list.transform = 'translate(-3rem,-3rem)';
-      }
-      this.toggleListValue = !this.toggleListValue;
+    toggleList(evt) {
+      this.$store.commit('toggleList', {
+        evt: evt,
+        list: this.$refs.list.style
+      });
     },
     signPage() {
       this.$router.replace('/sign');
+    },
+    goTo(page) {
+      this.$router.push(page);
     }
   },
   watch: {

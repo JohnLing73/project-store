@@ -19,8 +19,8 @@ const router = createRouter({
     { path: '/products/:mainPage', component: ProductsDemo, props:true, name:'mainProduct' },
     { path: '/productDetail/:prodId', component: ProductDetail, name: 'productDetail', props:true },
 
-    { path: "/sign", component: TheSign, name:'sign' },
     { path: "/member", component: MemberPage, name: 'member',meta: { needsAuth: true}},
+    { path: "/sign", component: TheSign, name:'sign' },
     { path: "/cart", component: TheCart },
     { path: "/check", component: CheckOut },
     { path: "/about", component: AboutPage, name: 'about' },
