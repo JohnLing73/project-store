@@ -32,7 +32,13 @@ export default {
     };
   },
   methods: {
-
+    switchTab(page) {
+      this.tab = page;
+      console.log(this.tab);
+      page = page.slice(6);
+      page = page.charAt(0).toLowerCase() + page.slice(1);
+      this.$router.push(page)
+    }
   },
 };
 </script>
