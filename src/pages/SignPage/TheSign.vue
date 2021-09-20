@@ -6,6 +6,19 @@
     @close="closeDialog"
     >
   </base-dialog>
+  <base-dialog
+    :showdialog="isLoading"
+    title="Signing Up..."
+  >
+    <base-loading></base-loading>
+  </base-dialog>
+  <base-dialog
+    :showdialog="!!error"
+    title="Signing Error"
+    @close="closeDialogError"
+  >
+    <p :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">{{ error }}</p>
+  </base-dialog>
   <form :class="{ darkMode: darkMode }" @click.prevent>
     <h2 v-if="signStatus==='signUp'">Sign Up</h2>
     <h2 v-else>Sign In</h2>
@@ -163,6 +176,9 @@ input {
     }
   }
 }
+p.darkMode {
+  color: $white;
+}
 
 #location {
   background-image: url("../../assets/images/forall/pin.svg");
@@ -238,6 +254,10 @@ export default {
       birth: "",
       location: "",
 
+      isLoading: false,
+
+      error: '',
+
       allowSignUp: false,
       inputMailInvalid: "pending",
       inputMemberIdValid: "",
@@ -266,11 +286,13 @@ export default {
     }
   },
   methods: {
-    signUp() {
+    async signUp() {
       console.log("sign up");
+      this.isLoading = true;
       this.checkNormalValid();
       if (this.allowSignUp === false) {
         console.log('return without upload');
+        this.isLoading = false;
         return;
       }
       // fetch(
@@ -289,13 +311,19 @@ export default {
       //     }),
       //   }
       // );
-      this.$store.dispatch('signup',{
+      try {
+      await this.$store.dispatch('signup',{
         email: this.email,
         password: this.password,
         memberId: this.memberId,
         birth: this.birth,
         location: this.location
       })
+      }catch(error) {
+        this.error = error;
+      }
+
+      this.isLoading = false;
 
       this.memberId = '';
       this.email = '';
@@ -335,7 +363,7 @@ export default {
         this.inputMemberIdValid = "Valid";
         this.allowSignUp = true;
       }
-      if (this.password === "") {
+      if (this.password === "" || this.password.length < 7) {
         this.inputPasswordValid = "Invalid";
         this.allowSignUp = false;
         return;
@@ -363,6 +391,9 @@ export default {
     closeDialog() {
       this.showDialog = false;
       this.allowLeave = true;
+    },
+    closeDialogError() {
+      this.error = '';
     }
   },
   beforeRouteLeave (_to, _from, next) {

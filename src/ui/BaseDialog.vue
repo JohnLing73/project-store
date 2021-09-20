@@ -2,12 +2,13 @@
   <teleport to="body">
     <div v-if= "showdialog" class="backdrop" @click = "closeDialog"></div>
     <transition name="dialog">
-      <dialog open v-if= "showdialog">
+      <dialog open v-if= "showdialog" :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">
           <slot name= "header">
-            <h2>{{ title }}</h2>
+            <h2 :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">{{ title }}</h2>
           </slot>
         <section>
-          <p>{{ content }}</p>
+          <p :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">{{ content }}</p>
+          <slot></slot>
           <base-button :link= "false" @click= "closeDialog">Confirm</base-button>
         </section>
       </dialog>
@@ -27,7 +28,7 @@ export default {
     }, 
     content: {
       type: String,
-      required: true
+      required: false
     }},
     methods: {
       closeDialog() {
@@ -84,6 +85,15 @@ dialog {
         align-self: flex-end;
       }
   }
+}
+
+dialog.darkMode {
+  background-color: $black;
+}
+
+h2.darkMode,
+p.darkMode {
+  color: $white;
 }
 
 .dialog-enter-from,

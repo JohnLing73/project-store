@@ -23,7 +23,9 @@ export default {
 
 .arc-container {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 .arc-container > span {
   position: absolute;
