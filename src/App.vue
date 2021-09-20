@@ -1,6 +1,5 @@
 <template>
   <div @click="toggleList">
-
     <the-header></the-header>
     <quick-link></quick-link>
     <router-view></router-view>

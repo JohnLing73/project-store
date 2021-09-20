@@ -236,4 +236,8 @@ nav {
   .exact-router-link {
     color: $aqua !important;
   }
+
+  #accountToggleList {
+    z-index: index($z-index, toggleList);
+  }
 </style>
