@@ -1,8 +1,11 @@
 <template>
-  <the-header></the-header>
-  <quick-link></quick-link>
-  <router-view></router-view>
-  <the-footer></the-footer>
+  <div @click="toggleList">
+
+    <the-header></the-header>
+    <quick-link></quick-link>
+    <router-view></router-view>
+    <the-footer></the-footer>
+  </div>
 </template>
 <script>
 import TheFooter from './ui/TheFooter.vue';
@@ -15,6 +18,11 @@ export default {
       spinning: false,
     };
   },
+  methods: {
+    toggleList() {
+      this.$store.commit('toggleList');
+    }
+  }
 };
 </script>
 <style lang="scss">

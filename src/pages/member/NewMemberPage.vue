@@ -24,6 +24,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -34,12 +35,19 @@ export default {
   methods: {
     switchTab(page) {
       this.tab = page;
-      console.log(this.tab);
       page = page.slice(6);
       page = page.charAt(0).toLowerCase() + page.slice(1);
       this.$router.push(page)
+    },
+    async fetchUserData() {
+      const response = await axios.get('https://resume-store-fd4de-default-rtdb.firebaseio.com/user');
+      console.log(response.data);
     }
   },
+  async created() {
+    console.log(this.$route.params);
+    await this.fetchUserData();
+  }
 };
 </script>
 <style lang="scss" scoped>

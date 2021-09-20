@@ -7,16 +7,24 @@ export default {
         }
     },
     toggleList(state, payload) {
-        const list = payload.list;
-        if(!state.toggleListValue && payload.evt.target.id === 'toggleIcon'){
-          list.opacity = 1;
-          list.zIndex = 5;
-          list.transform = 'translate(-3rem,7px)';
+        const list = document.querySelector('#accountToggleList');
+        if(payload) {
+            if(!state.toggleListValue) {
+              list.style.opacity = 1;
+              list.style.zIndex = 5;
+              list.style.transform = 'translate(-3rem,7px)';
+            }else {
+                list.style.opacity = 0;
+                list.style.zIndex = -5;
+                list.style.transform = 'translate(-3rem,-3rem)';
+            }
+            state.toggleListValue = !state.toggleListValue;
         }else {
-          list.opacity = 0;
-          list.zIndex = -5;
-          list.transform = 'translate(-3rem,-3rem)';
+            list.style.opacity = 0;
+            list.style.zIndex = -5;
+            list.style.transform = 'translate(-3rem,-3rem)';
+            state.toggleListValue = false;
         }
-        state.toggleListValue = !state.toggleListValue;
-    }
+    },
+
 }

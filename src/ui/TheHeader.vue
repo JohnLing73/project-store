@@ -6,7 +6,7 @@
       <div class="icon-link" @click="toggleList">
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" id="toggleIcon"/>
         <img v-else :src= "profileFigLight" alt="profile" id="toggleIcon"/>
-        <ul ref= "list" id="accountToggleList">
+        <ul id="accountToggleList">
           <li>
             <a @click.prevent="goTo('/member')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
           </li>
@@ -112,10 +112,8 @@ export default {
       }
     },
     toggleList(evt) {
-      this.$store.commit('toggleList', {
-        evt: evt,
-        list: this.$refs.list.style
-      });
+      evt.stopPropagation();
+      this.$store.commit('toggleList', true);
     },
     signPage() {
       this.$router.replace('/sign');
@@ -158,7 +156,7 @@ export default {
         (newVal === 'light') ? (colorCircle[i].setAttribute('class', 'color-circle dark-mode')) : (colorCircle[i].setAttribute('class', 'color-circle'));
       }
     }
-  }
+  },
 };
 </script>
 <style lang="scss">
