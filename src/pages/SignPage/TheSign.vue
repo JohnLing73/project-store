@@ -295,22 +295,6 @@ export default {
         this.isLoading = false;
         return;
       }
-      // fetch(
-      //   "https://resume-store-fd4de-default-rtdb.firebaseio.com/user.json",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       memId: this.memberId,
-      //       email: this.email,
-      //       password: this.password,
-      //       birth: this.birth,
-      //       location: this.location,
-      //     }),
-      //   }
-      // );
       try {
       await this.$store.dispatch('signup',{
         email: this.email,
@@ -348,6 +332,7 @@ export default {
         email: this.email,
         password: this.password
       });
+      await this.$store.dispatch('loginGet');
       this.isLoading = false;
 
       this.email = '';

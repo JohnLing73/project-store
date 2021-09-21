@@ -6,6 +6,7 @@
     <div class="member-info">
       <h2>Member Center</h2>
       <p>Member Center >> {{ tab }}</p>
+      <p>fetchdata: {{ this.$store.getters.memId }}</p>
     </div>
     <div class="member-side-bar">
       <button
