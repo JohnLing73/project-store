@@ -18,7 +18,7 @@ export default {
             list.style.zIndex = -5;
             list.style.transform = 'translate(-3rem,-3rem)';
         }
-        state.toggleListValue = !state.toggleListValue;
+            state.toggleListValue = !state.toggleListValue;
         }else {
             list.style.opacity = 0;
             list.style.zIndex = -5;

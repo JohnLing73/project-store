@@ -3,7 +3,7 @@
     <the-logo logoWidth="75" logoHeight="75"></the-logo>
     <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
-      <div class="icon-link" @click="toggleList">
+      <div class="icon-link" @click.stop="toggleList">
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" id="toggleIcon"/>
         <img v-else :src= "profileFigLight" alt="profile" id="toggleIcon"/>
         <ul id="accountToggleList">
@@ -26,7 +26,7 @@
         <img v-else :src= "cartFigLight" alt="cart" />
         <router-link to="/cart"></router-link>
       </div>
-      <div @click = 'switchTheme' id="themeIcon">
+      <div @click="switchTheme" id="themeIcon">
         <svg
           id="darkMode"
           class= "sun"
@@ -112,7 +112,7 @@ export default {
       }
     },
     toggleList(evt) {
-      evt.stopPropagation();
+      console.log(evt.target);
       this.$store.commit('toggleList', true);
     },
     signPage() {
@@ -237,7 +237,4 @@ nav {
     color: $aqua !important;
   }
 
-  #accountToggleList {
-    z-index: index($z-index, toggleList);
-  }
 </style>

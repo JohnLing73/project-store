@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     toggleList() {
-      this.$store.commit('toggleList');
+      this.$store.commit('toggleList',false);
     }
   }
 };
