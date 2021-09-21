@@ -25,6 +25,5 @@ export default {
             list.style.transform = 'translate(-3rem,-3rem)';
             state.toggleListValue = false;
         }
-    },
-
+    }
 }

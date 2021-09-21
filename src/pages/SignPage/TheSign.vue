@@ -23,7 +23,6 @@
     <h2 v-if="signStatus==='signUp'">Sign Up</h2>
     <h2 v-else>Sign In</h2>
     <div
-      v-if="signStatus==='signUp'"
       class="form-each"
       :class="{ invalidStyle: inputMailInvalid === 'Invalid' }"
     >
@@ -40,6 +39,7 @@
       />
     </div>
     <div
+      v-if="signStatus==='signUp'"
       class="form-each"
       :class="{ invalidStyle: inputMemberIdValid === 'Invalid' }"
     >
@@ -341,8 +341,20 @@ export default {
         this.signStatus = 'signUp';
       }
     },
-    signIn() {
+   async signIn() {
       console.log('sign in');
+      this.isLoading = true;
+      await this.$store.dispatch('login',{
+        email: this.email,
+        password: this.password
+      });
+      this.isLoading = false;
+
+      this.email = '';
+      this.password = '';
+      //登入完成後離開頁面不會出現跳窗並直接跳轉至 member
+      // this.signSuccess = true;
+      // this.$router.push('/member');
     },
     //Function about input validation
     checkNormalValid() {

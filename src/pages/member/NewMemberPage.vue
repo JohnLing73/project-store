@@ -40,7 +40,7 @@ export default {
       this.$router.push(page)
     },
     async fetchUserData() {
-      const response = await axios.get('https://resume-store-fd4de-default-rtdb.firebaseio.com/user');
+      const response = await axios.get('https://resume-store-fd4de-default-rtdb.firebaseio.com/users.json');
       console.log(response.data);
     }
   },

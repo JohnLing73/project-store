@@ -78,11 +78,13 @@ dialog {
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
       p {
         font-size: $h3;
       }
       button {
         align-self: flex-end;
+        margin-top: 1rem;
       }
   }
 }

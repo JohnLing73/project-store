@@ -26,7 +26,7 @@ const router = createRouter({
     { path: '/products/:mainPage', component: ProductsDemo, props:true, name:'mainProduct' },
     { path: '/productDetail/:prodId', component: ProductDetail, name: 'productDetail', props:true },
 
-    { path: '/member/:memId', redirect:'/member/:memId/profile', component: NewMemberPage, name: 'member-page', meta: { needsAuth: true},
+    { path: '/member/:memId', redirect:'/member/:memId/profile', component: NewMemberPage, name: 'member-page', 
       children: [
         { path: '/member/:memId/profile', component: MemberProfile, name: 'member-profile' },
         { path: '/member/:memId/orders', component: MemberOrders, name: 'member-orders' },

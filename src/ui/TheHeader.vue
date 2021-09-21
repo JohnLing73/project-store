@@ -8,7 +8,7 @@
         <img v-else :src= "profileFigLight" alt="profile" id="toggleIcon"/>
         <ul id="accountToggleList">
           <li>
-            <a @click.prevent="goTo('/member')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
+            <a @click.prevent="goTo('/member/dudulala73')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
           </li>
           <li>
             <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
@@ -111,8 +111,7 @@ export default {
         this.toggle = false;
       }
     },
-    toggleList(evt) {
-      console.log(evt.target);
+    toggleList() {
       this.$store.commit('toggleList', true);
     },
     signPage() {

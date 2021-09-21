@@ -888,6 +888,7 @@ export default {
                 ]
               }
             ],
+            isLoading: false
         }
     },
     getters,

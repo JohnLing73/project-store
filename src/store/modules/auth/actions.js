@@ -37,6 +37,24 @@ export default {
     } catch (error) {
       console.log(error.message);
     }
+  },
+  async login(context, payload) {
+    try {
+      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCj1MDW7MxO_PwZsqaR0lF6PNvMI_UYVjs',{
+        email: payload.email,
+        password: payload.password,
+        returnSecureToken: true
+      });
+      context.commit('setUser', {
+        token: response.data.tokenId,
+        userId: response.data.localId,
+        tokenExpiration: response.data.expiresIn
+      });
+      console.log(response);
+    }catch(error) {
+      console.log(error.messagee);
+      throw error;
+    }
   }
 
 }
