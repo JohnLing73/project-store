@@ -5,11 +5,11 @@ import actions from './actions.js'
 export default {
   state() {
     return {
-      userId: null,
+      userId: null, //firebase automatically created
       token: null,
       tokenExpiration: null,
 
-      memId: '',
+      memId: '', // user setting
       memBirth: '',
       memEmail: '',
       memLocation: ''

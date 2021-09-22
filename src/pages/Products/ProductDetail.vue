@@ -2,6 +2,11 @@
   <base-dialog :showdialog="isLoading" :confirmExist="false" title="Loading Product Detail...">
     <base-loading></base-loading>
   </base-dialog>
+  <base-dialog 
+    :showdialog="!isLogin" 
+    title="Warning" 
+    content="You should login before next step!"
+  ></base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
@@ -90,8 +95,8 @@
           <div class="cart-whishlist">
             <div class="submit-button">
               <base-button :link="false" @click="buy">Buy Now</base-button>
-              <base-button :link="false" mode="minor" @click="addCart">Add to Cart</base-button>
-              <base-button :link="false" mode="minor" @click="addWishlist">Add to Wishlist</base-button>
+              <base-button :link="false" mode="minor" @click="addList('cart')">Add to Cart</base-button>
+              <base-button :link="false" mode="minor" @click="addList('wishlist')">Add to Wishlist</base-button>
             </div>
           </div>
         </form>
@@ -151,6 +156,7 @@ export default {
       imgSrc: '',
       totalRating: 0,
       isLoading: false,
+      isLogin: false,
       // data for v-model
       selectSize: '',
       selectColor: '',
@@ -177,15 +183,25 @@ export default {
       this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
       this.selectQuantity = 1;
     },
-    addCart() {
-      console.log('addCart');
-    },
     changeBigImg(idx) {
       this.$refs.img.src = this.$store.state.products.specificProduct.color[idx].imgSrc;
     },
-    addWishlist() {
-      console.log('addWishlist');
-    },
+    addList(type) {
+      console.log('addCart');
+      if(this.$store.getters.userId) {
+        this.isLogin = true;
+      }else {
+        this.isLogin = false;
+        return;
+      }
+      this.$store.dispatch('addList', {
+        type: type,
+        product: this.specificProduct,
+        quantity: this.selectQuantity,
+        size: this.selectSize,
+        color: this.selectColor
+      })
+    }
   },
   async created() {
     this.isLoading = true;

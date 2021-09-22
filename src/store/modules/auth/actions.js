@@ -72,8 +72,22 @@ export default {
         memLocation: response.data.location
       })
   },
-  async addList() {
-    
+  async addList(context, payload) {
+    const userId = context.rootGetters.userId;
+    const type = payload.type;
+    const newList = {
+      prodName: payload.product.prodName,
+      prodImg: payload.product.color[0].imgSrc,
+      total: payload.product.price * payload.quantity,
+      size: payload.size,
+      color: payload.color,
+      quantity: payload.quantity
+    };
+    const response = await axios.post(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`,{
+      ...newList
+    });
+    console.log(newList);
+    console.log(response);
   }
 
 }
