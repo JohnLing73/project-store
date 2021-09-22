@@ -1,11 +1,16 @@
 <template>
-  <base-dialog :showdialog="isLoading" :confirmExist="false" title="Loading Product Detail...">
+  <base-dialog 
+    :showdialog="isLoading" 
+    :confirmExist="false" 
+    title="Loading Product Detail..."
+    >
     <base-loading></base-loading>
   </base-dialog>
   <base-dialog 
-    :showdialog="!isLogin" 
+    :showdialog="doSth && !isLogin" 
     title="Warning" 
     content="You should login before next step!"
+    @close="closeDoSth"
   ></base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
@@ -156,7 +161,7 @@ export default {
       imgSrc: '',
       totalRating: 0,
       isLoading: false,
-      isLogin: false,
+      doSth: false,
       // data for v-model
       selectSize: '',
       selectColor: '',
@@ -166,6 +171,13 @@ export default {
   },
   computed: {
     ...mapGetters(["productsManGetters", 'specificProduct']),
+    isLogin() {
+      if(this.$store.getters.userId) {
+        return true;
+      }else {
+        return false;
+      }
+    },
     darkMode() {
       return this.$store.getters.themeMode;
     }
@@ -186,21 +198,23 @@ export default {
     changeBigImg(idx) {
       this.$refs.img.src = this.$store.state.products.specificProduct.color[idx].imgSrc;
     },
+    closeDoSth() {
+      this.doSth = false;
+    },
     addList(type) {
       console.log('addCart');
+      this.doSth = true;
       if(this.$store.getters.userId) {
-        this.isLogin = true;
+        this.$store.dispatch('addList', {
+          type: type,
+          product: this.specificProduct,
+          quantity: this.selectQuantity,
+          size: this.selectSize,
+          color: this.selectColor
+        });
       }else {
-        this.isLogin = false;
         return;
       }
-      this.$store.dispatch('addList', {
-        type: type,
-        product: this.specificProduct,
-        quantity: this.selectQuantity,
-        size: this.selectSize,
-        color: this.selectColor
-      })
     }
   },
   async created() {

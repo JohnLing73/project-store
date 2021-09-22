@@ -82,6 +82,7 @@ dialog {
 dialog {
   section {
     padding: 1rem 2rem;
+    padding-bottom: 0rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,7 +91,7 @@ dialog {
       }
       button {
         align-self: flex-end;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
       }
   }
 }
