@@ -6,7 +6,6 @@
     <div class="member-info">
       <h2>Member Center</h2>
       <p>Member Center >> {{ tab }}</p>
-      <p>fetchdata: {{ this.$store.getters.memId }}</p>
     </div>
     <div class="member-side-bar">
       <button
@@ -25,7 +24,7 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   data() {
     return {
@@ -41,8 +40,10 @@ export default {
       this.$router.push(page)
     },
     async fetchUserData() {
-      const response = await axios.get('https://resume-store-fd4de-default-rtdb.firebaseio.com/users.json');
-      console.log(response.data);
+      // const userId = this.$store.getters.userId;
+      // const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
+      // console.log(response.data);
+      this.$store.dispatch('loginGet');
     }
   },
   async created() {

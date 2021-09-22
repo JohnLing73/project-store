@@ -66,7 +66,10 @@ export default {
       const userId = context.rootGetters.userId;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
       context.commit('userInfo', {
-        memId: response.data.memberId
+        memId: response.data.memberId,
+        memBirth: response.data.birth,
+        memEmail: response.data.email,
+        memLocation: response.data.location
       })
   }
 

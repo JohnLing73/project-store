@@ -9,7 +9,10 @@ export default {
       token: null,
       tokenExpiration: null,
 
-      memId: ''
+      memId: '',
+      memBirth: '',
+      memEmail: '',
+      memLocation: ''
     }
   },
   getters,

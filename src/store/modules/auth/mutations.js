@@ -5,6 +5,9 @@ export default {
     state.tokenExpiration = payload.tokenExpiration
   },
   userInfo(state,payload) {
-    state.memId = payload.memId
+    state.memId = payload.memId;
+    state.memBirth = payload.memBirth,
+    state.memEmail = payload.memEmail,
+    state.memLocation = payload.memLocation
   }
 }

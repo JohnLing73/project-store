@@ -7,5 +7,14 @@ export default {
   },
   memId(state) {
     return state.memId;
+  },
+  memBirth(state) {
+    return state.memBirth;
+  },
+  memEmail(state) {
+    return state.memEmail;
+  },
+  memLocation(state) {
+    return state.memLocation;
   }
 }

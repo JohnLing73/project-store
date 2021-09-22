@@ -9,30 +9,29 @@
           <div class="user-img-container">
             <img src="../../assets/images/forall/user.svg" alt="" />
           </div>
-          <span>{{ memberInfo[0].memId }}</span>
+          <span>{{ memId }}</span>
         </div>
         <div class="brief-info">
-          <span>Birth:</span> <span>{{ memberInfo[0].birth }}</span>
+          <span>Birth:</span> <span>{{ memBirth }}</span>
         </div>
         <div class="brief-info">
-          <span>Email: </span> <span>{{ memberInfo[0].email }}</span>
+          <span>Email: </span> <span>{{ memEmail }}</span>
         </div>
         <div class="brief-info">
-          <span>Location: </span><span>{{ memberInfo[0].location }}</span>
+          <span>Location: </span><span>{{ memLocation }}</span>
         </div>
       </div>
     </div>
   </transition>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {};
   },
   computed: {
-    memberInfo() {
-      return this.$store.state.member.theFinalMembers;
-    },
+    ...mapGetters(['memId', 'memBirth', 'memEmail', 'memLocation'])
   },
   methods: {},
 };
