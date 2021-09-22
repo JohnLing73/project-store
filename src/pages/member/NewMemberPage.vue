@@ -24,6 +24,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 // import axios from 'axios';
 export default {
   data() {
@@ -31,6 +32,9 @@ export default {
       tab: "MemberProfile",
       tabs: ["MemberProfile", "MemberOrders", "MemberCart", "MemberWishlists"],
     };
+  },
+  computed: {
+    ...mapGetters(['memId'])
   },
   methods: {
     switchTab(page) {
@@ -47,7 +51,6 @@ export default {
     }
   },
   async created() {
-    console.log(this.$route.params);
     await this.fetchUserData();
   }
 };

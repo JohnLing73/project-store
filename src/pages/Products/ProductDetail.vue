@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :showdialog="isLoading" :confirmExist="false" title="Loading Product Detail...">
+    <base-loading></base-loading>
+  </base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
@@ -147,6 +150,7 @@ export default {
     return {
       imgSrc: '',
       totalRating: 0,
+      isLoading: false,
       // data for v-model
       selectSize: '',
       selectColor: '',
@@ -180,11 +184,13 @@ export default {
       this.$refs.img.src = this.$store.state.products.specificProduct.color[idx].imgSrc;
     },
     addWishlist() {
-
+      console.log('addWishlist');
     },
   },
   async created() {
+    this.isLoading = true;
     await this.$store.dispatch('fetchData',this.$route);
+    this.isLoading = false;
     this.imgSrc = this.$store.state.products.specificProduct.color[0].imgSrc;
     this.totalRating = this.$store.state.products.specificProduct.feedback.length;
     // Initialized v-model

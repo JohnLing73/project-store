@@ -2,7 +2,7 @@
   <div class="container">
     <div 
       class="container-each"
-      v-for="(item,idx) in cart"
+      v-for="(item,idx) in cartList"
       :key="idx"
       >
       <div class="img-container">
@@ -20,7 +20,7 @@
       <div class="info-last info">
         <span>Remove</span>
         <font-awesome-icon
-          @click="click"
+          @click="removeList(idx)"
           :icon="['fas', 'trash-alt']"
             size="1x"
         ></font-awesome-icon>
@@ -31,6 +31,11 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
+  data() {
+    return {
+      cartList: this.$store.state.member.theFinalMembers[0].cart
+    }
+  },
   computed:{
     ...mapGetters(['members']),
     cart() {
@@ -39,8 +44,9 @@ export default {
     }
   },
   methods: {
-    click() {
-      console.log('click');
+    removeList(idx) {
+      console.log(idx);
+      this.cartList.splice(idx, 1);
     }
   }
 }

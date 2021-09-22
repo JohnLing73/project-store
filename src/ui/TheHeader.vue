@@ -8,7 +8,7 @@
         <img v-else :src= "profileFigLight" alt="profile" id="toggleIcon"/>
         <ul id="accountToggleList">
           <li>
-            <a @click.prevent="goTo('/member/dudulala73')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
+            <a @click.prevent="goTo('/profile')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
           </li>
           <li>
             <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
@@ -63,7 +63,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['themeMode', 'toMemberPage']),
+    ...mapGetters(['themeMode', 'toMemberPage','memEmail']),
     storeTheme() {
       return this.$store.getters.theme;
     },
@@ -118,6 +118,7 @@ export default {
       this.$router.replace('/sign');
     },
     goTo(page) {
+      page = '/member/' + this.memEmail + page;
       this.$router.push(page);
     }
   },

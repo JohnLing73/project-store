@@ -1,124 +1,122 @@
 <template>
-  <base-dialog
-    :showdialog="showDialog"
-    title="Warning!"
-    content="You haven't fill the form completely. You sure want to leave the page?"
-    @close="closeDialog"
+  <div>
+    <base-dialog
+      :showdialog="showDialog"
+      title="Warning!"
+      content="You haven't fill the form completely. You sure want to leave the page?"
+      @close="closeDialog"
     >
-  </base-dialog>
-  <base-dialog
-    :showdialog="isLoading"
-    title="Signing Up..."
-  >
-    <base-loading></base-loading>
-  </base-dialog>
-  <base-dialog
-    :showdialog="!!error"
-    title="Signing Error"
-    @close="closeDialogError"
-  >
-    <p :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">{{ error }}</p>
-  </base-dialog>
-  <form :class="{ darkMode: darkMode }" @click.prevent>
-    <h2 v-if="signStatus==='signUp'">Sign Up</h2>
-    <h2 v-else>Sign In</h2>
-    <div
-      class="form-each"
-      :class="{ invalidStyle: inputMailInvalid === 'Invalid' }"
+    </base-dialog>
+    <base-dialog :showdialog="isLoading" title="Signing Up...">
+      <base-loading></base-loading>
+    </base-dialog>
+    <base-dialog
+      :showdialog="!!error"
+      title="Signing Error"
+      @close="closeDialogError"
     >
-      <label for="email">Email</label>
-      <span class="invalid-warning" v-if="inputMailInvalid === 'Invalid'"
-        >(Please Input Valid Email!)</span
-      >
-      <input
-        name="email"
-        id="email"
-        type="email"
-        v-model.trim="email"
-        @blur="checkNormalValid"
-      />
-    </div>
-    <div
-      v-if="signStatus==='signUp'"
-      class="form-each"
-      :class="{ invalidStyle: inputMemberIdValid === 'Invalid' }"
-    >
-      <label for="account">Member Id</label>
-      <span v-if="inputMemberIdValid === 'Invalid'" class="invalid-warning">
-        (Please Input Valid Id!)
-      </span>
-      <input
-        name="account"
-        id="account"
-        type="text"
-        v-model.trim="memberId"
-        @blur="checkNormalValid"
-      />
-    </div>
-    <div
-      class="form-each"
-      :class="{ invalidStyle: inputPasswordValid === 'Invalid' }"
-    >
-      <label for="password">Password</label>
-      <span v-if="inputPasswordValid === 'Invalid'" class="invalid-warning">
-        (Please Input Valid Password!)
-      </span>
-      <input
-        name="password"
-        id="password"
-        type="password"
-        v-model.trim="password"
-        @blur="checkNormalValid"
-      />
-    </div>
-    <div
-      v-if="signStatus==='signUp'"
-      class="form-each"
-      :class="{ invalidStyle: inputBirthValid === 'Invalid' }"
-    >
-      <label for="birth">Birth (YYYY/MM/DD)</label>
-      <span v-if="inputBirthValid === 'Invalid'" class="invalid-warning">
-        (Please Input Valid Birth!)
-      </span>
-      <input
-        name="birth"
-        id="birth"
-        type="date"
-        v-model.trim="birth"
-        @blur="checkNormalValid"
-      />
-    </div>
-    <div
-      v-if="signStatus==='signUp'"
-      class="form-each"
-      :class="{ invalidStyle: inputLocationValid === 'Invalid' }"
-    >
-      <label for="location">Location</label>
-      <span v-if="inputLocationValid === 'Invalid'" class="invalid-warning">
-        (Please Input Valid Location!)
-      </span>
-      <input
-        name="location"
-        id="location"
-        type="text"
-        v-model.trim="location"
-        @blur="checkNormalValid"
-      />
-      <p v-if="allowSignUp === false">
-        Please fill the form correctly to Sign Up
+      <p :class="{ darkMode: this.$store.state.normal.colorTheme === 'light' }">
+        {{ error }}
       </p>
-    </div>
-    <base-button v-if="signStatus==='signUp'" :link="false" @click="signUp">Sign Up</base-button>
-    <base-button v-else :link='false' @click="signIn">Sign In</base-button>
-    <base-button :link="false" mode="minor" @click="switchSignStatus"
-      >{{ switchText }}</base-button
-    >
-  </form>
-  <base-dialog
-    title="test title"
-    content="test paragraph"
-    :showdialog="false"
-  ></base-dialog>
+    </base-dialog>
+    <form :class="{ darkMode: darkMode }" @click.prevent>
+      <h2 v-if="signStatus === 'signUp'">Sign Up</h2>
+      <h2 v-else>Sign In</h2>
+      <div
+        class="form-each"
+        :class="{ invalidStyle: inputMailInvalid === 'Invalid' }"
+      >
+        <label for="email">Email</label>
+        <span class="invalid-warning" v-if="inputMailInvalid === 'Invalid'"
+          >(Please Input Valid Email!)</span
+        >
+        <input
+          name="email"
+          id="email"
+          type="email"
+          v-model.trim="email"
+          @blur="checkNormalValid"
+        />
+      </div>
+      <div
+        v-if="signStatus === 'signUp'"
+        class="form-each"
+        :class="{ invalidStyle: inputMemberIdValid === 'Invalid' }"
+      >
+        <label for="account">Member Id</label>
+        <span v-if="inputMemberIdValid === 'Invalid'" class="invalid-warning">
+          (Please Input Valid Id!)
+        </span>
+        <input
+          name="account"
+          id="account"
+          type="text"
+          v-model.trim="memberId"
+          @blur="checkNormalValid"
+        />
+      </div>
+      <div
+        class="form-each"
+        :class="{ invalidStyle: inputPasswordValid === 'Invalid' }"
+      >
+        <label for="password">Password</label>
+        <span v-if="inputPasswordValid === 'Invalid'" class="invalid-warning">
+          (Please Input Valid Password!)
+        </span>
+        <input
+          name="password"
+          id="password"
+          type="password"
+          v-model.trim="password"
+          @blur="checkNormalValid"
+        />
+      </div>
+      <div
+        v-if="signStatus === 'signUp'"
+        class="form-each"
+        :class="{ invalidStyle: inputBirthValid === 'Invalid' }"
+      >
+        <label for="birth">Birth (YYYY/MM/DD)</label>
+        <span v-if="inputBirthValid === 'Invalid'" class="invalid-warning">
+          (Please Input Valid Birth!)
+        </span>
+        <input
+          name="birth"
+          id="birth"
+          type="date"
+          v-model.trim="birth"
+          @blur="checkNormalValid"
+        />
+      </div>
+      <div
+        v-if="signStatus === 'signUp'"
+        class="form-each"
+        :class="{ invalidStyle: inputLocationValid === 'Invalid' }"
+      >
+        <label for="location">Location</label>
+        <span v-if="inputLocationValid === 'Invalid'" class="invalid-warning">
+          (Please Input Valid Location!)
+        </span>
+        <input
+          name="location"
+          id="location"
+          type="text"
+          v-model.trim="location"
+          @blur="checkNormalValid"
+        />
+        <p v-if="allowSignUp === false">
+          Please fill the form correctly to Sign Up
+        </p>
+      </div>
+      <base-button v-if="signStatus === 'signUp'" :link="false" @click="signUp"
+        >Sign Up</base-button
+      >
+      <base-button v-else :link="false" @click="signIn">Sign In</base-button>
+      <base-button :link="false" mode="minor" @click="switchSignStatus">{{
+        switchText
+      }}</base-button>
+    </form>
+  </div>
 </template>
 <style lang="scss" scoped>
 form {
@@ -245,7 +243,7 @@ button {
 export default {
   data() {
     return {
-      signStatus: 'signUp',
+      signStatus: "signUp",
       signSuccess: false,
 
       email: "",
@@ -256,7 +254,7 @@ export default {
 
       isLoading: false,
 
-      error: '',
+      error: "",
 
       allowSignUp: false,
       inputMailInvalid: "pending",
@@ -266,7 +264,7 @@ export default {
       inputLocationValid: "",
 
       showDialog: false,
-      allowLeave: false
+      allowLeave: false,
     };
   },
   computed: {
@@ -277,13 +275,13 @@ export default {
         return false;
       }
     },
-    switchText(){
-      if(this.signStatus === 'signUp'){
-        return 'Switch to Sign In';
-      }else {
-        return 'Switch to Sign Up';
+    switchText() {
+      if (this.signStatus === "signUp") {
+        return "Switch to Sign In";
+      } else {
+        return "Switch to Sign Up";
       }
-    }
+    },
   },
   methods: {
     async signUp() {
@@ -291,52 +289,52 @@ export default {
       this.isLoading = true;
       this.checkNormalValid();
       if (this.allowSignUp === false) {
-        console.log('return without upload');
+        console.log("return without upload");
         this.isLoading = false;
         return;
       }
       try {
-      await this.$store.dispatch('signup',{
-        email: this.email,
-        password: this.password,
-        memberId: this.memberId,
-        birth: this.birth,
-        location: this.location
-      })
-      }catch(error) {
+        await this.$store.dispatch("signup", {
+          email: this.email,
+          password: this.password,
+          memberId: this.memberId,
+          birth: this.birth,
+          location: this.location,
+        });
+      } catch (error) {
         this.error = error;
       }
 
       this.isLoading = false;
 
-      this.memberId = '';
-      this.email = '';
-      this.password = '';
-      this.birth = '';
-      this.location = '';
+      this.memberId = "";
+      this.email = "";
+      this.password = "";
+      this.birth = "";
+      this.location = "";
       //註冊完成後離開頁面不會出現跳窗並直接跳轉至 member
       // this.signSuccess = true;
       // this.$router.push('/member');
     },
     switchSignStatus() {
-      if(this.signStatus === 'signUp'){
-        this.signStatus = 'signIn';
-      }else {
-        this.signStatus = 'signUp';
+      if (this.signStatus === "signUp") {
+        this.signStatus = "signIn";
+      } else {
+        this.signStatus = "signUp";
       }
     },
-   async signIn() {
-      console.log('sign in');
+    async signIn() {
+      console.log("sign in");
       this.isLoading = true;
-      await this.$store.dispatch('login',{
+      await this.$store.dispatch("login", {
         email: this.email,
-        password: this.password
+        password: this.password,
       });
-      await this.$store.dispatch('loginGet');
+      await this.$store.dispatch("loginGet");
       this.isLoading = false;
 
-      this.email = '';
-      this.password = '';
+      this.email = "";
+      this.password = "";
       //登入完成後離開頁面不會出現跳窗並直接跳轉至 member
       // this.signSuccess = true;
       // this.$router.push('/member');
@@ -352,7 +350,7 @@ export default {
         this.inputMailInvalid = "Valid";
         this.allowSignUp = true;
       }
-      if (this.memberId === "" ) {
+      if (this.memberId === "") {
         this.inputMemberIdValid = "Invalid";
         this.allowSignUp = false;
         return;
@@ -390,17 +388,19 @@ export default {
       this.allowLeave = true;
     },
     closeDialogError() {
-      this.error = '';
-    }
+      this.error = "";
+    },
   },
-  beforeRouteLeave (_to, _from, next) {
-    if(this.signSuccess){ // sign up success
+  beforeRouteLeave(_to, _from, next) {
+    if (this.signSuccess) {
+      // sign up success
       next();
-    }else if(!this.showDialog && this.allowLeave){ // close the warn dialog
+    } else if (!this.showDialog && this.allowLeave) {
+      // close the warn dialog
       next();
-    }else{
+    } else {
       this.showDialog = true;
     }
-  }
+  },
 };
 </script>

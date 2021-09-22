@@ -71,6 +71,9 @@ export default {
         memEmail: response.data.email,
         memLocation: response.data.location
       })
+  },
+  async addList() {
+    
   }
 
 }
