@@ -65,12 +65,41 @@ export default {
   async loginGet(context) {
       const userId = context.rootGetters.userId;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
-      context.commit('userInfo', {
-        memId: response.data.memberId,
-        memBirth: response.data.birth,
-        memEmail: response.data.email,
-        memLocation: response.data.location
-      })
+      console.log('cart:',response.data.cart);
+      console.log('wishlist:',response.data.wishlist);
+      if(response.data.cart && response.data.wishlist) {
+        context.commit('userInfo', {
+          memId: response.data.memberId,
+          memBirth: response.data.birth,
+          memEmail: response.data.email,
+          memLocation: response.data.location,
+          memCart: response.data.cart,
+          memWishlist: response.data.wishlist
+        });
+      }else if(response.data.cart && !response.data.wishlist) {
+        context.commit('userInfo', {
+          memId: response.data.memberId,
+          memBirth: response.data.birth,
+          memEmail: response.data.email,
+          memLocation: response.data.location,
+          memCart: response.data.cart,
+        });
+      }else if(!response.data.cart && response.data.wishlist) {
+        context.commit('userInfo', {
+          memId: response.data.memberId,
+          memBirth: response.data.birth,
+          memEmail: response.data.email,
+          memLocation: response.data.location,
+          memWishlist: response.data.wishlist
+        });
+      }else {
+        context.commit('userInfo', {
+          memId: response.data.memberId,
+          memBirth: response.data.birth,
+          memEmail: response.data.email,
+          memLocation: response.data.location,
+        });
+      }
   },
   async addList(context, payload) {
     const userId = context.rootGetters.userId;
@@ -88,6 +117,6 @@ export default {
     });
     console.log(newList);
     console.log(response);
-  }
-
+  },
+  
 }

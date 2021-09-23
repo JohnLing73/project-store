@@ -11,7 +11,9 @@
     title="Warning" 
     content="You should login before next step!"
     @close="closeDoSth"
-  ></base-dialog>
+  >
+    <router-link to='/sign'>Heading to Sign Page</router-link>
+  </base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">

@@ -48,6 +48,9 @@ export default {
       console.log(idx);
       this.cartList.splice(idx, 1);
     }
+  },
+  created() {
+    
   }
 }
 </script>

@@ -12,7 +12,9 @@ export default {
       memId: '', // user setting
       memBirth: '',
       memEmail: '',
-      memLocation: ''
+      memLocation: '',
+      memCart: [],
+      memWishlist: []
     }
   },
   getters,
