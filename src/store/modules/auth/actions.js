@@ -62,7 +62,7 @@ export default {
       throw error;
     }
   },
-  async loginGet(context) {
+  async loginGet(context) { // 登入成功便抓取資料ˋ
       const userId = context.rootGetters.userId;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
       console.log('cart:',response.data.cart);
@@ -116,6 +116,12 @@ export default {
       ...newList
     });
     console.log(newList);
+    console.log(response);
+  },
+  async modifyList(context, payload) {
+    const userId = context.rootGetters.userId;
+    const type = payload;
+    const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`, context.rootGetters.memCart );
     console.log(response);
   },
   

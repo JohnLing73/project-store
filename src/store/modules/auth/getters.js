@@ -16,5 +16,11 @@ export default {
   },
   memLocation(state) {
     return state.memLocation;
+  },
+  memCart(state) {
+    return state.memCart;
+  },
+  memWishlist(state) {
+    return state.memWishlist;
   }
 }

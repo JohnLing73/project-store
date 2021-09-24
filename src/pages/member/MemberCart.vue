@@ -1,31 +1,37 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="memCart.length > 0">
     <div 
       class="container-each"
-      v-for="(item,idx) in cartList"
-      :key="idx"
+      v-for="(prod, idx) in memCart"
+      :key="prod.id"
       >
       <div class="img-container">
-        <img :src="item.cartProductUrl" alt="">
+        <img :src="prod.prodImg" alt="">
       </div>
       <div class="info-one info">
-        <h3>{{ item.cartProductName}}</h3>
-        <h4>color: {{ item.cartProductColor}}</h4>
-        <h4>size: {{ item.cartProductSize }}</h4>
+        <h3>{{ prod.prodName}}</h3>
+        <div>
+          <h4>color: {{ prod.color}}</h4>
+          <h4>size: {{ prod.size }}</h4>
+          <h4>quantity: {{ prod.quantity }}</h4>
+        </div>
       </div>
       <div class="info-two info">
         <h4>Price</h4>
-        <h4>{{ item.cartProductPrice }}</h4>
+        <h4>{{ prod.total }}</h4>
       </div>
       <div class="info-last info">
         <span>Remove</span>
         <font-awesome-icon
-          @click="removeList(idx)"
+          @click="removeFromCart(idx)"
           :icon="['fas', 'trash-alt']"
             size="1x"
         ></font-awesome-icon>
       </div>
     </div>
+  </div>
+  <div class="container" v-else>
+    <h2>Oops! You have not add any product to your cart!</h2>
   </div>
 </template>
 <script>
@@ -37,21 +43,18 @@ export default {
     }
   },
   computed:{
-    ...mapGetters(['members']),
+    ...mapGetters(['members','memCart']),
     cart() {
       // 測試第一位user 的 cartlist
       return this.members[0].cart;
     }
   },
   methods: {
-    removeList(idx) {
-      console.log(idx);
-      this.cartList.splice(idx, 1);
+    removeFromCart(idx) {
+      this.$store.commit('mutateCart', idx);
+      this.$store.dispatch('modifyList','cart');
     }
   },
-  created() {
-    
-  }
 }
 </script>
 <style lang="scss" scoped>
@@ -70,13 +73,13 @@ export default {
   .img-container {
     width: 135px;
     height: 135px;
-    background-color: $white;
+    background-color: white;
     @include flex-model($content: center);
       > img {
         object-position: 50% 50%;
         height:  100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: scale-down;
       }
   }
   .info-one,
@@ -90,6 +93,7 @@ export default {
 
   .info-one {
     justify-content: center;
+    width: 70%;
       h3 {
           flex-grow: 1;
           padding-top: 1rem;
@@ -107,6 +111,16 @@ export default {
       }
   }
 
+  .info-last {
+    margin-right: 1rem;
+  }
+
+  .info { 
+    > div {
+      @include flex-model($content: space-between);
+      padding-bottom: 1rem;
+    }
+  }
   h3, 
   h4 {
     margin: 0;

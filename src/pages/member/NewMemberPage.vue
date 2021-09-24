@@ -44,14 +44,11 @@ export default {
       this.$router.push(page)
     },
     async fetchUserData() {
-      // const userId = this.$store.getters.userId;
-      // const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
-      // console.log(response.data);
-      this.$store.dispatch('loginGet');
+      await this.$store.dispatch('loginGet');
     }
   },
   async created() {
-    await this.fetchUserData();
+    await this.$store.dispatch('loginGet');
   }
 };
 </script>
