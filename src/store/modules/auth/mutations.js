@@ -13,15 +13,17 @@ export default {
     state.memWishlist = []; // 這兩個都要reset 不然會multiple push array
     if(payload.memCart) {
       for(const keyCart in payload.memCart) {
-        state.memCart.push({
-          id: keyCart,
-          color: payload.memCart[keyCart].color,
-          prodImg: payload.memCart[keyCart].prodImg,
-          prodName: payload.memCart[keyCart].prodName,
-          quantity: payload.memCart[keyCart].quantity,
-          size: payload.memCart[keyCart].size,
-          total: payload.memCart[keyCart].total,
-        });
+        if(payload.memCart[keyCart]) {
+          state.memCart.push({
+            id: keyCart,
+            color: payload.memCart[keyCart].color,
+            prodImg: payload.memCart[keyCart].prodImg,
+            prodName: payload.memCart[keyCart].prodName,
+            quantity: payload.memCart[keyCart].quantity,
+            size: payload.memCart[keyCart].size,
+            total: payload.memCart[keyCart].total,
+          });
+        }
       }
     }
     if(payload.memWishlist) {
@@ -40,5 +42,8 @@ export default {
   },
   mutateCart(state, payload) {
     state.memCart.splice(payload, 1);
+  },
+  mutateWishlist(state, payload) {
+    state.memWishlist.splice(payload, 1);
   }
 }

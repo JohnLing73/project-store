@@ -121,7 +121,13 @@ export default {
   async modifyList(context, payload) {
     const userId = context.rootGetters.userId;
     const type = payload;
-    const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`, context.rootGetters.memCart );
+    let data;
+    if(type === 'cart') {
+      data = context.rootGetters.memCart;
+    }else {
+      data = context.rootGetters.memWishlist;
+    }
+    const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`, data );
     console.log(response);
   },
   
