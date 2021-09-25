@@ -36,7 +36,7 @@ body {
   color: $black;
   font-family: "Play", sans-serif;
   transition: all 0.5s ease;
-  // overflow: hidden;
+  overflow-x: hidden;
 }
 .dark-mode {
   background-color: $black;

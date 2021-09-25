@@ -11,12 +11,14 @@
     <products-main
       :content="productsPage"
     ></products-main>
-    <pop-bar 
-      v-if="!showSide"
-      @toggle='toggleBar'
-      :bar-position='showSide || toggleVal'
-      >
-    </pop-bar>
+    <transition name="toggle-btn">
+      <pop-bar 
+        v-if="!showSide"
+        @toggle='toggleBar'
+        :bar-position='showSide || toggleVal'
+        >
+      </pop-bar>
+    </transition>
   </div>
 </template>
 <script>
@@ -105,6 +107,21 @@ export default {
 .side-leave-active,
 .side-enter-active {
  transition: all 0.5s ease-in;
+}
+
+.toggle-btn-enter-from,
+.toggle-btn-leave-to {
+  opacity: 0;
+  transform: translateX(-38px);
+}
+.toggle-btn-enter-to,
+.toggle-btn-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+.toggle-btn-enter-active,
+.toggle-btn-leave-active {
+  transition: all 0.5s ease-in;
 }
 
   //RWD
