@@ -161,4 +161,11 @@ export default {
   .prod-info-brief {
     padding: 0 0.5rem;
   }
+
+  //RWD
+  @media(max-width: 555px) {
+    .prod-card {
+      margin: $distance-window 0 ;
+    }
+  }
 </style>

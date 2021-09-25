@@ -181,6 +181,7 @@ export default {
 
 .side-container {
   flex-basis: 200px;
+  background-color: $white;
   form {
     padding: 0 $distance-window $distance-window $distance-window;
   }
@@ -246,7 +247,6 @@ button {
   }
 }
 
-
 #color-white {
   &:checked + .label-color {
     &::after {
@@ -255,4 +255,11 @@ button {
   }
 }
 
+//RWD
+// @media (max-width: 555px) {
+//   .side-container {
+//     transform: translateX(-200px);
+//     display: none;
+//   }
+// }
 </style>

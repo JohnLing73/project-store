@@ -23,6 +23,7 @@ export default {
     background-color: $product-main-bg;
     padding:  $distance-window;
     justify-items: center;
+    justify-content: center;
       h1 {
         text-align: center;
       }
@@ -31,5 +32,10 @@ export default {
   }
   .products-main.darkMode {
     background-color: $product-dark-mode !important;
+  }
+
+  //RWD
+  @media (max-width: 555px) {
+
   }
 </style>

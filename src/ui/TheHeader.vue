@@ -12,6 +12,7 @@
       <span>Shop</span>
       <router-link to="/home"></router-link>
     </div>
+    <p>{{ innerWidth }}</p>
     <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
       <div class="icon-link" @click.stop="toggleList">
@@ -72,7 +73,9 @@ export default {
       toggle: false,
       toggleListValue: false,
 
-      toMemWithoutLog: false
+      toMemWithoutLog: false,
+
+      innerWidth: null
     };
   },
   computed: {
@@ -178,6 +181,12 @@ export default {
       }
     }
   },
+  mounted() {
+    this.innerWidth = window.innerWidth;
+    window.onresize = () => {
+      this.innerWidth = window.innerWidth;
+    }
+  }
 };
 </script>
 <style lang="scss">

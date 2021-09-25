@@ -18,6 +18,7 @@ import FingerIcon from './ui/FingerIcon.vue';
 import FontIcon from './ui/FontIcon.vue';
 import BaseDialog from './ui/BaseDialog.vue';
 import QuickLink from './ui/QuickLink.vue';
+import PopBar from './ui/PopBar.vue';
 
 import ProductsSide from './components/Products/ProductsSide.vue';
 import ProductsMain from './components/Products/ProductsMain.vue';
@@ -54,6 +55,7 @@ app.component('finger-icon', FingerIcon);
 app.component('font-icon', FontIcon);
 app.component('base-dialog', BaseDialog);
 app.component('quick-link', QuickLink);
+app.component('pop-bar', PopBar);
 
 app.component('products-side', ProductsSide);
 app.component('products-main', ProductsMain);
