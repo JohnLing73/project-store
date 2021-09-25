@@ -22,6 +22,7 @@ export default {
     width: calc(100vw - 200px);
     background-color: $product-main-bg;
     padding:  $distance-window;
+    justify-items: center;
       h1 {
         text-align: center;
       }

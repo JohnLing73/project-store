@@ -1,15 +1,15 @@
 <template>
-  <div class="arc-container">
-    <span>loading</span>
-    <div class="arc"></div>
-  </div>
+  <teleport to="body">
+    <div class="arc-container">
+      <span>loading</span>
+      <div class="arc"></div>
+    </div>
+  </teleport>
 </template>
 <script>
-export default {
-
-};
+export default {};
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .arc {
   border: 3px solid $spinner-blue;
   border-radius: 50%;
@@ -22,16 +22,23 @@ export default {
 }
 
 .arc-container {
-  position: relative;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
 }
 .arc-container > span {
   position: absolute;
-  font-weight:bold;
+  font-weight: bold;
   font-size: 1.2rem;
-  left:50%;
+  left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   animation: spinColor 1.5s infinite linear;
@@ -52,7 +59,8 @@ export default {
 }
 
 @keyframes spinColor {
-  from, to {
+  from,
+  to {
     color: $spinner-blue;
   }
   50% {

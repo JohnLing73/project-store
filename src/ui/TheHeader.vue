@@ -1,6 +1,17 @@
 <template>
   <header :class="{darkMode: this.themeMode}">
-    <the-logo logoWidth="75" logoHeight="75"></the-logo>
+    <base-dialog 
+      :showdialog='!!toMemWithoutLog'
+      title='Login issue'
+      content='You should login before heading to the page!'
+      btnText='Go to sign page'
+      @close='closeDialog'
+    ></base-dialog>
+    <div class="logo-container">
+      <the-logo logoWidth="70" logoHeight="70"></the-logo>
+      <span>Shop</span>
+      <router-link to="/home"></router-link>
+    </div>
     <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
       <div class="icon-link" @click.stop="toggleList">
@@ -14,7 +25,7 @@
             <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
           </li>
           <li>
-            <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Wishlist</a>
+            <a @click="goTo('/wishlists')" :class="{darkMode: this.$store.state.colorTheme === 'light' }">Your Wishlist</a>
           </li>
           <li>
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>
@@ -59,11 +70,13 @@ export default {
         "M55 27.5C55 42.6878 42.6878 55 27.5 55C12.3122 55 0 42.6878 0 27.5C0 12.3122 12.3122 0 27.5 0C42.6878 0 55 12.3122 55 27.5Z",
       icon: 'moon',
       toggle: false,
-      toggleListValue: false
+      toggleListValue: false,
+
+      toMemWithoutLog: false
     };
   },
   computed: {
-    ...mapGetters(['themeMode', 'toMemberPage','memEmail']),
+    ...mapGetters(['themeMode', 'toMemberPage','memEmail','userId']),
     storeTheme() {
       return this.$store.getters.theme;
     },
@@ -117,9 +130,17 @@ export default {
     signPage() {
       this.$router.replace('/sign');
     },
+    closeDialog() {
+      this.toMemWithoutLog = false;
+      this.$router.push('/sign');
+    },
     goTo(page) {
-      page = '/member/' + this.memEmail + page;
-      this.$router.push(page);
+      if(this.userId) {
+        page = '/member/' + this.memEmail + page;
+        this.$router.push(page);
+      }else {
+        this.toMemWithoutLog = true;
+      }
     }
   },
   watch: {
@@ -237,4 +258,50 @@ nav {
     color: $aqua !important;
   }
 
+  .logo-container {
+    @include flex-model($align: center);
+    position: relative;
+      > span {
+        font-size: 3rem;
+        line-height: 100%;
+        font-family: 'Lobster', cursive;
+      }
+    a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+// RWD
+
+@media (max-width: 1200px) {
+  input.search-input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  input.search-input {
+    width: 200px;
+    background-image:none;
+    padding: 0.5rem 1.1rem;
+  }
+}
+
+@media(max-width: 700px) {
+  input.search-input {
+      display: none;
+  }
+}
+
+@media(max-width: 576px) {
+  // .logo-container {
+  //     >span {
+  //       font-size: 0;
+  //     }
+  // }
+}
 </style>

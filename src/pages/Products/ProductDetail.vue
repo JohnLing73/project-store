@@ -1,11 +1,5 @@
 <template>
-  <base-dialog 
-    :showdialog="isLoading" 
-    :confirmExist="false" 
-    title="Loading Product Detail..."
-    >
-    <base-loading></base-loading>
-  </base-dialog>
+  <base-loading v-if="isLoading"></base-loading>
   <base-dialog 
     :showdialog="doSth && !isLogin" 
     title="Warning" 

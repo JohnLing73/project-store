@@ -7,9 +7,7 @@
       @close="closeDialog"
     >
     </base-dialog>
-    <base-dialog :showdialog="isLoading" title="Signing Up...">
-      <base-loading></base-loading>
-    </base-dialog>
+    <base-loading v-if="isLoading"></base-loading>
     <base-dialog
       :showdialog="!!error"
       title="Signing Error"

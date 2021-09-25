@@ -51,9 +51,9 @@
             </sign-icon>
           </div>
             <div id="sign-up-slogan">
-              <h3>Sign Up For More Member's Advantage!</h3>
+              <h3>Sign Up For More...</h3>
               <ol>
-                <li>Get the coupon.</li>
+                <li>Buy the product.</li>
                 <li>Build your own whishlists.</li>
                 <li>Check your orders.</li>
                 <li>
@@ -167,10 +167,10 @@ section#wrapper {
     justify-content: space-evenly;
       > div {
         position: relative;
-        flex-basis: 50%;
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
+        margin: 0.5rem;
           > a {
             position: absolute;
             left: 0;
@@ -250,5 +250,37 @@ section#wrapper {
   height: 70%;
   opacity: 0;
   transform: translateX(-150px);
+}
+
+@media (max-width: 1552px) {
+  .part {
+    @include flex-model($dir: column);
+    div {
+      flex-basis: auto;
+    }
+  }
+  // .promote-container {
+  //   justify-content: center;
+  // }
+}
+
+@media(max-width: 1200px) {
+  .font-banner-container {
+    @include flex-model($dir: column, $align: flex-start);
+  }
+}
+@media (max-width: 944px) {
+  .promote-container {
+    > div {
+//       margin: 0;
+      // flex-basis: 50%;
+    }
+//     > div {
+//       &:nth-child(2n+1) {
+//         flex-basis: auto;
+//       }
+//     }
+      justify-content: center;
+  }
 }
 </style>

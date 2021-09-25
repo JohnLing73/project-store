@@ -54,8 +54,6 @@
         <g xmlns="http://www.w3.org/2000/svg"></g>
       </g>
     </svg>
-    <span>Shop</span>
-    <router-link to="/home"></router-link>
   </div>
 </template>
 <script>
@@ -95,17 +93,4 @@ svg {
   position:relative;
 }
 
-.logoContainer > span {
-  font-size: 3rem;
-  line-height: 100%;
-  font-family: 'Lobster', cursive;
-  /* font-family: 'Courgette', cursive; */
-}
-a {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
 </style>

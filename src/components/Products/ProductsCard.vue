@@ -65,10 +65,9 @@ export default {
 </script>
 <style lang="scss" scoped>
   .prod-card {
-    flex-basis: 20%;
     border: 3px solid gold;
     margin: $distance-window;
-    min-width: 250px;
+    width: 250px;
     position: relative;
       a {
         position: absolute;

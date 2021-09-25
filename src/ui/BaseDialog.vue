@@ -9,7 +9,7 @@
         <section>
           <p :class="{darkMode: this.$store.state.normal.colorTheme === 'light'}">{{ content }}</p>
           <slot></slot>
-          <base-button :link= "false" @click= "closeDialog" v-if="confirmExist">Confirm</base-button>
+          <base-button :link= "false" @click= "closeDialog" v-if="confirmExist">{{ btnText }}</base-button>
         </section>
       </dialog>
     </transition>
@@ -34,6 +34,11 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    btnText: {
+      type: String,
+      default: 'Confirm',
+      required: false
     }
     },
     methods: {
