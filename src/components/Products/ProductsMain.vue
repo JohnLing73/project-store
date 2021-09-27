@@ -23,7 +23,7 @@ export default {
     background-color: $product-main-bg;
     padding:  $distance-window;
     justify-items: center;
-    justify-content: center;
+    justify-content: flex-start;
       h1 {
         text-align: center;
       }

@@ -95,10 +95,8 @@ footer {
   flex-wrap: wrap;
   box-shadow: $box-shadow;
   > div {
-    flex-basis: 50%;
     &:first-child {
-      display: flex;
-      flex-flow: column wrap;
+      @include flex-model($dir: column, $align: center);
       > a {
         align-self: center;
         transition: all 0.5s ease;
@@ -108,13 +106,17 @@ footer {
         }
       }
     }
+    &:nth-child(2) {
+      @include flex-model($dir: column, $align: center);
+    }
     &:last-child {
-      align-self: center;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       margin: $distance-block auto;
+      width: 100%;
       p {
+        margin-left: $distance-window;
         text-align: center;
       }
     }
@@ -123,10 +125,12 @@ footer {
 footer {
   h2,
   a {
-    text-align: center;
     text-decoration: none;
     font-size: 1.3rem;
     padding-bottom: 0.5rem;
+  }
+  a {
+    text-align: center;
   }
   h2 {
     font-size: 1.8rem;
@@ -135,13 +139,27 @@ footer {
   p {
     font-size: 1.3rem;
   }
+  >div {
+    &:first-child {
+      h2 {
+        width: 140px;
+      }
+    }
+  }
 }
 
 .icon-container {
   display: flex;
-  justify-content: center;
-  svg {
-    margin: 0rem 1rem;
+  justify-content: flex-start;
+  > svg {
+    margin:0 $distance-window;
+    margin-left: 0;
+  }
+}
+
+footer {
+  > div {
+    width: 50%;
   }
 }
 
@@ -151,8 +169,8 @@ li {
 }
 
 li {
-  padding-left: 4rem;
   margin-bottom: 0.3rem;
+  width: 140px;
 }
 
 </style>

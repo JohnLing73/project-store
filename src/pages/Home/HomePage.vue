@@ -44,12 +44,6 @@
     </main>
       <section id="sign-up-banner">
         <div>
-          <div id="sign-icon-container">
-            <sign-icon
-              :color= "svgTheme"
-            >
-            </sign-icon>
-          </div>
             <div id="sign-up-slogan">
               <h3>Sign Up For More...</h3>
               <ol>
@@ -218,7 +212,6 @@ section#wrapper {
       }
   }
   #sign-up-slogan {
-    margin-right: -5rem;
     > h3 {
       margin: 0 auto 0.5rem;
       font-size: $h2;
