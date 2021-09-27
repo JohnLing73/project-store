@@ -150,7 +150,7 @@ section#wrapper {
       flex-flow: row nowrap; 
       justify-content: space-between;
       align-items: stretch;
-        div {
+        >div {
           flex-basis: 30%;
         }
         h2 {
@@ -170,7 +170,8 @@ section#wrapper {
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
-        margin: 0.5rem;
+        // margin: 0.5rem;
+        flex-basis: 50%;
           > a {
             position: absolute;
             left: 0;
@@ -253,34 +254,58 @@ section#wrapper {
 }
 
 @media (max-width: 1552px) {
-  .part {
-    @include flex-model($dir: column);
-    div {
-      flex-basis: auto;
+  .promote-container {
+    > div {
+      width: 186px;
     }
   }
-  // .promote-container {
-  //   justify-content: center;
-  // }
 }
-
 @media(max-width: 1200px) {
   .font-banner-container {
-    @include flex-model($dir: column, $align: flex-start);
+    @include flex-model($dir: row, $wrap: wrap );
+     > div {
+       width: 50%;
+     }
+  }
+}
+
+@media (max-width: 1431px) {
+  .part {
+    @include flex-model($dir: column, $content: center, $align: center);
+      > div {
+        width: 100%;
+      }
+  }
+  .promote-container {
+    > div {
+      flex-basis: auto;
+      margin: 0 $distance-window;
+    }
+  }
+}
+
+@media (max-width: 1067px) {
+  .promote-container {
+    > div {
+      margin: 0;
+    }
   }
 }
 @media (max-width: 944px) {
-  .promote-container {
+  .part {
     > div {
-//       margin: 0;
-      // flex-basis: 50%;
+      width: 411px;
     }
-//     > div {
-//       &:nth-child(2n+1) {
-//         flex-basis: auto;
-//       }
-//     }
-      justify-content: center;
+  }
+}
+
+@media (max-width: 725px) {
+  .font-banner-container {
+    @include flex-model($dir: column, $align: center);
+    > div {
+      width: 293px;
+      margin: 0.5rem auto;
+    }
   }
 }
 </style>

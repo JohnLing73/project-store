@@ -4,9 +4,9 @@
     :showdialog="doSth && !isLogin" 
     title="Warning" 
     content="You should login before next step!"
+    btnText='Go to sign page'
     @close="closeDoSth"
   >
-    <router-link to='/sign'>Heading to Sign Page</router-link>
   </base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
@@ -196,6 +196,7 @@ export default {
     },
     closeDoSth() {
       this.doSth = false;
+      this.$router.push('/sign');
     },
     addList(type) {
       console.log('addCart');

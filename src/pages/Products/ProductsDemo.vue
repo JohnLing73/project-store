@@ -34,8 +34,7 @@ export default {
       filterResult: [],
 
       innerWidth: null,
-      toggleVal: false,
-      showSideData: this.showSide
+      toggleVal: false
     };
   },
   computed: {

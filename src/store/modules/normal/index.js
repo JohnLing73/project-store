@@ -35,7 +35,7 @@ export default {
             cardData: [
               {
                 id: 1,
-                title: 'Styles for Man | Up to 70% off',
+                title: 'For Man | Up to 70% off',
                 imgs: [
                   {
                     category: 'Clothing',
@@ -61,7 +61,7 @@ export default {
               },
               {
                 id: 2,
-                title: 'Styles for Women | Up to 70% off',
+                title: 'For Women | Up to 70% off',
                 imgs: [
                   {
                     category: 'Clothing',
@@ -87,7 +87,7 @@ export default {
               },
               {
                 id: 3,
-                title: 'Automotive stuff | Up to 60% off',
+                title: 'For others | Up to 60% off',
                 imgs: [
                   {
                     category: 'Mobile',
