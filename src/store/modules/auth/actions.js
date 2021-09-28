@@ -128,6 +128,7 @@ export default {
       data = context.rootGetters.memWishlist;
     }
     const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`, data );
+    console.log(context.rootGetters.memCart);
     console.log(response);
   },
   

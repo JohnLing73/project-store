@@ -199,17 +199,17 @@ export default {
       this.$router.push('/sign');
     },
     async addList(type) {
-      console.log('addCart');
-      await this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
+      console.log('addCart', type);
       this.doSth = true;
       if(this.$store.getters.userId) {
-        this.$store.dispatch('addList', {
+        await this.$store.dispatch('addList', {
           type: type,
           product: this.specificProduct,
           quantity: this.selectQuantity,
           size: this.selectSize,
           color: this.selectColor
         });
+        await this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
       }else {
         return;
       }

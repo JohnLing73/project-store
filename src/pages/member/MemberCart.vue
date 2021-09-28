@@ -62,9 +62,9 @@ export default {
     }
   },
   methods: {
-    removeFromCart(idx) {
+    async removeFromCart(idx) {
       this.$store.commit('mutateCart', idx);
-      this.$store.dispatch('modifyList','cart');
+      await this.$store.dispatch('modifyList','cart');
     }
   },
 }
