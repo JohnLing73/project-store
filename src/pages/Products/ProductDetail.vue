@@ -209,7 +209,7 @@ export default {
           size: this.selectSize,
           color: this.selectColor
         });
-        await this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
+        this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
       }else {
         return;
       }

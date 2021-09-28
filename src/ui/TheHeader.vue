@@ -35,7 +35,9 @@
       <div class="icon-link" @click="goTo('/cart')">
         <img v-if= "storeTheme === 'dark'" :src= "cartFigDark" alt="cart" />
         <img v-else :src= "cartFigLight" alt="cart" />
-        <div class="hint-circle" v-if="memCart.length > 0">{{memCart.length}}</div>
+        <transition name="hint-circle">
+          <div class="hint-circle" v-if="memCart.length > 0">{{memCart.length}}</div>
+        </transition>
       </div>
       <div @click="switchTheme" id="themeIcon">
         <svg
@@ -281,6 +283,24 @@ nav {
     top: -8px;
     left: 20px;
     @include flex-model($content:center, $align: center);
+    transition: all 0.5s ease;
+  }
+
+  .hint-circle-enter-from,
+  .hint-circle-leave-to {
+    opacity: 0;
+    transform: translateY(50px) scale(2);
+  }
+  .hint-circle-enter-to,
+  .hint-circle-leave-from {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+  .hint-circle-enter-active {
+    transition: all 0.5s ease;
+  } 
+  .hint-circle-leave-active {
+    transition: all 0.5s ease-in;
   }
 // RWD
 
