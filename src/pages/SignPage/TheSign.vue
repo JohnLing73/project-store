@@ -12,10 +12,8 @@
       :showdialog="!!error"
       title="Signing Error"
       @close="closeDialogError"
+      :content="error"
     >
-      <p :class="{ darkMode: this.$store.state.normal.colorTheme === 'light' }">
-        {{ error }}
-      </p>
     </base-dialog>
     <form :class="{ darkMode: darkMode }" @click.prevent>
       <h2 v-if="signStatus === 'signUp'">Sign Up</h2>
@@ -283,7 +281,6 @@ export default {
   },
   methods: {
     async signUp() {
-      console.log("sign up");
       this.isLoading = true;
       this.checkNormalValid();
       if (this.allowSignUp === false) {
@@ -300,7 +297,7 @@ export default {
           location: this.location,
         });
       } catch (error) {
-        this.error = error;
+        this.error = 'Something went wrong! Try to sign up again!';
       }
 
       this.isLoading = false;
@@ -311,8 +308,7 @@ export default {
       this.birth = "";
       this.location = "";
       //註冊完成後離開頁面不會出現跳窗並直接跳轉至 member
-      // this.signSuccess = true;
-      // this.$router.push('/member');
+      this.autoPush();
     },
     switchSignStatus() {
       if (this.signStatus === "signUp") {
@@ -322,19 +318,27 @@ export default {
       }
     },
     async signIn() {
-      console.log("sign in");
       this.isLoading = true;
-      await this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password,
-      });
-      this.isLoading = false;
+      try {
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+        this.isLoading = false;
+      }catch(error) {
+        this.error = 'You may logIn with the wrong mail or password! Please try again!';
+        this.isLoading = false;
+      }
 
       this.email = "";
       this.password = "";
       //登入完成後離開頁面不會出現跳窗並直接跳轉至 member
+      this.autoPush();
+    },
+    //auto push to member page
+    autoPush() {
       if(this.$store.state.auth.userId) {
-        this.signSuccess = true;
+        this.signSuccess = true; 
         // this.$router.push('/member');
       }
     },

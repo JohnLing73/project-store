@@ -58,7 +58,7 @@ export default {
       });
       await context.dispatch('loginGet');
     }catch(error) {
-      console.log(error.messagee);
+      console.log(error.message);
       throw error;
     }
   },
