@@ -65,6 +65,7 @@ export default {
   async loginGet(context) { // 登入成功便抓取資料ˋ
       const userId = context.rootGetters.userId;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
+      console.log(response);
       console.log('cart:',response.data.cart);
       console.log('wishlist:',response.data.wishlist);
       if(response.data.cart && response.data.wishlist) {
@@ -110,7 +111,8 @@ export default {
       total: payload.product.price * payload.quantity,
       size: payload.size,
       color: payload.color,
-      quantity: payload.quantity
+      quantity: payload.quantity,
+      prodId: payload.prodId
     };
     const response = await axios.post(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`,{
       ...newList

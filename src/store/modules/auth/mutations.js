@@ -22,6 +22,7 @@ export default {
             quantity: payload.memCart[keyCart].quantity,
             size: payload.memCart[keyCart].size,
             total: payload.memCart[keyCart].total,
+            prodId: payload.memCart[keyCart].prodId
           });
         }
       }
@@ -36,6 +37,7 @@ export default {
           quantity: payload.memWishlist[keyWishlist].quantity,
           size: payload.memWishlist[keyWishlist].size,
           total: payload.memWishlist[keyWishlist].total,
+          prodId: payload.memWishlist[keyWishlist].prodId
         });
       }
     }

@@ -9,7 +9,7 @@
         <img :src="prod.prodImg" alt="">
       </div>
       <div class="info-one info">
-        <h3>{{ prod.prodName}}</h3>
+        <h3><router-link :to="'/productDetail/' + prod.prodId">{{ prod.prodName }}</router-link></h3>
         <div>
           <h4>color: {{ prod.color}}</h4>
           <h4>size: {{ prod.size }}</h4>

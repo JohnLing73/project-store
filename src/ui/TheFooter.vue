@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div>
-      <h2>Follow Us</h2>
+      <h2 id="follow-us">Follow Us</h2>
       <div class="icon-container">
         <font-icon
           v-for="icon in footerIcon"
@@ -173,4 +173,7 @@ li {
   width: 140px;
 }
 
+#follow-us {
+  width: 184.5px;
+}
 </style>

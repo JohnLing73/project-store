@@ -1,5 +1,6 @@
 <template>
   <base-loading v-if="isLoading"></base-loading>
+  <!-- 沒登入卻要 addList -->
   <base-dialog 
     :showdialog="doSth && !isLogin" 
     title="Warning" 
@@ -207,7 +208,8 @@ export default {
           product: this.specificProduct,
           quantity: this.selectQuantity,
           size: this.selectSize,
-          color: this.selectColor
+          color: this.selectColor,
+          prodId: this.prodId
         });
         this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
       }else {
