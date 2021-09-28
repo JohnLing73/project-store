@@ -35,6 +35,7 @@
       <div class="icon-link" @click="goTo('/cart')">
         <img v-if= "storeTheme === 'dark'" :src= "cartFigDark" alt="cart" />
         <img v-else :src= "cartFigLight" alt="cart" />
+        <div class="hint-circle" v-if="memCart.length > 0">{{memCart.length}}</div>
       </div>
       <div @click="switchTheme" id="themeIcon">
         <svg
@@ -75,7 +76,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['themeMode', 'toMemberPage','memEmail','userId']),
+    ...mapGetters(['themeMode', 'toMemberPage','memEmail','userId', 'memCart']),
     storeTheme() {
       return this.$store.getters.theme;
     },
@@ -175,7 +176,7 @@ export default {
       for(let i=0; i < colorCircle.length; i++) {
         (newVal === 'light') ? (colorCircle[i].setAttribute('class', 'color-circle dark-mode')) : (colorCircle[i].setAttribute('class', 'color-circle'));
       }
-    }
+    },
   },
 };
 </script>
@@ -274,6 +275,13 @@ nav {
     }
   }
 
+  .hint-circle {
+    @include circle-model($r: 20px);
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    @include flex-model($content:center, $align: center);
+  }
 // RWD
 
 @media (max-width: 1200px) {

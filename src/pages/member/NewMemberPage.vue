@@ -6,7 +6,6 @@
     <div class="member-info">
       <h2>Member Center</h2>
       <p>Member Center >> Member {{ breadCrumb }}</p>
-      <p>{{breadCrumbBtn}}</p>
     </div>
     <div class="member-side-bar">
       <button
@@ -67,7 +66,6 @@ export default {
   watch: {
     $route(newRoute) {
       this.breadCrumb =  this.crumbCreator(newRoute);
-      console.log(newRoute.name);
     }
   }
 };

@@ -333,8 +333,10 @@ export default {
       this.email = "";
       this.password = "";
       //登入完成後離開頁面不會出現跳窗並直接跳轉至 member
-      // this.signSuccess = true;
-      // this.$router.push('/member');
+      if(this.$store.state.auth.userId) {
+        this.signSuccess = true;
+        // this.$router.push('/member');
+      }
     },
     //Function about input validation
     checkNormalValid() {

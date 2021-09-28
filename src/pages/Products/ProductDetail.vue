@@ -198,8 +198,9 @@ export default {
       this.doSth = false;
       this.$router.push('/sign');
     },
-    addList(type) {
+    async addList(type) {
       console.log('addCart');
+      await this.$store.dispatch('loginGet'); //每加商品進購物車或願望清單就更新一次資料，(header cartIcon 能即時更新筆數)
       this.doSth = true;
       if(this.$store.getters.userId) {
         this.$store.dispatch('addList', {
