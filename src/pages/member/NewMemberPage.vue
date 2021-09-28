@@ -5,7 +5,7 @@
   >
     <div class="member-info">
       <h2>Member Center</h2>
-      <p>Member Center >> {{ tab }}</p>
+      <p>Member Center >> {{ breadCrumb }}</p>
     </div>
     <div class="member-side-bar">
       <button
@@ -25,12 +25,12 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-// import axios from 'axios';
 export default {
   data() {
     return {
       tab: "MemberProfile",
       tabs: ["MemberProfile", "MemberOrders", "MemberCart", "MemberWishlists"],
+      breadCrumb: 'Member'
     };
   },
   computed: {
@@ -45,10 +45,30 @@ export default {
     },
     async fetchUserData() {
       await this.$store.dispatch('loginGet');
+    },
+    crumbCreator(newRoute) {
+      let crumb = newRoute.name;
+      crumb = crumb.slice(7);
+      crumb = crumb.charAt(0).toUpperCase() + crumb.slice(1);
+      return crumb;
     }
   },
   async created() {
     await this.$store.dispatch('loginGet');
+    // let crumb = this.$route.name;
+    // crumb = crumb.slice(7);
+    // crumb = crumb.charAt(0).toUpperCase() +  crumb.slice(1);
+    let crumb = this.crumbCreator(this.$route);
+    this.breadCrumb = 'Member ' + crumb;
+  },
+  watch: {
+    $route(newRoute) {
+      // let crumb = newRoute.name;
+      // crumb = crumb.slice(7);
+      // crumb = crumb.charAt(0).toUpperCase() + crumb.slice(1);
+      let crumb = this.crumbCreator(newRoute);
+      this.breadCrumb = 'Member ' + crumb;
+    }
   }
 };
 </script>

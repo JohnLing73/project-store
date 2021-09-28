@@ -32,10 +32,9 @@
           </li>
         </ul>
       </div>
-      <div class="icon-link">
+      <div class="icon-link" @click="goTo('/cart')">
         <img v-if= "storeTheme === 'dark'" :src= "cartFigDark" alt="cart" />
         <img v-else :src= "cartFigLight" alt="cart" />
-        <router-link to="/cart"></router-link>
       </div>
       <div @click="switchTheme" id="themeIcon">
         <svg
@@ -225,13 +224,13 @@ nav {
 
 .icon-link {
   position: relative;
-    > a {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
+    // > a {
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   width: 100%;
+    //   height: 100%;
+    // }
     ul {
       position: absolute;
       z-index: -1;

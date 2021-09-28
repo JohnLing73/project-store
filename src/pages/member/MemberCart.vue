@@ -29,6 +29,11 @@
         ></font-awesome-icon>
       </div>
     </div>
+    <div class="total"></div>
+    <div class="total-check">
+      <p>Total: ${{ totalCart }}</p>
+      <base-button :link='false'>Checkout</base-button>
+    </div>
   </div>
   <div class="container" v-else>
     <h2>Oops! You have not add any product to your cart!</h2>
@@ -47,6 +52,13 @@ export default {
     cart() {
       // 測試第一位user 的 cartlist
       return this.members[0].cart;
+    },
+    totalCart() {
+      let total = 0;
+      for(const key in this.memCart) {
+        total += this.memCart[key].total;
+      }
+      return total;
     }
   },
   methods: {
@@ -59,15 +71,19 @@ export default {
 </script>
 <style lang="scss" scoped>
   .container {
-    @include member-tab-container();
+    @include flex-model($dir: column, $align: center);
+    margin: 0 auto;
+    width: 750px;
   }
 
   .container-each {
     @include flex-model();
-    border: 1px solid $black;
+    border: 1px solid $white;
     border-radius: 12px;
     overflow: hidden;
+    margin: 0 auto;
     margin-bottom: 1rem;
+    width: 750px;
   }
 
   .img-container {
@@ -124,5 +140,21 @@ export default {
   h3, 
   h4 {
     margin: 0;
+  }
+
+  .total {
+    width: 100%;
+    height: 3px;
+    background-color: $white;
+    margin-top: $distance-window;
+  }
+
+  .total-check {
+    align-self: flex-end;
+    padding-right: $distance-window;
+    @include flex-model($dir: column, $align: flex-end);
+    > p {
+      font-size: $h3;
+    }
   }
 </style>

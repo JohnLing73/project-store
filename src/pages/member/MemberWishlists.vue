@@ -59,15 +59,16 @@ export default {
 </script>
 <style lang="scss" scoped>
   .container {
-    @include member-tab-container();
+    @include flex-model($dir: column, $align: center);
   }
 
   .container-each {
     @include flex-model();
-    border: 1px solid $black;
+    border: 1px solid $white;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 1rem;
+    width: 750px;
   }
 
   .img-container {

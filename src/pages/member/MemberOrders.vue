@@ -131,7 +131,7 @@ table {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid $white !important;
   text-align: center;
   padding: 0.5rem 0.3rem;
 }
