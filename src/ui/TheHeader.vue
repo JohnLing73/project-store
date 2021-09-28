@@ -22,10 +22,10 @@
             <a @click.prevent="goTo('/profile')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Account</a> 
           </li>
           <li>
-            <a :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
+            <a @click.prevent="goTo('/orders')" :class="{darkMode: this.$store.state.colorTheme === 'light'}">Your Orders</a>
           </li>
           <li>
-            <a @click="goTo('/wishlists')" :class="{darkMode: this.$store.state.colorTheme === 'light' }">Your Wishlist</a>
+            <a @click.prevent="goTo('/wishlists')" :class="{darkMode: this.$store.state.colorTheme === 'light' }">Your Wishlist</a>
           </li>
           <li>
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>

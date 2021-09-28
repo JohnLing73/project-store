@@ -5,14 +5,15 @@
   >
     <div class="member-info">
       <h2>Member Center</h2>
-      <p>Member Center >> {{ breadCrumb }}</p>
+      <p>Member Center >> Member {{ breadCrumb }}</p>
+      <p>{{breadCrumbBtn}}</p>
     </div>
     <div class="member-side-bar">
       <button
         v-for="(tab, idx) in tabs"
         :key="idx"
         class="member-tab-btn"
-        :class="{ selecting: this.tab === tab }"
+        :class="{ selecting: tab === this.breadCrumbBtn }"
         @click="switchTab(this.tabs[idx])"
       >
         {{ tab }}
@@ -34,14 +35,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['memId'])
+    ...mapGetters(['memId']),
+    tabPage() {
+      return 'member-' + this.tab.slice(6).toLowerCase();
+    },
+    breadCrumbBtn() {
+      return 'Member' + this.breadCrumb;
+    }
   },
   methods: {
     switchTab(page) {
       this.tab = page;
       page = page.slice(6);
       page = page.charAt(0).toLowerCase() + page.slice(1);
-      this.$router.push(page)
+      this.$router.push(page);
     },
     async fetchUserData() {
       await this.$store.dispatch('loginGet');
@@ -55,19 +62,12 @@ export default {
   },
   async created() {
     await this.$store.dispatch('loginGet');
-    // let crumb = this.$route.name;
-    // crumb = crumb.slice(7);
-    // crumb = crumb.charAt(0).toUpperCase() +  crumb.slice(1);
-    let crumb = this.crumbCreator(this.$route);
-    this.breadCrumb = 'Member ' + crumb;
+    this.breadCrumb = this.crumbCreator(this.$route);
   },
   watch: {
     $route(newRoute) {
-      // let crumb = newRoute.name;
-      // crumb = crumb.slice(7);
-      // crumb = crumb.charAt(0).toUpperCase() + crumb.slice(1);
-      let crumb = this.crumbCreator(newRoute);
-      this.breadCrumb = 'Member ' + crumb;
+      this.breadCrumb =  this.crumbCreator(newRoute);
+      console.log(newRoute.name);
     }
   }
 };
