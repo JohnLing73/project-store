@@ -57,7 +57,7 @@
       >
         <label for="password">Password</label>
         <span v-if="inputPasswordValid === 'Invalid'" class="invalid-warning">
-          (Please Input Valid Password!)
+          (At least 7 characters!)
         </span>
         <input
           name="password"
@@ -236,6 +236,7 @@ button {
 }
 </style>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -264,6 +265,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(['userId']),
     darkMode() {
       if (this.$store.getters.theme === "light") {
         return true;
@@ -285,6 +287,7 @@ export default {
       this.checkNormalValid();
       if (this.allowSignUp === false) {
         console.log("return without upload");
+        this.error = "Your data is invalid please check the form then send it again!"
         this.isLoading = false;
         return;
       }
@@ -297,7 +300,7 @@ export default {
           location: this.location,
         });
       } catch (error) {
-        this.error = 'Something went wrong! Try to sign up again!';
+        this.error = error.response.data.error.message;
       }
 
       this.isLoading = false;
@@ -326,9 +329,9 @@ export default {
         });
         this.isLoading = false;
       }catch(error) {
-        this.error = 'You may logIn with the wrong mail or password! Please try again!';
-        this.isLoading = false;
+        this.error = error.response.data.error.message;
       }
+        this.isLoading = false;
 
       this.email = "";
       this.password = "";
@@ -361,7 +364,7 @@ export default {
         this.inputMemberIdValid = "Valid";
         this.allowSignUp = true;
       }
-      if (this.password === "" || this.password.length < 7) {
+      if (this.password === "" && this.password.length < 7) {
         this.inputPasswordValid = "Invalid";
         this.allowSignUp = false;
         return;
@@ -401,7 +404,10 @@ export default {
     } else if (!this.showDialog && this.allowLeave) {
       // close the warn dialog
       next();
-    } else {
+    }else if(this.userId) {
+      // already login
+      next();
+    }else {
       this.showDialog = true;
     }
   },
