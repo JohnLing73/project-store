@@ -21,8 +21,9 @@ export default {
     },
   async signupData(context, payload) { //再上傳基本資料
     const userId = context.rootGetters.userId;
+    const token = context.getters.token;
     try {
-      const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`,
+      const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json?auth=` + token,
       {
         id: userId,
         email: payload.email,
@@ -61,7 +62,8 @@ export default {
   },
   async loginGet(context) { // 登入成功便抓取資料ˋ
       const userId = context.rootGetters.userId;
-      const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json`);
+      const token = context.getters.token;
+      const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json?auth=` + token);
       console.log(response);
       console.log('cart:',response.data.cart);
       console.log('wishlist:',response.data.wishlist);
@@ -102,6 +104,7 @@ export default {
   async addList(context, payload) {
     const userId = context.rootGetters.userId;
     const type = payload.type;
+    const token = context.getters.token;
     const newList = {
       prodName: payload.product.prodName,
       prodImg: payload.product.color[0].imgSrc,
@@ -111,7 +114,7 @@ export default {
       quantity: payload.quantity,
       prodId: payload.prodId
     };
-    const response = await axios.post(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`,{
+    const response = await axios.post(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json?auth=` + token,{
       ...newList
     });
     console.log(newList);
@@ -120,13 +123,14 @@ export default {
   async modifyList(context, payload) {
     const userId = context.rootGetters.userId;
     const type = payload;
+    const token = context.getters.token;
     let data;
     if(type === 'cart') {
       data = context.rootGetters.memCart;
     }else {
       data = context.rootGetters.memWishlist;
     }
-    const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json`, data );
+    const response = await axios.put(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}/${type}.json?auth=` + token, data );
     console.log(context.rootGetters.memCart);
     console.log(response);
   },
