@@ -134,5 +134,19 @@ export default {
     console.log(context.rootGetters.memCart);
     console.log(response);
   },
-  
+  logout(context) {
+    context.commit('setUser', {
+      token: null,
+      userId: null,
+      tokenExpiration: null
+    });
+    context.commit('userInfo',{
+      memId: '',
+      memBirth: '',
+      memEmail: '',
+      memLocation: '',
+      memCart: [],
+      memWishlist: []
+    })
+  }
 }

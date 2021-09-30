@@ -265,7 +265,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['userId']),
+    ...mapGetters(['userId','memEmail']),
     darkMode() {
       if (this.$store.getters.theme === "light") {
         return true;
@@ -299,6 +299,7 @@ export default {
           birth: this.birth,
           location: this.location,
         });
+        this.autoPush();
       } catch (error) {
         this.error = error.response.data.error.message;
       }
@@ -311,7 +312,6 @@ export default {
       this.birth = "";
       this.location = "";
       //註冊完成後離開頁面不會出現跳窗並直接跳轉至 member
-      this.autoPush();
     },
     switchSignStatus() {
       if (this.signStatus === "signUp") {
@@ -328,6 +328,7 @@ export default {
           password: this.password,
         });
         this.isLoading = false;
+        this.autoPush();
       }catch(error) {
         this.error = error.response.data.error.message;
       }
@@ -336,13 +337,13 @@ export default {
       this.email = "";
       this.password = "";
       //登入完成後離開頁面不會出現跳窗並直接跳轉至 member
-      this.autoPush();
     },
     //auto push to member page
     autoPush() {
       if(this.$store.state.auth.userId) {
         this.signSuccess = true; 
-        // this.$router.push('/member');
+        console.log(this.memEmail);
+        this.$router.push('/member/' + this.memEmail + '/profile');
       }
     },
     //Function about input validation

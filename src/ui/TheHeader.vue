@@ -27,8 +27,11 @@
           <li>
             <a @click.prevent="goTo('/wishlists')" :class="{darkMode: this.$store.state.colorTheme === 'light' }">Your Wishlist</a>
           </li>
-          <li>
+          <li v-if="!userId">
             <base-button :link = "false" @click= "signPage">Sign Up / In</base-button>
+          </li>
+          <li v-else>
+            <base-button :link = "false" @click= "logout">Log Out</base-button>
           </li>
         </ul>
       </div>
@@ -143,6 +146,10 @@ export default {
       }else {
         this.toMemWithoutLog = true;
       }
+    },
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.replace('/sign');
     }
   },
   watch: {
