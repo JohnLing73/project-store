@@ -48,8 +48,7 @@ export default {
         password: payload.password,
         returnSecureToken: true
       });
-      // const expiresIn = +response.data.expiresIn*1000;
-      const expiresIn = 5000;
+      const expiresIn = +response.data.expiresIn*1000;
       const expirationDate = new Date().getTime() + expiresIn;
       localStorage.setItem('token', response.data.idToken);
       localStorage.setItem('userId', response.data.localId);
