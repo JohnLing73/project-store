@@ -1,5 +1,5 @@
 //Import Essential settings
-import { createApp } from 'vue'
+import { createApp, defineAsyncComponent } from 'vue';
 import router from './router.js';
 import store from './store/index.js';
 import App from './App.vue'
@@ -7,16 +7,15 @@ import App from './App.vue'
 //Import Base Component
 import TheLogo from './ui/TheLogo.vue';
 import BaseLoading from './ui/BaseLoading';
-import BaseSlide from './ui/BaseSlide.vue';
+// import BaseSlide from './ui/BaseSlide.vue';
 import BaseButton from './ui/BaseButton.vue';
 import BaseCard from './ui/BaseCard.vue';
 import TheHeader from './ui/TheHeader.vue';
-import RecommendSlide from './pages/Home/RecommendSlide.vue';
+// import RecommendSlide from './pages/Home/RecommendSlide.vue';
 import BriefSign from './components/BriefSign.vue';
-import SignIcon from './ui/SignIcon.vue';
 import FingerIcon from './ui/FingerIcon.vue';
 import FontIcon from './ui/FontIcon.vue';
-import BaseDialog from './ui/BaseDialog.vue';
+// import BaseDialog from './ui/BaseDialog.vue';
 import QuickLink from './ui/QuickLink.vue';
 import PopBar from './ui/PopBar.vue';
 
@@ -39,6 +38,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faTruck, faExchangeAlt, faPaperPlane, faCreditCard, faInstagram, faTwitter, faFacebook, faCopyright, faStar, faUserCircle, faTrashAlt);
 
 
+const BaseSlide = defineAsyncComponent(() => import('./ui/BaseSlide.vue'));
+const RecommendSlide = defineAsyncComponent(() => import('./pages/Home/RecommendSlide.vue'));
+const BaseDialog = defineAsyncComponent(() => import('./ui/BaseDialog.vue'));
+
 const app  = createApp(App);
 
 //Register Base Component
@@ -50,7 +53,6 @@ app.component('base-card', BaseCard);
 app.component('base-slide', BaseSlide);
 app.component('recommend-slide', RecommendSlide);
 app.component('brief-sign', BriefSign);
-app.component('sign-icon', SignIcon);
 app.component('finger-icon', FingerIcon);
 app.component('font-icon', FontIcon);
 app.component('base-dialog', BaseDialog);
