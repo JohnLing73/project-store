@@ -227,31 +227,30 @@ nav {
 
 .icon-link {
   position: relative;
-    // > a {
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   width: 100%;
-    //   height: 100%;
-    // }
     ul {
       position: absolute;
       z-index: -1;
       background-color: $white;
       width: 10rem;
       transform: translate(-3rem,-2rem);
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
       transition: all 0.8s ease;
       opacity: 0;
       border:1px solid #ccc;
       box-shadow: $box-shadow;
         li {
           padding: 0.7rem;
+          width: 141px;
+          margin: 0 auto;
           transition: all 0.5s ease;
            > a {
              @include list-link-color();
+           }
+           &:last-child {
+             width: auto;
+           }
+           > button {
+             margin: 0 auto;
+             display: block;
            }
         }
     }
