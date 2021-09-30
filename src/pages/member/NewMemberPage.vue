@@ -65,7 +65,9 @@ export default {
   },
   watch: {
     $route(newRoute) {
-      this.breadCrumb =  this.crumbCreator(newRoute);
+      if(this.memId) {
+        this.breadCrumb =  this.crumbCreator(newRoute);
+      }
     }
   }
 };

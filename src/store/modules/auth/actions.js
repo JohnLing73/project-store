@@ -1,3 +1,5 @@
+let timer;
+
 import axios from "axios"
 
 export default { 
@@ -46,27 +48,53 @@ export default {
         password: payload.password,
         returnSecureToken: true
       });
+      // const expiresIn = +response.data.expiresIn*1000;
+      const expiresIn = 5000;
+      const expirationDate = new Date().getTime() + expiresIn;
+      localStorage.setItem('token', response.data.idToken);
+      localStorage.setItem('userId', response.data.localId);
+      localStorage.setItem('tokenExpiration', expirationDate);// 等等autologin會用來偵測
+
+      timer = setTimeout(function() {
+        context.dispatch('autoLogout')
+      }, expiresIn);
+
       context.commit('setUser', {
         token: response.data.idToken,
         userId: response.data.localId,
-        tokenExpiration: response.data.expiresIn
       });
       if(response.status !== 200) {
         return;
       }
       await context.dispatch('loginGet');
-    // }catch(error) {
-      // console.log(error.message);
-      // throw error;
-    // }
+  },
+  autoLogin(context) {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
+
+    const expiresIn = +tokenExpiration - new Date().getTime();
+
+    if(expiresIn < 0) {
+      return;
+    }
+
+    timer = setTimeout(function() {
+      context.dispatch('autoLogout');
+    },expiresIn);
+
+    if(token && userId) {
+      context.commit('setUser',{
+        token: token,
+        userId: userId,
+      });
+      context.dispatch('loginGet');
+    }
   },
   async loginGet(context) { // 登入成功便抓取資料ˋ
       const userId = context.rootGetters.userId;
       const token = context.getters.token;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json?auth=` + token);
-      console.log(response);
-      console.log('cart:',response.data.cart);
-      console.log('wishlist:',response.data.wishlist);
       if(response.data.cart && response.data.wishlist) {
         context.commit('userInfo', {
           memId: response.data.memberId,
@@ -135,6 +163,12 @@ export default {
     console.log(response);
   },
   logout(context) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('tokenExpiration');
+
+    clearTimeout(timer);
+
     context.commit('setUser', {
       token: null,
       userId: null,
@@ -148,5 +182,9 @@ export default {
       memCart: [],
       memWishlist: []
     })
+  },
+  autoLogout(context) {
+    context.dispatch('logout');
+    context.commit('setAutoLogout');
   }
 }

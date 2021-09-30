@@ -7,7 +7,8 @@ export default {
     return {
       userId: null, //firebase automatically created
       token: null,
-      tokenExpiration: null,
+
+      didAutoLogout: false,
 
       memId: '', // user setting
       memBirth: '',

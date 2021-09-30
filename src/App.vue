@@ -17,9 +17,24 @@ export default {
       spinning: false,
     };
   },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    }
+  },
   methods: {
     toggleList() {
       this.$store.commit('toggleList',false);
+    }
+  },
+  created() {
+    this.$store.dispatch('autoLogin');
+  },
+  watch: {
+    didAutoLogout(newVal, oldVal) {
+      if(newVal && newVal !== oldVal) {
+        this.$router.replace('/home');
+      }
     }
   }
 };

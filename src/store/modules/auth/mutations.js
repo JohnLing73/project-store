@@ -2,7 +2,7 @@ export default {
   setUser(state, payload) {
     state.token = payload.token;
     state.userId = payload.userId;
-    state.tokenExpiration = payload.tokenExpiration;
+    state.didAutoLogout = false;
   },
   userInfo(state,payload) {
     state.memId = payload.memId;
@@ -47,5 +47,8 @@ export default {
   },
   mutateWishlist(state, payload) {
     state.memWishlist.splice(payload, 1);
+  },
+  setAutoLogout(state) {
+    state.didAutoLogout = true;
   }
 }
