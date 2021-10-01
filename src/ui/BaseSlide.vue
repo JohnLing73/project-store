@@ -3,10 +3,9 @@
     :slides-per-view = "1"
     :space-between = "0"
     :loop='true'
-    :autoplay='autoplaySet'
-    navigation
     :pagination= "{ clickable: true }" 
     :scrollbar = "{ draggable: true }"
+    :autoplay='autoplaySet'
   >
     <swiper-slide 
       v-for = "wrapperEach in wrapperData" 
@@ -17,7 +16,7 @@
   </swiper>
 </template>
 <script>
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import 'swiper/swiper.scss';
@@ -25,7 +24,7 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 export default {
   components:{
@@ -48,7 +47,7 @@ export default {
     width: 100%;
   }
   .swiper-slide {
-    height: 400px;
+    // height: 400px;
       img {
        width: 100%;
       }

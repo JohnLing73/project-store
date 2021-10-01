@@ -257,7 +257,7 @@ export default {
 }
 
 .detail-info {
-  width: 500px;
+  max-width: 500px;
 }
 
 .color-choices-container {
@@ -404,4 +404,15 @@ ul.darkMode,
   }
 }
 
+// RWD
+@media (max-width: 860px) {
+  .prod-detail-main {
+    @include flex-model($dir: column, $align: center);
+   .img-container {
+
+    img {
+    }
+  }
+}
+}
 </style>

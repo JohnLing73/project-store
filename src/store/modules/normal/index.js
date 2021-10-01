@@ -13,23 +13,23 @@ export default {
             wrapData: [
                 {
                   id: "01",
-                  src: require('../../../assets/images/homepage/slideshow1.jpg'),
+                  src: require('../../../assets/images/homepage/slideshow1_new.jpg'),
                 },
                 {
                   id: "02",
-                  src: require("../../../assets/images/homepage/slideshow2.jpg"),
+                  src: require("../../../assets/images/homepage/slideshow2_new.jpg"),
                 },
                 {
                   id: "03",
-                  src: require("../../../assets/images/homepage/slideshow3.jpg"),
+                  src: require("../../../assets/images/homepage/slideshow3_new.jpg"),
                 },
                 {
                   id: "04",
-                  src: require("../../../assets/images/homepage/slideshow4.jpg"),
+                  src: require("../../../assets/images/homepage/slideshow4_new.jpg"),
                 },
                 {
                   id: "05",
-                  src: require("../../../assets/images/homepage/slideshow5.jpg"),
+                  src: require("../../../assets/images/homepage/slideshow5_new.jpg"),
                 },
               ],
             cardData: [
