@@ -9,14 +9,15 @@ import CheckOut from "./pages/check/CheckOut.vue";
 import AboutPage from "./pages/AboutPage/AboutPage.vue";
 import NotFound from "./pages/NotFound.vue";
 
+import NewMemberPage from './pages/member/NewMemberPage.vue';
+import MemberProfile from './pages/member/MemberProfile.vue';
+import MemberOrders from './pages/member/MemberOrders.vue';
+import MemberCart from './pages/member/MemberCart.vue';
+import MemberWishlists from './pages/member/MemberWishlists.vue';
+
 import store from './store/index.js';
 
 //Members Routes to lazy loading route
-const NewMemberPage = () => import('./pages/member/NewMemberPage.vue');
-const MemberProfile = () => import('./pages/member/MemberProfile.vue');
-const MemberOrders = () => import('./pages/member/MemberOrders.vue');
-const MemberCart = () => import('./pages/member/MemberCart.vue');
-const MemberWishlists = () => import('./pages/member/MemberWishlists.vue');
 
 const router = createRouter({
   history: createWebHistory(),

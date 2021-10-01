@@ -1,13 +1,13 @@
 <template>
   <div>
-    <transition name="wrapper">
+    <!-- <transition name="wrapper">
       <section id="wrapper" v-if="animate" @mousemove="triggerLeave">
         <div class="banner-container">
           <img src="../../assets/images/homepage/shoppingBanner.jpg" alt="" />
           <h2 ref="wrappertext">I shop, therefore I am.</h2>
         </div>
       </section>
-    </transition>
+    </transition> -->
     <base-slide :wrapper-data= "wrapperData"></base-slide>
     <main>
       <section class="part">

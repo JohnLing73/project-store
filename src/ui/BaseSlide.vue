@@ -2,6 +2,8 @@
   <swiper
     :slides-per-view = "1"
     :space-between = "0"
+    :loop='true'
+    :autoplay='autoplaySet'
     navigation
     :pagination= "{ clickable: true }" 
     :scrollbar = "{ draggable: true }"
@@ -31,12 +33,12 @@ export default {
     SwiperSlide
   },
   props:['wrapper-data'],
-  methdos:{
-    onSwiper(swiper) {
-      console.log(swiper);
-    },
-    onSlideChange() {
-      console.log('slide change');
+  computed: {
+    autoplaySet() {
+       return {
+        "delay": 2000,
+        "disableOnInteraction": false
+      }
     }
   }
 }

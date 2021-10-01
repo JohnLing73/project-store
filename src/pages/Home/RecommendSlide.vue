@@ -5,6 +5,8 @@
       :slides-per-view = "5"
       :space-between = "0"
       navigation
+      :loop='false'
+      :autoplay='autoplaySet'
       :pagination= "{ clickable: true }" 
       :scrollbar = "{ draggable: true }"
     >
@@ -18,7 +20,7 @@
 </base-card>
 </template>
 <script>
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import 'swiper/swiper.scss';
@@ -26,7 +28,7 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 export default {
   components:{
@@ -36,14 +38,12 @@ export default {
   computed:{
     recommendLists() {
       return this.$store.getters.recommendLists;
-    }
-  },
-  methdos:{
-    onSwiper(swiper) {
-      console.log(swiper);
     },
-    onSlideChange() {
-      console.log('slide change');
+    autoplaySet() {
+      return {
+        "delay": 1500,
+        "disableOnInteraction": false
+      }
     }
   }
 }
