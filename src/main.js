@@ -20,6 +20,8 @@ import FontIcon from './ui/FontIcon.vue';
 import QuickLink from './ui/QuickLink.vue';
 import PopBar from './ui/PopBar.vue';
 
+import LandingPage from './components/homepage/LandingPage.vue';
+
 import ProductsSide from './components/Products/ProductsSide.vue';
 import ProductsMain from './components/Products/ProductsMain.vue';
 import ProductsCard from './components/Products/ProductsCard.vue';
@@ -62,6 +64,8 @@ app.component('pop-bar', PopBar);
 app.component('products-side', ProductsSide);
 app.component('products-main', ProductsMain);
 app.component('product-card', ProductsCard);
+
+app.component('landing-page', LandingPage);
 
 //Register Minor Component 
 app.component('font-awesome-banner', FontAwesomeBanner);

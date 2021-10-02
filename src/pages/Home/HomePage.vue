@@ -1,13 +1,8 @@
 <template>
   <div>
-    <!-- <transition name="wrapper">
-      <section id="wrapper" v-if="animate" @mousemove="triggerLeave">
-        <div class="banner-container">
-          <img src="../../assets/images/homepage/shoppingBanner.jpg" alt="" />
-          <h2 ref="wrappertext">I shop, therefore I am.</h2>
-        </div>
-      </section>
-    </transition> -->
+    <transition name="wrapper">
+      <landing-page v-if="animate" @mouseover="triggerLeave"></landing-page>
+    </transition>
     <base-slide :wrapper-data= "wrapperData"></base-slide>
     <main>
       <section class="part">
@@ -102,43 +97,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section#wrapper {
-  display: flex;
-  height: calc(100vh - 127px);
-  justify-content: center;
-  align-items: center;
-  background: lightblue;
-  .banner-container {
-    height: 80%;
-    width: 100%;
-    position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 0px 15%;
-    }
-    h2 {
-      position: absolute;
-      font-size: 2rem;
-      text-shadow: 0px 0px 3px $black;
-      color: $white;
-      top: 65%;
-      left: 10%;
-      z-index: 3;
-    }
-    &::after {
-      content: "";
-      background: black;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0.3;
-    }
-  }
-}
   .part {
       display: flex;
       flex-flow: row nowrap; 
