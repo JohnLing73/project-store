@@ -25,5 +25,8 @@ export default {
             list.style.transform = 'translate(-3rem,-3rem)';
             state.toggleListValue = false;
         }
+    },
+    showOnceOff(state) {
+        state.showOnce = false;
     }
 }

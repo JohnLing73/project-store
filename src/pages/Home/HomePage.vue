@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="wrapper">
-      <landing-page v-if="animate" @mouseover="triggerLeave"></landing-page>
+      <landing-page v-if="animate && showOnce" @mouseover="triggerLeave"></landing-page>
     </transition>
     <base-slide :wrapper-data= "wrapperData"></base-slide>
     <main>
@@ -59,6 +59,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -68,6 +69,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(['showOnce']),
     wrapperData() {
       return this.$store.getters.slideData;
     },
@@ -81,13 +83,13 @@ export default {
       return this.$store.getters.svgTheme;
     }
   },
-  mounted() {
+  created() {
     this.animate = true;
-    // this.animateText = true;
   },
   methods: {
     triggerLeave() {
       this.animate = false;
+      this.$store.commit('showOnceOff');
     },
     toSignPage() {
       this.$router.replace('sign');

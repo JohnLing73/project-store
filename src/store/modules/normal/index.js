@@ -6,6 +6,7 @@ export default {
         return {
             colorTheme: 'dark',
             toggleListValue: false,
+            showOnce: true,
             profileIconDark: require("../../../assets/images/homepage/profile_plain.svg"),
             profileIconLight: require("../../../assets/images/homepage/profile_white.svg"),
             cartIconDark: require('../../../assets/images/homepage/cart_plain.svg'),

@@ -1,15 +1,11 @@
 <template>
-  <transition 
-    name="landing"
-    >
-    <section id="wrapper">
-      <div class="slider" ref="slider"></div>
-      <div class="banner-container" ref="containerRef">
-        <img src="../../assets/images/homepage/shoppingBanner.jpg" alt="" />
-        <h2 ref="wrappertext">I shop, therefore I am.</h2>
-      </div>
-    </section>
-  </transition>
+  <section id="wrapper">
+    <div class="slider" ref="slider"></div>
+    <div class="banner-container" ref="containerRef">
+      <img src="../../assets/images/homepage/shoppingBanner.jpg" alt="" />
+      <h2 ref="wrappertext">I shop, therefore I am.</h2>
+    </div>
+  </section>
 </template>
 <script>
 // import { ref } from 'vue';
@@ -86,7 +82,7 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: dodgerblue;
+    background-color: lightblue;
     // z-index: 1;
   }
 </style>

@@ -10,6 +10,9 @@ export default {
             return false;
         }
     },
+    showOnce(state) {
+        return state.showOnce;
+    },
     slideData(state) {
         return state.wrapData;
     },
