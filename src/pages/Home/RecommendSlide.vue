@@ -2,7 +2,7 @@
 <base-card>
     <h2>Recommend For You! 4 Stars+ Products</h2>
     <swiper
-      :slides-per-view = "5"
+      :slides-per-view ='perView'
       :space-between = "0"
       navigation
       :loop='false'
@@ -31,6 +31,11 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 export default {
+  data() {
+    return {
+      innerWidth: window.innerWidth
+    }
+  },
   components:{
     Swiper,
     SwiperSlide
@@ -44,6 +49,26 @@ export default {
         "delay": 1500,
         "disableOnInteraction": false
       }
+    },
+    perView() {
+      if(this.innerWidth >= 1200) {
+        return 5;
+        }
+      else if(this.innerWidth >= 960) {
+          return 4;
+      }else if(this.innerWidth >= 640){
+          return 3;
+      }else if(this.innerWidth >= 500){
+        return 2;
+      }else {
+        return 1;
+      }
+    }
+  },
+  mounted() {
+    this.innerWidth = window.innerWidth;
+    window.onresize = () => {
+      this.innerWidth = window.innerWidth;
     }
   }
 }

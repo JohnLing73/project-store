@@ -8,14 +8,13 @@
   </section>
 </template>
 <script>
-// import { ref } from 'vue';
 import { gsap, Power2 } from 'gsap';
 export default {
   methods: {
     animation() {
       const tl = gsap.timeline();
       tl.fromTo(this.$refs.containerRef, 
-        {height: '20%'},
+        {height: '0%'},
         {height: '80%', duration: 1.5, ease: Power2.easeInOut},
         ).fromTo(this.$refs.containerRef, 
           {width: '100%'},
@@ -83,6 +82,5 @@ export default {
     width: 100%;
     height: 100%;
     background-color: lightblue;
-    // z-index: 1;
   }
 </style>
