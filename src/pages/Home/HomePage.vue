@@ -1,24 +1,5 @@
 <template>
   <div>
-    <section id="sign-up-banner">
-      <div>
-          <div id="sign-up-slogan">
-            <h3>Sign Up For More...</h3>
-            <ol>
-              <li>Buy the product.</li>
-              <li>Build your own whishlists.</li>
-              <li>Check your orders.</li>
-              <li>
-                <base-button :link = "false" @click= "toSignPage">Sign Up / In</base-button>
-              </li>
-            </ol>
-          </div>
-      </div>
-      <finger-icon
-        :color= "svgTheme"
-      >
-      </finger-icon>
-    </section>
     <transition name="wrapper">
       <landing-page v-if="animate && showOnce" @mouseover="triggerLeave"></landing-page>
     </transition>
@@ -56,7 +37,7 @@
         <recommend-slide></recommend-slide>
       </section>
     </main>
-    <!-- <section id="sign-up-banner">
+    <section id="sign-up-banner">
       <div>
           <div id="sign-up-slogan">
             <h3>Sign Up For More...</h3>
@@ -74,7 +55,7 @@
         :color= "svgTheme"
       >
       </finger-icon>
-    </section> -->
+    </section>
   </div>
 </template>
 <script>

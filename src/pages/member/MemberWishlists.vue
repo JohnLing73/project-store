@@ -126,4 +126,13 @@ export default {
   h4 {
     margin: 0;
   }
+
+  @media (max-width: 1217px) {
+  .container {
+      width: 650px;
+  }
+  .container-each {
+    width: 100%;    
+  }
+}
 </style>

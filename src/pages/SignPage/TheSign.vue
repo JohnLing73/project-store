@@ -100,43 +100,42 @@
           v-model.trim="location"
           @blur="checkNormalValid"
         />
-        <p v-if="allowSignUp === false">
-          Please fill the form correctly to Sign Up
-        </p>
       </div>
-      <base-button v-if="signStatus === 'signUp'" :link="false" @click="signUp"
-        >Sign Up</base-button
-      >
-      <base-button v-else :link="false" @click="signIn">Sign In</base-button>
-      <base-button :link="false" mode="minor" @click="switchSignStatus">{{
-        switchText
-      }}</base-button>
+      <p v-if="allowSignUp === false">
+        Please fill the form correctly to Sign Up
+      </p>
+      <div class="btn-container">
+        <base-button v-if="signStatus === 'signUp'" :link="false" @click="signUp">Sign Up</base-button>
+        <base-button v-else :link="false" @click="signIn">Sign In</base-button>
+        <base-button :link="false" mode="minor" @click="switchSignStatus">{{ switchText }}</base-button>
+      </div>
+      
     </form>
   </div>
 </template>
 <style lang="scss" scoped>
 form {
-  padding: 2rem 7rem;
   background-color: whitesmoke;
   border-radius: 1rem;
   box-shadow: $box-shadow;
   width: 45%;
-  min-width: 325px;
+  min-width: 375px;
   margin: 1rem auto;
+  @include flex-model($dir: column, $align: center);
   h2 {
     text-align: center;
   }
 }
 .form-each {
-  // padding: 1rem 1.5rem;
-  margin: 1.5rem 1rem;
+  margin: 1.5rem 3rem;
+  min-width: 300px;
   label {
     display: inline-block;
     margin-bottom: 0.5rem;
-    margin-right: 1rem;
   }
   input {
     width: 100%;
+    display: block;
   }
 }
 
@@ -233,6 +232,28 @@ select:-webkit-autofill:focus {
 }
 button {
   margin: 1.5rem 2.5rem 1rem 1rem;
+}
+
+.btn-container {
+  @include flex-model($content: space-evenly);
+  margin-bottom: $distance-window;
+}
+@media(max-width: 1037px) {
+  form {
+    width: 60%;
+  }
+}
+@media(max-width: 847px) {
+  form {
+    width: 80%;
+  }
+}
+@media (max-width: 517px) {
+  form {
+    width: 100%;
+    margin: 0;
+    margin-bottom: $distance-window;
+  }
 }
 </style>
 <script>

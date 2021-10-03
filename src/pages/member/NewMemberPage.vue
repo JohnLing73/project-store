@@ -95,7 +95,7 @@ export default {
     text-align: center;
   }
   p {
-    padding-left: 170px;
+    text-align: center;
   }
 }
 
@@ -123,5 +123,26 @@ button {
 }
 .selecting {
   background-color: #488a5a;
+}
+
+@media (max-width: 1217px) {
+  .member-page {
+    @include flex-model($dir: column, $align: center);
+    width: 100%;
+  }
+
+  .member-side-bar {
+    @include flex-model($content: center);
+    margin-bottom: $distance-window;
+  }
+  .member-tab-btn {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .member-main-part {
+    width: auto;
+  }
+  
 }
 </style>
