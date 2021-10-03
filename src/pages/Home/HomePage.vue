@@ -1,5 +1,24 @@
 <template>
   <div>
+    <section id="sign-up-banner">
+      <div>
+          <div id="sign-up-slogan">
+            <h3>Sign Up For More...</h3>
+            <ol>
+              <li>Buy the product.</li>
+              <li>Build your own whishlists.</li>
+              <li>Check your orders.</li>
+              <li>
+                <base-button :link = "false" @click= "toSignPage">Sign Up / In</base-button>
+              </li>
+            </ol>
+          </div>
+      </div>
+      <finger-icon
+        :color= "svgTheme"
+      >
+      </finger-icon>
+    </section>
     <transition name="wrapper">
       <landing-page v-if="animate && showOnce" @mouseover="triggerLeave"></landing-page>
     </transition>
@@ -37,25 +56,25 @@
         <recommend-slide></recommend-slide>
       </section>
     </main>
-      <section id="sign-up-banner">
-        <div>
-            <div id="sign-up-slogan">
-              <h3>Sign Up For More...</h3>
-              <ol>
-                <li>Buy the product.</li>
-                <li>Build your own whishlists.</li>
-                <li>Check your orders.</li>
-                <li>
-                  <base-button :link = "false" @click= "toSignPage">Sign Up / In</base-button>
-                </li>
-              </ol>
-            </div>
-        </div>
-        <finger-icon
-          :color= "svgTheme"
-        >
-        </finger-icon>
-      </section>
+    <!-- <section id="sign-up-banner">
+      <div>
+          <div id="sign-up-slogan">
+            <h3>Sign Up For More...</h3>
+            <ol>
+              <li>Buy the product.</li>
+              <li>Build your own whishlists.</li>
+              <li>Check your orders.</li>
+              <li>
+                <base-button :link = "false" @click= "toSignPage">Sign Up / In</base-button>
+              </li>
+            </ol>
+          </div>
+      </div>
+      <finger-icon
+        :color= "svgTheme"
+      >
+      </finger-icon>
+    </section> -->
   </div>
 </template>
 <script>
@@ -150,9 +169,8 @@ export default {
   }
   #sign-up-banner {
     background-image: linear-gradient(120deg, #6bd692 0%, #8fd3f4 100%);
-    padding: 2rem;
-    padding-top: 6rem;
-    padding-bottom: 3rem;  
+    padding: 6rem 2rem;
+    position: relative;
     > div {
       display: flex;
       justify-content: center;
@@ -169,6 +187,7 @@ export default {
       li {
         font-size: $h3;
         margin-bottom: 0.8rem;
+        position: relative;
       }
   }
   #sign-up-slogan {
