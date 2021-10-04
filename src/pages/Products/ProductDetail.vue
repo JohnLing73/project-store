@@ -9,6 +9,14 @@
     @close="closeDoSth"
   >
   </base-dialog>
+  <base-dialog
+    :showdialog='buyProd'
+    title='BUYING'
+    :content='buyContent'
+    btnText='Confirm'
+    @close='closeBuy'
+  >
+  </base-dialog>
   <div class="prod-detail" :class="{ darkMode: darkMode }">
     <div class="prod-detail-main">
       <div class="img-container">
@@ -164,6 +172,7 @@ export default {
       selectColor: '',
       selectQuantity: 1,
       
+      buyProd: false
     };
   },
   computed: {
@@ -177,20 +186,14 @@ export default {
     },
     darkMode() {
       return this.$store.getters.themeMode;
+    },
+    buyContent() {
+      return 'Size: ' + this.selectSize + ' Color: ' + this.selectColor + ' Quantity: ' + this.selectQuantity;
     }
   },
   methods: {
     buy() {
-      console.log('buy');
-      console.log('Size');
-      console.log(this.selectSize);
-      console.log('Color');
-      console.log(this.selectColor);
-      console.log('Quantity');
-      console.log(this.selectQuantity);
-      this.selectSize = this.$store.state.products.specificProduct.size[0];
-      this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
-      this.selectQuantity = 1;
+      this.buyProd = true;
     },
     changeBigImg(idx) {
       this.$refs.img.src = this.$store.state.products.specificProduct.color[idx].imgSrc;
@@ -198,6 +201,12 @@ export default {
     closeDoSth() {
       this.doSth = false;
       this.$router.push('/sign');
+    },
+    closeBuy() {
+      this.buyProd = false;
+      this.selectSize = this.$store.state.products.specificProduct.size[0];
+      this.selectColor = this.$store.state.products.specificProduct.color[0].colorName;
+      this.selectQuantity = 1;
     },
     async addList(type) {
       console.log('addCart', type);

@@ -55,7 +55,7 @@ dialog {
   position: fixed;
   top: 20vh;
   left: 0%;
-  min-width: 325px;
+  min-width: 400px;
   width: 35%;
   max-width: 530px;
   border: transparent;
