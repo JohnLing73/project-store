@@ -165,4 +165,25 @@ export default {
     width: 100%;    
   }
 }
+
+//
+@media (max-width: 757px) {
+  .container {
+    width: 100%;
+  }
+  .container-each {
+    width: 500px;
+    flex-wrap: wrap;
+    .info-one {
+      flex-basis: calc(100% - 180px);
+    }
+    .info {
+      > div {
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
+
 </style>

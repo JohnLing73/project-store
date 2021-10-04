@@ -28,7 +28,7 @@ export default {
   props: ['color'],
   methods: {
     animation() {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({repeat: 3});
       const { finger } = this.$refs;
       tl.to( finger, {
         motionPath: {
@@ -44,7 +44,7 @@ export default {
       .to( finger,{
         rotation: 45,
         x: -45,
-        duration: 0.5
+        duration: 0.5,
       }, '-=0.5')
 
     //   const controller = new ScrollMagicController();//error

@@ -5,11 +5,11 @@
   >
     <div class="member-info">
       <h2>Member Center</h2>
-      <p>Member Center >> Member {{ breadCrumb }}</p>
+      <h3>Member {{ breadCrumb }}</h3>
     </div>
     <div class="member-side-bar">
       <button
-        v-for="(tab, idx) in tabs"
+        v-for="(tab, idx) in tabsComputed"
         :key="idx"
         class="member-tab-btn"
         :class="{ selecting: tab === this.breadCrumbBtn }"
@@ -30,16 +30,29 @@ export default {
     return {
       tab: "MemberProfile",
       tabs: ["MemberProfile", "MemberOrders", "MemberCart", "MemberWishlists"],
-      breadCrumb: 'Member'
+      breadCrumb: 'Member',
     };
   },
   computed: {
-    ...mapGetters(['memId']),
+    ...mapGetters(['memId','innerWidth']),
     tabPage() {
       return 'member-' + this.tab.slice(6).toLowerCase();
     },
     breadCrumbBtn() {
       return 'Member' + this.breadCrumb;
+    },
+    tabsComputed() {
+      if(this.innerWidth > 740) {
+        return this.tabs;
+      }else{
+        var arr = [];
+        for(const each in this.tabs) {
+          let ele = this.tabs[each];
+          ele = ele.slice(6);
+          arr.push(ele);
+        }
+        return arr;
+      }
     }
   },
   methods: {
@@ -69,6 +82,12 @@ export default {
         this.breadCrumb =  this.crumbCreator(newRoute);
       }
     }
+  },
+  mounted() {
+    this.$store.commit('mutateInnerWidth');
+    window.onresize = () => {
+      this.$store.commit('mutateInnerWidth');
+    }
   }
 };
 </script>
@@ -91,10 +110,8 @@ export default {
 
 .member-info {
   flex-basis: 100%;
-  h2 {
-    text-align: center;
-  }
-  p {
+  h2,
+  h3 {
     text-align: center;
   }
 }
@@ -141,8 +158,21 @@ button {
     }
   }
   .member-main-part {
-    width: auto;
+    width: 100%;
   }
   
+}
+
+@media (max-width: 740px) {
+  .member-tab-btn {
+    width: 100px;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .member-page {
+    padding: 1.5rem 0;
+  }
 }
 </style>

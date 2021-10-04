@@ -118,8 +118,9 @@ form {
   background-color: whitesmoke;
   border-radius: 1rem;
   box-shadow: $box-shadow;
-  width: 45%;
-  min-width: 375px;
+  // width: 45%;
+  // min-width: 375px;
+  width: 500px;
   margin: 1rem auto;
   @include flex-model($dir: column, $align: center);
   h2 {
@@ -238,16 +239,16 @@ button {
   @include flex-model($content: space-evenly);
   margin-bottom: $distance-window;
 }
-@media(max-width: 1037px) {
-  form {
-    width: 60%;
-  }
-}
-@media(max-width: 847px) {
-  form {
-    width: 80%;
-  }
-}
+// @media(max-width: 1037px) {
+//   form {
+//     width: 60%;
+//   }
+// }
+// @media(max-width: 847px) {
+//   form {
+//     width: 80%;
+//   }
+// }
 @media (max-width: 517px) {
   form {
     width: 100%;

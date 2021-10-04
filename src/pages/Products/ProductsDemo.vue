@@ -33,14 +33,14 @@ export default {
 
       filterResult: [],
 
-      innerWidth: null,
       toggleVal: false
     };
   },
   computed: {
     ...mapGetters({
       isLoading: "prodIsLoading",
-      productsPage: 'filterResult'
+      productsPage: 'filterResult',
+      innerWidth: 'innerWidth'
     }),
     renewFilter() {
       return this.$route.query;
@@ -74,9 +74,9 @@ export default {
     this.$store.dispatch('fetchData', this.$route);
   },
   mounted() {
-    this.innerWidth = window.innerWidth;
+    this.$store.commit('mutateInnerWidth');
     window.onresize = () => {
-      this.innerWidth = window.innerWidth;
+      this.$store.commit('mutateInnerWidth');
     }
   }
 };

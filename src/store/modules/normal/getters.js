@@ -10,6 +10,9 @@ export default {
             return false;
         }
     },
+    innerWidth(state) {
+        return state.innerWidth;
+    },
     showOnce(state) {
         return state.showOnce;
     },

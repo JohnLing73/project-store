@@ -28,5 +28,8 @@ export default {
     },
     showOnceOff(state) {
         state.showOnce = false;
+    },
+    mutateInnerWidth(state) {
+        state.innerWidth = window.innerWidth;
     }
 }

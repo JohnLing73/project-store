@@ -23,6 +23,8 @@
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
+import { mapGetters } from 'vuex';
+
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -33,7 +35,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 export default {
   data() {
     return {
-      innerWidth: window.innerWidth
     }
   },
   components:{
@@ -41,6 +42,7 @@ export default {
     SwiperSlide
   },
   computed:{
+    ...mapGetters(['innerWidth']),
     recommendLists() {
       return this.$store.getters.recommendLists;
     },
@@ -66,9 +68,9 @@ export default {
     }
   },
   mounted() {
-    this.innerWidth = window.innerWidth;
+    this.$store.commit('mutateInnerWidth');
     window.onresize = () => {
-      this.innerWidth = window.innerWidth;
+      this.$store.commit('mutateInnerWidth');
     }
   }
 }

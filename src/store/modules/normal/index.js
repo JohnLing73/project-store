@@ -11,6 +11,8 @@ export default {
             profileIconLight: require("../../../assets/images/homepage/profile_white.svg"),
             cartIconDark: require('../../../assets/images/homepage/cart_plain.svg'),
             cartIconLight: require('../../../assets/images/homepage/cart_white.svg'),
+            innerWidth: null,
+            hello: 'hello',
             wrapData: [
                 {
                   id: "01",

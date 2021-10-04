@@ -60,6 +60,8 @@ export default {
 <style lang="scss" scoped>
   .container {
     @include flex-model($dir: column, $align: center);
+    margin: 0 auto;
+    width: 750px;
   }
 
   .container-each {
@@ -67,6 +69,7 @@ export default {
     border: 1px solid $white;
     border-radius: 12px;
     overflow: hidden;
+    margin: 0 auto;
     margin-bottom: 1rem;
     width: 750px;
   }
@@ -133,6 +136,24 @@ export default {
   }
   .container-each {
     width: 100%;    
+  }
+}
+
+@media (max-width: 757px) {
+  .container {
+    width: 100%;
+  }
+  .container-each {
+    width: 500px;
+    flex-wrap: wrap;
+    .info-one {
+      flex-basis: calc(100% - 180px);
+    }
+    .info {
+      > div {
+        justify-content: space-evenly;
+      }
+    }
   }
 }
 </style>

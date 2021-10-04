@@ -93,4 +93,10 @@ span {
     width: 100%;    
   }
 }
+
+@media (max-width: 840px) {
+  .card-fake {
+    width: 100%;
+  }
+}
 </style>
