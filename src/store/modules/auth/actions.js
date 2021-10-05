@@ -94,6 +94,7 @@ export default {
       const userId = context.rootGetters.userId;
       const token = context.getters.token;
       const response = await axios.get(`https://resume-store-fd4de-default-rtdb.firebaseio.com/users/${userId}.json?auth=` + token);
+      console.log(response.data);
       if(response.data.cart && response.data.wishlist) {
         context.commit('userInfo', {
           memId: response.data.memberId,

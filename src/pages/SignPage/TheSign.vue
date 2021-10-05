@@ -23,9 +23,6 @@
         :class="{ invalidStyle: inputMailInvalid === 'Invalid' }"
       >
         <label for="email">Email</label>
-        <span class="invalid-warning" v-if="inputMailInvalid === 'Invalid'"
-          >(Please Input Valid Email!)</span
-        >
         <input
           name="email"
           id="email"
@@ -39,10 +36,7 @@
         class="form-each"
         :class="{ invalidStyle: inputMemberIdValid === 'Invalid' }"
       >
-        <label for="account">Member Id</label>
-        <span v-if="inputMemberIdValid === 'Invalid'" class="invalid-warning">
-          (Please Input Valid Id!)
-        </span>
+        <label for="account">Member Name</label>
         <input
           name="account"
           id="account"
@@ -72,9 +66,9 @@
         class="form-each"
         :class="{ invalidStyle: inputBirthValid === 'Invalid' }"
       >
-        <label for="birth">Birth (YYYY/MM/DD)</label>
+        <label for="birth">Birth</label>
         <span v-if="inputBirthValid === 'Invalid'" class="invalid-warning">
-          (Please Input Valid Birth!)
+          Valid Birth(YYYY/MM/DD)!
         </span>
         <input
           name="birth"
@@ -90,9 +84,6 @@
         :class="{ invalidStyle: inputLocationValid === 'Invalid' }"
       >
         <label for="location">Location</label>
-        <span v-if="inputLocationValid === 'Invalid'" class="invalid-warning">
-          (Please Input Valid Location!)
-        </span>
         <input
           name="location"
           id="location"
@@ -101,9 +92,9 @@
           @blur="checkNormalValid"
         />
       </div>
-      <p v-if="allowSignUp === false">
+      <!-- <p v-if="allowSignUp === false">
         Please fill the form correctly to Sign Up
-      </p>
+      </p> -->
       <div class="btn-container">
         <base-button v-if="signStatus === 'signUp'" :link="false" @click="signUp">Sign Up</base-button>
         <base-button v-else :link="false" @click="signIn">Sign In</base-button>
@@ -129,7 +120,7 @@ form {
 }
 .form-each {
   margin: 1.5rem 3rem;
-  min-width: 300px;
+  width: 300px;
   label {
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -321,7 +312,7 @@ export default {
           birth: this.birth,
           location: this.location,
         });
-        this.autoPush();
+        await this.signIn();
       } catch (error) {
         this.error = error.response.data.error.message;
       }
@@ -364,8 +355,7 @@ export default {
     autoPush() {
       if(this.$store.state.auth.userId) {
         this.signSuccess = true; 
-        console.log(this.memEmail);
-        this.$router.push('/member/' + this.memEmail + '/profile');
+        this.$router.push('/member/' + this.email + '/profile');
       }
     },
     //Function about input validation
@@ -387,7 +377,7 @@ export default {
         this.inputMemberIdValid = "Valid";
         this.allowSignUp = true;
       }
-      if (this.password === "" && this.password.length < 7) {
+      if (this.password === "" || this.password.length < 7) {
         this.inputPasswordValid = "Invalid";
         this.allowSignUp = false;
         return;
