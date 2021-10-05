@@ -12,7 +12,6 @@
       <span>Shop</span>
       <router-link to="/home"></router-link>
     </div>
-    <input type="text" ref="searchBar" size="30" placeholder="Search..." class= "search-input"/>
     <nav>
       <div class="icon-link" @click.stop="toggleList">
         <img v-if= "storeTheme === 'dark'" :src= "profileFigDark" alt="profile" id="toggleIcon"/>
