@@ -16,9 +16,6 @@ export default {
     showOnce(state) {
         return state.showOnce;
     },
-    landingFinished(state) {
-        return state.landingFinished;
-    },
     slideData(state) {
         return state.wrapData;
     },

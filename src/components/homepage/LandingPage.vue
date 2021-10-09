@@ -20,20 +20,25 @@ export default {
       await tl.fromTo(this.$refs.containerRef, 
         {height: '0%'},
         {height: '80%', duration: 1, ease: Power2.easeInOut},
-        ).fromTo(this.$refs.containerRef, 
+        )
+        .fromTo(this.$refs.containerRef, 
           {width: '100%'},
           {width: '80%', duration: 1.2, ease: Power2.easeInOut},
-        ).fromTo(this.$refs.slider,
+        )
+        .fromTo(this.$refs.slider,
           {x: '-100%'},
           {x: '0%', duration: 1.2, ease: Power2.easeInOut}, 
           '-=1.2'
-        ).fromTo(this.$refs.wrappertext,
+        )
+        .fromTo(this.$refs.wrappertext,
           {x: '-10%', opacity: '0'},
-          {x: '0%', opacity: '1', duration: 0.7, ease: Power2.easeIn},
-          '-=0.7'
-        );
-      this.$store.commit('landingOff');
-    }
+          {x: '0%', opacity: '1', duration:1, ease: Power2.easeIn},
+          '-=1',
+        )
+      setTimeout(()=> {
+        this.$store.commit('showOnceOff')
+      },700);
+    },
   },
   mounted() {
     this.animation();

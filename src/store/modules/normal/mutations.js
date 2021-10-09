@@ -32,7 +32,5 @@ export default {
     mutateInnerWidth(state) {
         state.innerWidth = window.innerWidth;
     },
-    landingOff(state) {
-        state.landingFinished = true;
-    }
+
 }

@@ -3,7 +3,6 @@
     <transition name="wrapper">
       <landing-page
         v-if="showOnce"
-        @mouseover="triggerLeave"
       ></landing-page>
     </transition>
     <base-slide :wrapper-data="wrapperData"></base-slide>
@@ -91,7 +90,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["showOnce","landingFinished"]),
+    ...mapGetters(["showOnce"]),
     wrapperData() {
       return this.$store.getters.slideData;
     },
@@ -108,11 +107,6 @@ export default {
   created() {
   },
   methods: {
-    triggerLeave() {
-      if(this.landingFinished){
-        this.$store.commit("showOnceOff");
-      }
-    },
     toSignPage() {
       this.$router.replace("sign");
     },
