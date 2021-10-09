@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="whole-container">
     <transition name="wrapper">
       <landing-page
         v-if="animate && showOnce"
@@ -121,7 +121,7 @@ export default {
       const tl = gsap.timeline({
         scrollTrigger: {
           markers: true,
-          start: "top center",
+          start: "+=0.5 center",
           end: "bottom 40%",
           trigger: "#sign-up-banner",
           toggleActions: "play pause reverse reset",
@@ -129,16 +129,16 @@ export default {
         },
       });
       const { finger } = this.$refs;
-      tl.from(finger, {
+      tl.to(finger, {
         motionPath: {
           path: [
             { xPercent: 850, yPercent: -250, opacity: 0.3 },
-            // { xPercent: 250, yPercent: 70, opacity: 0.5 },
+            { xPercent: 250, yPercent: 70, opacity: 0.5 },
             { xPercent: 50, yPercent: 50, opacity: 0.7 },
             { x: 0, y: 0, opacity: 1 },
           ],
         },
-        duration: 2,
+        // duration: 1,
       }).to(
         finger,
         {
@@ -146,7 +146,7 @@ export default {
           x: -45,
           duration: 0.5,
         },
-        "-=0.5"
+        // "-=0.5"
       );
     },
   },
@@ -157,6 +157,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#whole-container {
+  position: relative;
+}
+
 .part {
   display: flex;
   flex-flow: row nowrap;
