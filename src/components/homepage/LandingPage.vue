@@ -70,7 +70,7 @@ export default {
     }
     h2 {
       position: absolute;
-      font-size: 5rem;
+      font-size: 4.5rem;
       text-shadow: 0px 0px 3px $black;
       color: $white;
       top: 65%;
@@ -96,5 +96,71 @@ export default {
     width: 100%;
     height: 100%;
     background-color: lightblue;
+  }
+
+  //RWD
+  @media(max-width: 1400px) {
+    
+  }
+
+  @media(max-widtH: 1200px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          left: 6%;
+        }
+      }
+    }
+  }
+  @media(max-widtH: 1100px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          font-size: 3.7rem;
+          left: 5%;
+        }
+      }
+    }
+  }
+
+  @media(max-widtH: 970px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          font-size: 3.5rem;
+          left: 3%;
+        }
+      }
+    }
+  }
+
+  @media(max-widtH: 850px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  @media(max-widtH: 720px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+
+   @media(max-widtH: 620px) {
+    #wrapper {
+      .banner-container {
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    }
   }
 </style>

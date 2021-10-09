@@ -184,6 +184,7 @@ export default {
   background-color: $white;
   form {
     padding: 0 $distance-window $distance-window $distance-window;
+    width: 184px !important;
   }
   h4 {
     margin-bottom: 0.5rem;

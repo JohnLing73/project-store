@@ -19,11 +19,11 @@ export default {
 </script>
 <style lang="scss">
   .products-main {
-    width: calc(100vw - 200px);
+    // width: calc(100vw - 184px);
     background-color: $product-main-bg;
     padding:  $distance-window;
     justify-items: center;
-    justify-content: flex-start;
+    justify-content: center;
       h1 {
         text-align: center;
       }
@@ -35,7 +35,9 @@ export default {
   }
 
   //RWD
-  @media (max-width: 555px) {
-
+  @media (max-width: 505px) {
+    .products-main {
+      padding: 1.5rem 0;
+    }
   }
 </style>
