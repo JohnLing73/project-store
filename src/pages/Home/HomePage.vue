@@ -2,7 +2,7 @@
   <div id="whole-container">
     <transition name="wrapper">
       <landing-page
-        v-if="animate && showOnce"
+        v-if="showOnce"
         @mouseover="triggerLeave"
       ></landing-page>
     </transition>
@@ -86,13 +86,12 @@ gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 export default {
   data() {
     return {
-      animate: false,
       animateText: false,
       enterInterval: "",
     };
   },
   computed: {
-    ...mapGetters(["showOnce"]),
+    ...mapGetters(["showOnce","landingFinished"]),
     wrapperData() {
       return this.$store.getters.slideData;
     },
@@ -107,12 +106,12 @@ export default {
     },
   },
   created() {
-    this.animate = true;
   },
   methods: {
     triggerLeave() {
-      this.animate = false;
-      this.$store.commit("showOnceOff");
+      if(this.landingFinished){
+        this.$store.commit("showOnceOff");
+      }
     },
     toSignPage() {
       this.$router.replace("sign");
@@ -120,25 +119,25 @@ export default {
     animation() {
       const tl = gsap.timeline({
         scrollTrigger: {
-          markers: true,
-          start: "+=0.5 center",
-          end: "bottom 40%",
+          start: "-50 center",
+          end: "+=430 40%",
           trigger: "#sign-up-banner",
           toggleActions: "play pause reverse reset",
           scrub: true,
         },
       });
       const { finger } = this.$refs;
+      tl.set(finger,
+        { xPercent: 850, yPercent: -250, opacity: 0.3 }
+      )
       tl.to(finger, {
         motionPath: {
           path: [
-            { xPercent: 850, yPercent: -250, opacity: 0.3 },
             { xPercent: 250, yPercent: 70, opacity: 0.5 },
             { xPercent: 50, yPercent: 50, opacity: 0.7 },
             { x: 0, y: 0, opacity: 1 },
           ],
         },
-        // duration: 1,
       }).to(
         finger,
         {
@@ -146,7 +145,6 @@ export default {
           x: -45,
           duration: 0.5,
         },
-        // "-=0.5"
       );
     },
   },
