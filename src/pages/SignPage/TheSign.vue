@@ -23,13 +23,16 @@
         :class="{ invalidStyle: inputMailInvalid === 'Invalid' }"
       >
         <label for="email">Email</label>
-        <input
-          name="email"
-          id="email"
-          type="email"
-          v-model.trim="email"
-          @blur="checkNormalValid"
-        />
+        <div class="input-each">
+          <input
+            name="email"
+            id="email"
+            type="email"
+            v-model.trim="email"
+            @blur="checkNormalValid"
+          />
+          <i class="email-icon"></i>
+        </div>
       </div>
       <div
         v-if="signStatus === 'signUp'"
@@ -37,13 +40,16 @@
         :class="{ invalidStyle: inputMemberIdValid === 'Invalid' }"
       >
         <label for="account">Member Name</label>
-        <input
-          name="account"
-          id="account"
-          type="text"
-          v-model.trim="memberId"
-          @blur="checkNormalValid"
-        />
+        <div class="input-each">
+          <input
+            name="account"
+            id="account"
+            type="text"
+            v-model.trim="memberId"
+            @blur="checkNormalValid"
+          />
+          <i class="account-icon"></i>
+        </div>
       </div>
       <div
         class="form-each"
@@ -70,13 +76,13 @@
         <span v-if="inputBirthValid === 'Invalid'" class="invalid-warning">
           Valid Birth(YYYY/MM/DD)!
         </span>
-        <input
-          name="birth"
-          id="birth"
-          type="date"
-          v-model.trim="birth"
-          @blur="checkNormalValid"
-        />
+          <input
+            name="birth"
+            id="birth"
+            type="date"
+            v-model.trim="birth"
+            @blur="checkNormalValid"
+          />
       </div>
       <div
         v-if="signStatus === 'signUp'"
@@ -84,17 +90,17 @@
         :class="{ invalidStyle: inputLocationValid === 'Invalid' }"
       >
         <label for="location">Location</label>
-        <input
-          name="location"
-          id="location"
-          type="text"
-          v-model.trim="location"
-          @blur="checkNormalValid"
-        />
+        <div class="input-each">
+          <input
+            name="location"
+            id="location"
+            type="text"
+            v-model.trim="location"
+            @blur="checkNormalValid"
+          />
+          <i class="location-icon"></i>
+        </div>
       </div>
-      <!-- <p v-if="allowSignUp === false">
-        Please fill the form correctly to Sign Up
-      </p> -->
       <div class="btn-container">
         <base-button v-if="signStatus === 'signUp'" :link="false" @click="signUp">Sign Up</base-button>
         <base-button v-else :link="false" @click="signIn">Sign In</base-button>
@@ -109,8 +115,6 @@ form {
   background-color: whitesmoke;
   border-radius: 1rem;
   box-shadow: $box-shadow;
-  // width: 45%;
-  // min-width: 375px;
   width: 500px;
   margin: 1rem auto;
   @include flex-model($dir: column, $align: center);
@@ -143,15 +147,11 @@ input {
     @include input-style;
     background-size: 1.5rem;
   }
-  &[type="email"] {
-    background-image: url("../../assets/images/forall/email.svg");
-  }
+ 
   &[type="password"] {
     background-image: url("../../assets/images/forall/key.svg");
   }
-  &[type="text"] {
-    background-image: url("../../assets/images/forall/user-without-circle.svg");
-  }
+
   &[type="date"] {
     background-image: url("../../assets/images/forall/birthday-cake.svg");
     &::-webkit-inner-spin-button,
@@ -165,9 +165,7 @@ p.darkMode {
   color: $white;
 }
 
-#location {
-  background-image: url("../../assets/images/forall/pin.svg");
-}
+
 
 .invalidStyle {
   input {
@@ -178,34 +176,29 @@ p.darkMode {
   }
 }
 
-@mixin keyframes($autofill) {
-  @-webkit-keyframes #{$autofill} {
-    @content;
-  }
-  @-moz-keyframes #{$autofill} {
-    @content;
-  }
-  @-o-keyframes #{$autofill} {
-    @content;
-  }
-  @keyframes #{$autofill} {
-    @content;
+.input-each {
+  position: relative;
+  i {
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    width: 25px;
+    height: 25px;
   }
 }
 
-@mixin animation($str) {
-  -webkit-animation: #{$str};
-  -moz-animation: #{$str};
-  -ms-animation: #{$str};
-  -o-animation: #{$str};
-  animation: #{$str};
+.email-icon {
+  background-image: url("../../assets/images/forall/email.svg");
+}
+.account-icon {
+    background-image: url("../../assets/images/forall/user-without-circle.svg");
 }
 
-@include keyframes(autofill) {
-  to {
-    background-image: url("../../assets/images/forall/email.svg") !important;
-  }
+.location-icon {
+  background-image: url("../../assets/images/forall/map-marker-alt-solid.svg");
+  background-repeat: no-repeat;
 }
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -216,11 +209,8 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: $black;
+  -webkit-text-fill-color: $black !important;
   -webkit-box-shadow: 0 0 0px 1000px #fffff0 inset;
-  @include animation("autofill 1s");
-  // -webkit-animation-fill-mode: both;
-  background-image: url("../../assets/images/forall/email.svg") !important;
 }
 button {
   margin: 1.5rem 2.5rem 1rem 1rem;
@@ -230,16 +220,7 @@ button {
   @include flex-model($content: space-evenly);
   margin-bottom: $distance-window;
 }
-// @media(max-width: 1037px) {
-//   form {
-//     width: 60%;
-//   }
-// }
-// @media(max-width: 847px) {
-//   form {
-//     width: 80%;
-//   }
-// }
+
 @media (max-width: 517px) {
   form {
     width: 100%;
